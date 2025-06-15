@@ -79,6 +79,19 @@
 																								
 <meta name="generator" content="Hexo 7.3.0"></head>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+	crossorigin="anonymous"></script>
+
+<!-- To automatically render math in text elements, include the auto-render extension: -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
 <body>
 	<header id="header">
     <a id="title" href="/" class="logo">Note</a>
@@ -374,7 +387,7 @@
 
 <!-- content -->
 <div id="article-content">
-	<h2 id="vert-文件">.vert 文件</h2>
+	<h2 id="vert-文件"><a class="markdownIt-Anchor" href="#vert-文件"></a> .vert 文件</h2>
 <pre><code class="hljs glsl"><span class="hljs-comment">// 指定 GLSL 版本为 3.30，并使用核心模式(Core-profile)</span>
 <span class="hljs-meta">#version 330 core</span>
 

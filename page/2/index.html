@@ -75,119 +75,20 @@
 
 																							
 																								
-<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
+<meta name="generator" content="Hexo 7.3.0"></head>
 
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
 
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+	crossorigin="anonymous"></script>
 
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
-
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
-
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style></head>
+<!-- To automatically render math in text elements, include the auto-render extension: -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
 
 <body>
 	<header id="header">
@@ -465,12 +366,9 @@ mjx-container[display="true"] + br {
 					1 方程绪论
 				</h2>
 				<div class="index-brief">
-					质量守恒方程（连续性方程）
+					 质量守恒方程（连续性方程）
 质量守恒定律的微分形式，也称为连续性方程，描述了流体在空间中任意一点的密度变化率与该点周围的质量流出（或流入）速率之间的关系。
-
-
-动量守恒方程（N-S方程）
-动量守恒方程，对于牛顿流体，通常被称为纳维-斯托克斯方程。它描述了单位体积流体的动量变化是由作用于其上
+∇⋅(ρv)+∂ρ∂t=0\nabla \cdot (\rho \mathbf{v}) + \frac{\partial \rho}{\par
 					...
 				</div>
 			</a>
@@ -488,15 +386,15 @@ mjx-container[display="true"] + br {
 					1 openGL环境安装
 				</h2>
 				<div class="index-brief">
-					windows
-创建库目录
+					 windows
+ 创建库目录
 根目录下创建文件夹 libs，创建两个子文件夹 lib 和 include
 libs
 ├─include
 └─lib
-安装 glfw
+ 安装 glfw
 去官网下载最新版 64-bit Windows binaries
-https://www.glfw.org/download.
+https://www.glfw.org/download.htm
 					...
 				</div>
 			</a>
@@ -514,12 +412,9 @@ https://www.glfw.org/download.
 					3 图形学 空间变换
 				</h2>
 				<div class="index-brief">
-					齐次坐标
+					 齐次坐标
 为什么计算机图形学使用四维坐标 (w=1) 来表示三维点？
-这是一个计算机图形学中非常基础且核心的概念。简单来说，将三维坐标
-(x, y, z) 扩展成四维坐标 (x, y, z, 1)
-是为了使用齐次坐标 (Homogeneous
-Coordinates)。这样做主要有以下几个
+这是一个计算机图形学中非常基础且核心的概念。简单来说，将三维坐标 (x, y, z) 扩展成四维坐标 (x, y, z, 1) 是为了使用齐次坐标 (Homogeneous Coordinates)。这样做主要有以下几个至关重要
 					...
 				</div>
 			</a>
@@ -537,16 +432,16 @@ Coordinates)。这样做主要有以下几个
 					1 配置
 				</h2>
 				<div class="index-brief">
-					图片管理
+					 图片管理
 使用 picgo + github 图床
 https://picgo.github.io/PicGo-Doc/
-代码块
+ 代码块
 配置文件中这样修改
 highlight:
   enable: false
   line_number: false
   auto_detect: false
- 
+  ta
 					...
 				</div>
 			</a>

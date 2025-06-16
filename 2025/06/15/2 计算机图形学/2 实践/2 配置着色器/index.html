@@ -443,6 +443,25 @@
 <span class="hljs-comment">// 总结：</span>
 <span class="hljs-comment">// 1. 主要任务：计算每个顶点的最终裁剪空间位置 (gl_Position)。</span>
 <span class="hljs-comment">// 2. 附加任务：将顶点颜色 (aColor) 原封不动地传递给片元着色器 (ourColor)。</span></code></pre>
+<h2 id="frag-文件-glsl-片段着色器"><a class="markdownIt-Anchor" href="#frag-文件-glsl-片段着色器"></a> .frag 文件 GLSL 片段着色器</h2>
+<pre><code class="hljs plaintext">#version 330 core
+out vec4 FragColor;
+
+in vec3 ourColor;
+
+void main()
+&#123;
+    // 将输入的RGB颜色和1.0的Alpha值组合成一个vec4，作为最终颜色输出
+    FragColor = vec4(ourColor, 1.0f);
+&#125;</code></pre>
+<p>这是一个 <strong>GLSL 片段着色器 (Fragment Shader)</strong>。</p>
+<p><strong>核心功能</strong>：为屏幕上的每个像素设置最终颜色。</p>
+<ol>
+<li><strong>输入 (<code>in vec3 ourColor</code>)</strong>: 从顶点着色器接收一个 RGB 颜色。</li>
+<li><strong>处理</strong>: 将输入的 RGB 颜色和一个固定的 Alpha 值 <code>1.0</code> (完全不透明) 合并成一个 RGBA 颜色。</li>
+<li><strong>输出 (<code>out vec4 FragColor</code>)</strong>: 将这个最终的 RGBA 颜色输出，用于绘制像素。</li>
+</ol>
+<p><strong>一句话总结：它接收一个颜色，让其变得完全不透明，然后将其作为像素的颜色输出。</strong></p>
 
 </div>
 

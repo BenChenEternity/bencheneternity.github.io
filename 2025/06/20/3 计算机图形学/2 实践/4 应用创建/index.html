@@ -335,6 +335,39 @@
 								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/%E4%B8%96%E7%95%8C%E5%AE%9A%E4%B9%89/">
+                     
+										    世界定义
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/%E6%91%84%E5%83%8F%E6%9C%BA/">
+                     
+										    摄像机定义
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/%E7%9D%80%E8%89%B2%E5%99%A8%E5%AE%9A%E4%B9%89/">
+                     
+										    着色器定义
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
 								</li>
 								
 							</ul>
@@ -509,6 +542,41 @@ app_3d_camera
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
 <h3 id="定义-application"><a class="markdownIt-Anchor" href="#定义-application"></a> 定义 Application</h3>
+<pre><code class="hljs cpp"><span class="hljs-comment">//=============== 文件路径: Application.h ===============//</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Application</span> &#123;
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-built_in">Application</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> width, <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> height);
+    ~<span class="hljs-built_in">Application</span>();
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Run</span><span class="hljs-params">()</span></span>;
+
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">processInput</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-type">float</span> deltaTime)</span></span>;
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">render</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">// 鼠标回调的成员函数</span>
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">handleMouse</span><span class="hljs-params">(<span class="hljs-type">float</span> xpos, <span class="hljs-type">float</span> ypos)</span></span>;
+
+    <span class="hljs-comment">// 转发到成员函数的静态回调</span>
+    <span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title">framebuffer_size_callback</span><span class="hljs-params">(GLFWwindow* window, <span class="hljs-type">int</span> width, <span class="hljs-type">int</span> height)</span></span>;
+    <span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title">mouse_callback</span><span class="hljs-params">(GLFWwindow* window, <span class="hljs-type">double</span> xpos, <span class="hljs-type">double</span> ypos)</span></span>;
+
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> m_Width, m_Height;
+    GLFWwindow* m_Window;
+
+    ShaderManager m_ShaderManager;
+    MeshManager m_MeshManager;
+    World m_World;
+
+    Camera m_Camera;
+    <span class="hljs-type">float</span> m_LastX;
+    <span class="hljs-type">float</span> m_LastY;
+    <span class="hljs-type">bool</span> m_FirstMouse = <span class="hljs-literal">true</span>;
+
+    <span class="hljs-type">float</span> m_DeltaTime = <span class="hljs-number">0.0f</span>;
+    <span class="hljs-type">float</span> m_LastFrame = <span class="hljs-number">0.0f</span>;
+&#125;;</code></pre>
 <p>构造参数：</p>
 <ul>
 <li>窗口宽和高</li>
@@ -578,24 +646,47 @@ Application::~<span class="hljs-built_in">Application</span>() &#123;
     <span class="hljs-comment">// --- 从文件加载世界 ---</span>
     <span class="hljs-comment">// 我们需要把 ShaderManager 传给加载函数</span>
     <span class="hljs-built_in">loadWorldFromFile</span>(<span class="hljs-string">&quot;scene.json&quot;</span>, m_World, m_ShaderManager, m_MeshManager);
-&#125;
-
-<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Application::Run</span><span class="hljs-params">()</span> </span>&#123;
+&#125;</code></pre>
+<h3 id="执行循环"><a class="markdownIt-Anchor" href="#执行循环"></a> 执行循环</h3>
+<p>计算每帧耗时</p>
+<p>将耗时传入更新逻辑，把每帧耗时作为系数乘上，数值的累加将会和帧率无关。也就是帧率高和低的电脑数值变化是一样的。</p>
+<p>例如</p>
+<pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-type">float</span> deltaTime)</span> </span>&#123;
+    <span class="hljs-type">float</span> speed = <span class="hljs-number">100.0f</span>; <span class="hljs-comment">// 定义速度为每秒100像素</span>
+    character.x += speed * deltaTime; <span class="hljs-comment">// 每帧的移动距离 = 速度 × 每帧耗时</span>
+&#125;</code></pre>
+<p>循环应该按照如下顺序：</p>
+<ul>
+<li>先处理外部影响</li>
+<li>再更新内部状态</li>
+<li>最后展示结果</li>
+</ul>
+<pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Application::Run</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-comment">//检查用户是否点击关闭窗口</span>
     <span class="hljs-keyword">while</span> (!<span class="hljs-built_in">glfwWindowShouldClose</span>(m_Window)) &#123;
+        <span class="hljs-comment">//计算每帧耗时准备传给 update</span>
         <span class="hljs-type">float</span> currentFrame = <span class="hljs-built_in">static_cast</span>&lt;<span class="hljs-type">float</span>&gt;(<span class="hljs-built_in">glfwGetTime</span>());
         m_DeltaTime = currentFrame - m_LastFrame;
         m_LastFrame = currentFrame;
 
+        <span class="hljs-comment">//输入处理</span>
         <span class="hljs-built_in">processInput</span>();
+        <span class="hljs-comment">//逻辑更新</span>
         <span class="hljs-built_in">update</span>(m_DeltaTime);
+        <span class="hljs-comment">//渲染</span>
         <span class="hljs-built_in">render</span>();
 
+        <span class="hljs-comment">//交换缓冲区（双缓冲技术）</span>
         <span class="hljs-built_in">glfwSwapBuffers</span>(m_Window);
+        <span class="hljs-comment">//轮询事件：点击关闭、键盘按下、鼠标移动、窗口大小改变</span>
         <span class="hljs-built_in">glfwPollEvents</span>();
     &#125;
-&#125;
-
-<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Application::processInput</span><span class="hljs-params">()</span> </span>&#123;
+&#125;</code></pre>
+<h3 id="输入处理"><a class="markdownIt-Anchor" href="#输入处理"></a> 输入处理</h3>
+<p>键盘使用轮询的方式，而鼠标使用（软件层面的）回调的方式</p>
+<p><strong>键盘</strong></p>
+<p>按下 WASD 按键，移动的距离是固定的，所以只需要检查按键是否按下，每一帧轮询按照固定速度移动摄像机。</p>
+<pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Application::processInput</span><span class="hljs-params">()</span> </span>&#123;
     <span class="hljs-keyword">if</span> (<span class="hljs-built_in">glfwGetKey</span>(m_Window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         <span class="hljs-built_in">glfwSetWindowShouldClose</span>(m_Window, <span class="hljs-literal">true</span>);
 
@@ -607,37 +698,16 @@ Application::~<span class="hljs-built_in">Application</span>() &#123;
         m_Camera.<span class="hljs-built_in">ProcessKeyboard</span>(LEFT, m_DeltaTime);
     <span class="hljs-keyword">if</span> (<span class="hljs-built_in">glfwGetKey</span>(m_Window, GLFW_KEY_D) == GLFW_PRESS)
         m_Camera.<span class="hljs-built_in">ProcessKeyboard</span>(RIGHT, m_DeltaTime);
-&#125;
-
-<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Application::update</span><span class="hljs-params">(<span class="hljs-type">float</span> deltaTime)</span> </span>&#123;
-    <span class="hljs-comment">// 更新世界状态</span>
-<span class="hljs-comment">//    m_World.Update(deltaTime);</span>
-&#125;
-
-<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Application::render</span><span class="hljs-params">()</span> </span>&#123;
-    <span class="hljs-built_in">glClearColor</span>(<span class="hljs-number">0.1f</span>, <span class="hljs-number">0.1f</span>, <span class="hljs-number">0.1f</span>, <span class="hljs-number">1.0f</span>);
-    <span class="hljs-built_in">glClear</span>(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    <span class="hljs-comment">// 获取相机矩阵</span>
-    glm::mat4 projection = glm::<span class="hljs-built_in">perspective</span>(glm::<span class="hljs-built_in">radians</span>(m_Camera.Zoom), (<span class="hljs-type">float</span>) m_Width / (<span class="hljs-type">float</span>) m_Height, <span class="hljs-number">0.1f</span>, <span class="hljs-number">100.0f</span>);
-    glm::mat4 view = m_Camera.<span class="hljs-built_in">GetViewMatrix</span>();
-
-    <span class="hljs-comment">// 渲染整个世界</span>
-    m_World.<span class="hljs-built_in">Render</span>(view, projection);
-&#125;
-
-
-<span class="hljs-comment">// --- 回调函数 ---</span>
-<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Application::framebuffer_size_callback</span><span class="hljs-params">(GLFWwindow *window, <span class="hljs-type">int</span> width, <span class="hljs-type">int</span> height)</span> </span>&#123;
-    <span class="hljs-built_in">glViewport</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, width, height);
-    Application* app = <span class="hljs-built_in">static_cast</span>&lt;Application*&gt;(<span class="hljs-built_in">glfwGetWindowUserPointer</span>(window));
-    <span class="hljs-keyword">if</span> (app) &#123;
-        app-&gt;m_Width = width;
-        app-&gt;m_Height = height;
-    &#125;
-&#125;
-
-<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Application::mouse_callback</span><span class="hljs-params">(GLFWwindow *window, <span class="hljs-type">double</span> xpos, <span class="hljs-type">double</span> ypos)</span> </span>&#123;
+    
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">glfwGetKey</span>(m_Window, GLFW_KEY_SPACE) == GLFW_PRESS)
+        m_Camera.<span class="hljs-built_in">ProcessKeyboard</span>(UP, m_DeltaTime);
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">glfwGetKey</span>(m_Window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
+        m_Camera.<span class="hljs-built_in">ProcessKeyboard</span>(DOWN, m_DeltaTime);
+&#125;</code></pre>
+<p><strong>鼠标</strong></p>
+<p>移动鼠标，移动的幅度会决定视角移动距离，此时会附带上下文信息，使用回调函数注册方式。</p>
+<p>此处计算鼠标移动距离传递给摄像机。</p>
+<pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Application::mouse_callback</span><span class="hljs-params">(GLFWwindow *window, <span class="hljs-type">double</span> xpos, <span class="hljs-type">double</span> ypos)</span> </span>&#123;
     Application *app = <span class="hljs-built_in">static_cast</span>&lt;Application *&gt;(<span class="hljs-built_in">glfwGetWindowUserPointer</span>(window));
     <span class="hljs-keyword">if</span> (app) &#123;
         app-&gt;<span class="hljs-built_in">handleMouse</span>(<span class="hljs-built_in">static_cast</span>&lt;<span class="hljs-type">float</span>&gt;(xpos), <span class="hljs-built_in">static_cast</span>&lt;<span class="hljs-type">float</span>&gt;(ypos));
@@ -658,54 +728,49 @@ Application::~<span class="hljs-built_in">Application</span>() &#123;
     m_LastY = ypos;
 
     m_Camera.<span class="hljs-built_in">ProcessMouseMovement</span>(xoffset, yoffset);
-&#125;
+&#125;</code></pre>
+<p><strong>窗口大小变化处理</strong></p>
+<p>如果窗口大小变化也要修改app的大小</p>
+<p>否则如果拉大窗口，app不会跟随放大，那么就会出现黑色间隙。</p>
+<pre><code class="hljs cpp"><span class="hljs-comment">// --- 回调函数 ---</span>
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Application::framebuffer_size_callback</span><span class="hljs-params">(GLFWwindow *window, <span class="hljs-type">int</span> width, <span class="hljs-type">int</span> height)</span> </span>&#123;
+    <span class="hljs-built_in">glViewport</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, width, height);
+    Application* app = <span class="hljs-built_in">static_cast</span>&lt;Application*&gt;(<span class="hljs-built_in">glfwGetWindowUserPointer</span>(window));
+    <span class="hljs-keyword">if</span> (app) &#123;
+        app-&gt;m_Width = width;
+        app-&gt;m_Height = height;
+    &#125;
+&#125;</code></pre>
+<h3 id="渲染"><a class="markdownIt-Anchor" href="#渲染"></a> 渲染</h3>
+<p>重温变换流程</p>
+<pre><code class="hljs plaintext">，(顶点数据)         (gl_Position)                      (最终像素)
+   |                  |                                 |
+   V                  V                                 V
+[模型空间] -&gt; [世界空间] -&gt; [观察空间] -&gt; [裁剪空间] ==&gt; [标准化设备坐标(NDC)] -&gt; [屏幕空间]
+    |           |           |           |              |                      |
+  Model       View        Projection    Perspective    Viewport
+  Matrix      Matrix      Matrix        Division       Transform
+ (模型变换)    (视图变换)   (投影变换)     (透视除法)       (视口变换)
 
+&lt;----------------- 在你的顶点着色器中完成 -----------------&gt; &lt;---- GPU 自动完成 ----&gt;</code></pre>
+<p>这里准备好投影变换矩阵，和剪裁变换矩阵，交给 world 去渲染</p>
+<pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Application::render</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-comment">//清理屏幕</span>
+    <span class="hljs-built_in">glClearColor</span>(<span class="hljs-number">0.1f</span>, <span class="hljs-number">0.1f</span>, <span class="hljs-number">0.1f</span>, <span class="hljs-number">1.0f</span>);
+    <span class="hljs-built_in">glClear</span>(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-<span class="hljs-comment">//=============== 文件路径: Application.h ===============//</span>
-<span class="hljs-meta">#<span class="hljs-keyword">pragma</span> once</span>
+    <span class="hljs-comment">//视图变换，从世界空间到观察空间矩阵</span>
+    glm::mat4 view = m_Camera.<span class="hljs-built_in">GetViewMatrix</span>();
 
-<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;GL/glew.h&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;GLFW/glfw3.h&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;components/Camera.h&quot;</span></span>
-<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;components/shader/Shader.h&quot;</span></span>
-<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;scene/World.h&quot;</span></span>
-<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;components/shader/ShaderManager.h&quot;</span></span>
-<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;components/mesh/MeshManager.h&quot;</span></span>
+    <span class="hljs-comment">//投影变换，创建相机矩阵，从观察空间到剪裁空间</span>
+    glm::mat4 projection = glm::<span class="hljs-built_in">perspective</span>(
+            glm::<span class="hljs-built_in">radians</span>(m_Camera.Zoom),<span class="hljs-comment">//视场角，视野广度</span>
+            (<span class="hljs-type">float</span>) m_Width / (<span class="hljs-type">float</span>) m_Height,<span class="hljs-comment">//宽高比</span>
+            <span class="hljs-number">0.1f</span>, <span class="hljs-number">100.0f</span>);<span class="hljs-comment">//近裁剪平面，远裁剪平面。太近或远的物体不渲染</span>
 
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">Application</span> &#123;
-<span class="hljs-keyword">public</span>:
-    <span class="hljs-built_in">Application</span>(<span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> width, <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> height);
-    ~<span class="hljs-built_in">Application</span>();
-    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Run</span><span class="hljs-params">()</span></span>;
-
-<span class="hljs-keyword">private</span>:
-    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>;
-    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">processInput</span><span class="hljs-params">()</span></span>;
-    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-type">float</span> deltaTime)</span></span>;
-    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">render</span><span class="hljs-params">()</span></span>;
-
-    <span class="hljs-comment">// 鼠标回调的成员函数</span>
-    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">handleMouse</span><span class="hljs-params">(<span class="hljs-type">float</span> xpos, <span class="hljs-type">float</span> ypos)</span></span>;
-
-    <span class="hljs-comment">// 转发到成员函数的静态回调</span>
-    <span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title">framebuffer_size_callback</span><span class="hljs-params">(GLFWwindow* window, <span class="hljs-type">int</span> width, <span class="hljs-type">int</span> height)</span></span>;
-    <span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title">mouse_callback</span><span class="hljs-params">(GLFWwindow* window, <span class="hljs-type">double</span> xpos, <span class="hljs-type">double</span> ypos)</span></span>;
-
-    <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> m_Width, m_Height;
-    GLFWwindow* m_Window;
-
-    ShaderManager m_ShaderManager;
-    MeshManager m_MeshManager;
-    World m_World;
-
-    Camera m_Camera;
-    <span class="hljs-type">float</span> m_LastX;
-    <span class="hljs-type">float</span> m_LastY;
-    <span class="hljs-type">bool</span> m_FirstMouse = <span class="hljs-literal">true</span>;
-
-    <span class="hljs-type">float</span> m_DeltaTime = <span class="hljs-number">0.0f</span>;
-    <span class="hljs-type">float</span> m_LastFrame = <span class="hljs-number">0.0f</span>;
-&#125;;</code></pre>
+    <span class="hljs-comment">// 传给世界去渲染</span>
+    m_World.<span class="hljs-built_in">Render</span>(view, projection);
+&#125;</code></pre>
 
 </div>
 
@@ -713,6 +778,11 @@ Application::~<span class="hljs-built_in">Application</span>() &#123;
 
     <div class="post-guide">
         <div class="item left">
+            
+              <a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/%E4%B8%96%E7%95%8C%E5%AE%9A%E4%B9%89/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  世界定义
+              </a>
             
         </div>
         <div class="item right">

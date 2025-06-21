@@ -9,6 +9,8 @@
 	
 		<title>
 			
+				着色器定义 |
+					
 						Note
 		</title>
 
@@ -356,7 +358,7 @@
 							</ul>
 			
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/%E7%9D%80%E8%89%B2%E5%99%A8%E5%AE%9A%E4%B9%89/">
                      
 										    着色器定义
@@ -490,277 +492,63 @@
 
 	<!-- 引入正文 -->
 	<div id="content" class="content">
-		<div id="index">
+		<h1 id="article-title">
+	着色器定义
+</h1>
+
+<!-- meta -->
+<div class="article-meta">
 	
-		<div class="index-li">
-			<a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/%E7%9D%80%E8%89%B2%E5%99%A8%E5%AE%9A%E4%B9%89/">
-				<h2 class="index-title">
-					着色器定义
-				</h2>
-				<div class="index-brief">
-					
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2025-06-20</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/%E6%91%84%E5%83%8F%E6%9C%BA/">
-				<h2 class="index-title">
-					摄像机定义
-				</h2>
-				<div class="index-brief">
-					 摄像机定义
- 位置参数
 
-位置 X Y Z
+	<span>NicolasDavout</span>
+	<span>2025-06-20 23:42:10</span>
 
- 方向参数
+  <div id="article-categories">
+    
+		  <span>Categories：</span>
+      
+    
 
-表示方向的三个正交基向量，以及欧拉角
-世界上坐标，用来更新 Right，否则摄像机将找不到方向
+    
+		    <span>Tags：</span>
+        
+    
+  </div>
 
- 属性
-
-移动速度
-视角移动速度（鼠标灵敏度）
-视场角
-
-#ifndef CAMERA_H
-#define CAMERA_H
-
-#inclu
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2025-06-20</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/%E4%B8%96%E7%95%8C%E5%AE%9A%E4%B9%89/">
-				<h2 class="index-title">
-					世界定义
-				</h2>
-				<div class="index-brief">
-					新建 world 世界类，当前项目结构如下
-app_3d_camera
-├── Application.cpp
-├── Application.h
-├── main.cpp
-└── scene
-    ├── World.cpp
-    └── World.h
- 新建 world 类
-主要职责：
-
-
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2025-06-20</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/4%20%E5%BA%94%E7%94%A8%E5%88%9B%E5%BB%BA/">
-				<h2 class="index-title">
-					4 应用创建
-				</h2>
-				<div class="index-brief">
-					 应用定义
-//=============== 项目结构树 ===============//
-app_3d_camera
-├─ Application.cpp
-├─ Application.h
-└─ main.cpp
-
- 应用入口主函数
-传入窗口长宽然后执行循环
-//===============
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2025-06-20</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/3%20%E6%83%B3%E6%B3%95%E6%9E%84%E6%80%9D/">
-				<h2 class="index-title">
-					3 想法构思
-				</h2>
-				<div class="index-brief">
-					 初步构想
-写一个三维的空间，用户可以自由操控摄像机移动，观察不同的物体。
- 需求分析
- 功能性
-
-场景渲染: 系统必须能够在窗口中渲染一个由多个3D物体构成的场景。
-相机系统: 系统需提供一个第一人称相机，用户可以通过键盘（W/A/S/D）和鼠标移动来自由浏览场景。
-数据驱动: 场景的布局（物体的
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2025-06-20</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2025/06/19/1%20%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/3%20%E5%85%AC%E5%BC%8F%E8%AF%86%E5%88%AB/">
-				<h2 class="index-title">
-					3 公式识别
-				</h2>
-				<div class="index-brief">
-					 公式识别
-公式手打很累，使用 SimpleTex 直接识别即可
-SimpleTex
-
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2025-06-19</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2025/06/19/1%20%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/2%20%E4%BB%A3%E7%A0%81%E6%89%81%E5%B9%B3%E5%8C%96%E5%B0%8F%E5%B7%A5%E5%85%B7/">
-				<h2 class="index-title">
-					2 代码扁平化小工具
-				</h2>
-				<div class="index-brief">
-					 代码扁平化
-和AI交流的时候，同时需要复制多个文件的代码。
-如果能一次性把代码全部粘贴给AI去分析，会非常省事。
- 功能
-把树状图和所有代码全部放进剪贴板中，直接可以粘贴到GPT等等AI中。
- 下载
-代码扁平化工具.exe
-
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2025-06-19</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2025/06/19/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/5%20%E7%BD%91%E6%A0%BC%E6%9B%B2%E9%9D%A2/">
-				<h2 class="index-title">
-					5 网格曲面
-				</h2>
-				<div class="index-brief">
-					 网格曲面
-用小片多边形线性逼近复杂几何形状
-
-
- 物体对象属性
- 顶点
-使用坐标记录 (x,y,z)(x,y,z)(x,y,z)
- 顶点法向量
-注意法向量 n⃗\vec{n}n<path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2025-06-19</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2025/06/19/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/%E7%BD%91%E6%A0%BC%E6%9B%B2%E9%9D%A2/">
-				<h2 class="index-title">
-					网格曲面
-				</h2>
-				<div class="index-brief">
-					 网格曲面
-用小片多边形线性逼近复杂几何形状
-
-
- 物体对象属性
- 顶点
-使用坐标记录 (x,y,z)(x,y,z)(x,y,z)
- 顶点法向量
-注意法向量 n⃗\vec{n}n<path d='M377 20c0-5.333 1.833-10 5.5-14S391 0 397 0c4.667 0 
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2025-06-19</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2025/06/16/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/4%20%E6%AC%A7%E6%8B%89%E8%A7%92/">
-				<h2 class="index-title">
-					4 欧拉角
-				</h2>
-				<div class="index-brief">
-					 欧拉角 yaw pitch roll
-
-如图
-
-yaw 是偏航角
-pitch 是俯仰角
-roll 是翻滚角
-
-从坐标轴正方向向原点观察，逆时针为正，顺时针为负。
-以上三个要素可以定义物体的姿态。其中 yaw 和 pitch 可以规定朝向， roll 可以规定翻滚程度。
-
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2025-06-16</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-	
-	<div id="index-paginator">
-		
-			<span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">&gt;</a>
-		
-	</div>
 </div>
+
+<!-- content -->
+<div id="article-content">
+	
+</div>
+
+<!-- post-guide -->
+
+    <div class="post-guide">
+        <div class="item left">
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/%E6%91%84%E5%83%8F%E6%9C%BA/">
+                摄像机定义
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+<!-- comment - giscus -->
+
+
+<!-- comment - valine -->
+
+
+<script>
+	
+	
+</script>
 
 	</div>
 	<div id="footer">

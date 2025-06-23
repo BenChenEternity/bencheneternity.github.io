@@ -563,7 +563,7 @@
 
 <!-- content -->
 <div id="article-content">
-	<h2 id="为什么要对象网格"><a class="markdownIt-Anchor" href="#为什么要对象网格"></a> 为什么要对象网格？</h2>
+	<h2 id="为什么要对象网格">为什么要对象网格？</h2>
 <p><strong>为什么不创建对象，然后网格作为成员变量呢？</strong></p>
 <p>因为网格是固定的，静态的。如果每个对象拥有一个网格存储一次网格数据，那么非常消耗内存。</p>
 <p>如果使用“绑定”的方式，将对象绑定到固定的网格上，也就是所有的对象共用一个网格，极大节省内存。</p>
@@ -603,7 +603,7 @@
 └── scene
     ├── World.cpp
     └── World.h</code></pre>
-<h2 id="对象网格类定义"><a class="markdownIt-Anchor" href="#对象网格类定义"></a> 对象网格类定义</h2>
+<h2 id="对象网格类定义">对象网格类定义</h2>
 <p>现在我们创建的对象网格类 Mesh 是被对象逻辑所绑定的。</p>
 <p>定义如下</p>
 <pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">pragma</span> once</span>
@@ -736,7 +736,7 @@ Mesh&amp; Mesh::<span class="hljs-keyword">operator</span>=(Mesh&amp;&amp; other
 <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Mesh::Unbind</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>&#123;
     <span class="hljs-built_in">glBindVertexArray</span>(<span class="hljs-number">0</span>);
 &#125;</code></pre>
-<h2 id="网格管理"><a class="markdownIt-Anchor" href="#网格管理"></a> 网格管理</h2>
+<h2 id="网格管理">网格管理</h2>
 <p>此处和 shader 的管理方式相同</p>
 <pre><code class="hljs cpp"><span class="hljs-comment">//=============== 文件路径: components/mesh/MeshManager.h ===============//</span>
 <span class="hljs-meta">#<span class="hljs-keyword">pragma</span> once</span>
@@ -776,7 +776,7 @@ Mesh&amp; Mesh::<span class="hljs-keyword">operator</span>=(Mesh&amp;&amp; other
     &#125;
     <span class="hljs-keyword">return</span> newMesh;
 &#125;</code></pre>
-<h2 id="对象网格加载"><a class="markdownIt-Anchor" href="#对象网格加载"></a> 对象网格加载</h2>
+<h2 id="对象网格加载">对象网格加载</h2>
 <p>将 glb 文件加载为对象网格，这里使用到</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/syoyo/tinygltf/release/tiny_gltf.h">tiny_gltf.h</a></li>

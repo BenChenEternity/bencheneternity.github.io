@@ -75,7 +75,119 @@
 
 																							
 																								
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
 	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
@@ -542,7 +654,7 @@
 					04 Cisco's Fantasy Medieval
 				</h2>
 				<div class="index-brief">
-					 Cisco’s Fantasy Medieval
+					Cisco’s Fantasy Medieval
 时间:2025.4.29 ~ 2025.5.21
 落榜美术生
 
@@ -566,13 +678,7 @@
 
 厨神
 
-美味菌汤锅
-
-露天食堂
-
-半夜
-
-不好，填充成空
+美
 					...
 				</div>
 			</a>
@@ -590,7 +696,7 @@
 					03 幸运世界入侵
 				</h2>
 				<div class="index-brief">
-					 幸运世界入侵
+					幸运世界入侵
 时间:2025-4-10 ~ 2025.4.29
 麦的草神女仆
 
@@ -623,7 +729,7 @@
 					02 脆骨症
 				</h2>
 				<div class="index-brief">
-					 脆骨症
+					脆骨症
 时间: 2024-2-3 ~ 2025-2-24
 机械动力入门设计
 
@@ -640,11 +746,6 @@
 凋零风暴：终焉之战，然而直接使用指令进化，懒得等
 
 坐在船上被吸上天
-
-
-抽屉大规模堆叠
-
-村庄终
 					...
 				</div>
 			</a>
@@ -662,7 +763,7 @@
 					01 Better MC
 				</h2>
 				<div class="index-brief">
-					 Better MC
+					Better MC
 时间: 2024-12-25 ~ 2025-2-2
 注：补拍照片
 自行设计的基于存储终端的120倍高速熔炉，存在区块bug，矿车会飞走，地毯会卡死世界
@@ -693,14 +794,17 @@
 					2 伯努利方程
 				</h2>
 				<div class="index-brief">
-					 表达式
+					表达式
 前提：无粘定常流场，由N-S方程推导
- 原表达式
+原表达式
 沿着流线或在无旋场处处
-p+12ρv2+ρgh=Constantp+\frac{1}{2}\rho v^2+\rho gh=Constant
-p+21​ρv2+ρgh=Constant
+\[
+p+\frac{1}{2}\rho v^2+\rho gh=Constant
+\]
 可以变换为
-z+pρg+v22g=Constantz+
+\[
+z+\frac{p}{\rho g}+\frac{v^2}{2g}=Constant
+\]
 					...
 				</div>
 			</a>
@@ -718,9 +822,10 @@ z+pρg+v22g=Constantz+
 					1 方程绪论
 				</h2>
 				<div class="index-brief">
-					 质量守恒方程（连续性方程）
+					质量守恒方程（连续性方程）
 质量守恒定律的微分形式，也称为连续性方程，描述了流体在空间中任意一点的密度变化率与该点周围的质量流出（或流入）速率之间的关系。
-∇⋅(ρv⃗)+∂ρ∂t=0\nabla \cdot (\rho \vec{v}) + \frac{\partial \rho}{\parti
+\[
+\nabla \cdot (\rho \vec{v}) + \frac{\partial \rho}{\partial t} = 0
 					...
 				</div>
 			</a>
@@ -738,15 +843,15 @@ z+pρg+v22g=Constantz+
 					1 openGL环境安装
 				</h2>
 				<div class="index-brief">
-					 windows
- 创建库目录
+					windows
+创建库目录
 根目录下创建文件夹 libs，创建两个子文件夹 lib 和 include
 libs
 ├─include
 └─lib
- 安装 glfw
+安装 glfw
 去官网下载最新版 64-bit Windows binaries
-https://www.glfw.org/download.htm
+https://www.glfw.org/download.
 					...
 				</div>
 			</a>
@@ -764,9 +869,9 @@ https://www.glfw.org/download.htm
 					3 空间变换
 				</h2>
 				<div class="index-brief">
-					 齐次坐标
+					齐次坐标
 为什么计算机图形学使用四维坐标 (w=1) 来表示三维点？
-这是一个计算机图形学中非常基础且核心的概念。简单来说，将三维坐标 (x, y, z) 扩展成四维坐标 (x, y, z, 1) 是为了使用齐次坐标 (Homogeneous Coordinates)。这样做主要有以下几个至关重要
+这是一个计算机图形学中非常基础且核心的概念。简单来说，将三维坐标 (x, y, z) 扩展成四维坐标 (x, y, z, 1) 是为了使用齐次坐标 (Homogeneous Coordinates)。这样做主要有以下几个至关重
 					...
 				</div>
 			</a>
@@ -784,16 +889,16 @@ https://www.glfw.org/download.htm
 					1 配置
 				</h2>
 				<div class="index-brief">
-					 图片管理
+					图片管理
 使用 picgo + github 图床
 https://picgo.github.io/PicGo-Doc/
- 代码块
+代码块
 配置文件中这样修改
 highlight:
   enable: false
   line_number: false
   auto_detect: false
-  ta
+ 
 					...
 				</div>
 			</a>

@@ -563,12 +563,12 @@
 
 <!-- content -->
 <div id="article-content">
-	<h2 id="创建简单着色器"><a class="markdownIt-Anchor" href="#创建简单着色器"></a> 创建简单着色器</h2>
+	<h2 id="创建简单着色器">创建简单着色器</h2>
 <p>在 <code>cmake-build-debug</code> 路径下创建 assets 文件夹</p>
 <p>新建着色器文件 <code>simple.frag</code> 和 <code>simple.vert</code>，意思是简单的着色器，没有光照计算，纹理计算等。</p>
-<h3 id="frag-和-vert-文件"><a class="markdownIt-Anchor" href="#frag-和-vert-文件"></a> frag 和 vert 文件</h3>
+<h3 id="frag-和-vert-文件">frag 和 vert 文件</h3>
 <p>frag 是片元着色器，vert 是顶点着色器</p>
-<h4 id="vert-文件"><a class="markdownIt-Anchor" href="#vert-文件"></a> .vert 文件</h4>
+<h4 id="vert-文件">.vert 文件</h4>
 <p>设置：</p>
 <ul>
 <li>模型矩阵 model（来自 world）</li>
@@ -639,7 +639,7 @@
 <span class="hljs-comment">// 总结：</span>
 <span class="hljs-comment">// 1. 主要任务：计算每个顶点的最终裁剪空间位置 (gl_Position)。</span>
 <span class="hljs-comment">// 2. 附加任务：将顶点颜色 (aColor) 原封不动地传递给片元着色器 (ourColor)。</span></code></pre>
-<h4 id="frag-文件"><a class="markdownIt-Anchor" href="#frag-文件"></a> .frag 文件</h4>
+<h4 id="frag-文件">.frag 文件</h4>
 <p>片元上色</p>
 <p>参数：</p>
 <ul>
@@ -659,7 +659,7 @@
     <span class="hljs-comment">// 将输入的RGB颜色和1.0的Alpha值组合成一个vec4，作为最终颜色输出</span>
     FragColor = <span class="hljs-type">vec4</span>(ourColor, <span class="hljs-number">1.0</span>f);
 &#125;</code></pre>
-<h2 id="着色器定义"><a class="markdownIt-Anchor" href="#着色器定义"></a> 着色器定义</h2>
+<h2 id="着色器定义">着色器定义</h2>
 <p>着色器类用于确定一种着色方法。比如在上面使用最简单的着色方法，包含了<strong>片元着色器</strong>和<strong>顶点着色器</strong>。</p>
 <p>所以对于一个着色方法，是多个着色器的组合。创建一个类将他们整合起来。</p>
 <p>创建 shader 文件夹</p>
@@ -826,7 +826,7 @@ Shader::<span class="hljs-built_in">Shader</span>(<span class="hljs-type">const<
         &#125;
     &#125;
 &#125;</code></pre>
-<h2 id="着色器管理"><a class="markdownIt-Anchor" href="#着色器管理"></a> 着色器管理</h2>
+<h2 id="着色器管理">着色器管理</h2>
 <p>创建一个映射，将一种着色方法对应到 Shader 上即可</p>
 <pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">pragma</span> once</span>
 

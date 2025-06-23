@@ -563,14 +563,14 @@
 
 <!-- content -->
 <div id="article-content">
-	<h2 id="应用定义"><a class="markdownIt-Anchor" href="#应用定义"></a> 应用定义</h2>
+	<h2 id="应用定义">应用定义</h2>
 <pre><code class="hljs plaintext">//=============== 项目结构树 ===============//
 app_3d_camera
 ├─ Application.cpp
 ├─ Application.h
 └─ main.cpp</code></pre>
-<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250620161826513.png" alt="" /></p>
-<h3 id="应用入口主函数"><a class="markdownIt-Anchor" href="#应用入口主函数"></a> 应用入口主函数</h3>
+<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250620161826513.png" /></p>
+<h3 id="应用入口主函数">应用入口主函数</h3>
 <p>传入窗口长宽然后执行循环</p>
 <pre><code class="hljs cpp"><span class="hljs-comment">//=============== 文件路径: main.cpp ===============//</span>
 <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;Application.h&quot;</span></span>
@@ -585,7 +585,7 @@ app_3d_camera
 
     <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;</code></pre>
-<h3 id="定义-application"><a class="markdownIt-Anchor" href="#定义-application"></a> 定义 Application</h3>
+<h3 id="定义-application">定义 Application</h3>
 <pre><code class="hljs cpp"><span class="hljs-comment">//=============== 文件路径: Application.h ===============//</span>
 <span class="hljs-keyword">class</span> <span class="hljs-title class_">Application</span> &#123;
 <span class="hljs-keyword">public</span>:
@@ -688,7 +688,7 @@ Application::~<span class="hljs-built_in">Application</span>() &#123;
         std::cerr &lt;&lt; <span class="hljs-string">&quot;Error: Application could not initialize scene.&quot;</span> &lt;&lt; std::endl;
     &#125;
 &#125;</code></pre>
-<h3 id="执行循环"><a class="markdownIt-Anchor" href="#执行循环"></a> 执行循环</h3>
+<h3 id="执行循环">执行循环</h3>
 <p>计算每帧耗时</p>
 <p>将耗时传入更新逻辑，把每帧耗时作为系数乘上，数值的累加将会和帧率无关。也就是帧率高和低的电脑数值变化是一样的。</p>
 <p>例如</p>
@@ -723,7 +723,7 @@ Application::~<span class="hljs-built_in">Application</span>() &#123;
         <span class="hljs-built_in">glfwPollEvents</span>();
     &#125;
 &#125;</code></pre>
-<h3 id="输入处理"><a class="markdownIt-Anchor" href="#输入处理"></a> 输入处理</h3>
+<h3 id="输入处理">输入处理</h3>
 <p>键盘使用轮询的方式，而鼠标使用（软件层面的）回调的方式</p>
 <p><strong>键盘</strong></p>
 <p>按下 WASD 按键，移动的距离是固定的，所以只需要检查按键是否按下，每一帧轮询按照固定速度移动摄像机。</p>
@@ -782,7 +782,7 @@ Application::~<span class="hljs-built_in">Application</span>() &#123;
         app-&gt;m_Height = height;
     &#125;
 &#125;</code></pre>
-<h3 id="渲染"><a class="markdownIt-Anchor" href="#渲染"></a> 渲染</h3>
+<h3 id="渲染">渲染</h3>
 <p>重温变换流程</p>
 <pre><code class="hljs plaintext">，(顶点数据)         (gl_Position)                      (最终像素)
    |                  |                                 |

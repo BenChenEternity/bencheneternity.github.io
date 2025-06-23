@@ -543,7 +543,10 @@
 				</h2>
 				<div class="index-brief">
 					N-S方程的展开式
-{∂ux∂t+ux∂ux∂x+uy∂ux∂y+uz∂ux∂z=fx−1ρ∂p∂x+1ρ(∂τxx∂x+∂τyx∂y+∂τzx∂z)∂uy∂t+ux∂uy∂x+uy∂uy∂y+uz∂uy∂z=fy−1ρ∂p∂y+1ρ(∂τxy∂x+∂τyy∂y+∂τzy∂z)∂uz∂t+ux∂uz
+\[
+\begin{cases}
+  % X-Momentum
+  \displaystyle \frac{\partial u_x}{\partial t} + u_x \frac{\partial u_x}{\partial x} + u_y \frac{\parti
 					...
 				</div>
 			</a>
@@ -564,9 +567,9 @@
 					为了能够不修改代码的情况下添加、删除世界中的对象。
 并且能够加载和保存世界。
 经过调研，发现 FlatBuffers 是无解析的速度非常快的序列化工具。
- 使用 FlatBuffers
+使用 FlatBuffers
 去官网下载编译器和源代码，找到 include 文件夹下的 flatbuffers 文件夹放进外部库。
-写一个规则
+写
 					...
 				</div>
 			</a>
@@ -592,7 +595,7 @@ cmake-build-debug
     │   └── Cuboid.glb
     └── shaders
         ├── simple.frag
-        └── simp
+        └── sim
 					...
 				</div>
 			</a>
@@ -618,7 +621,7 @@ app_3d_camera
 ├── components
 │   ├── Camera.cpp
 │   ├── Camera.h
-│   ├── 
+│   ├──
 					...
 				</div>
 			</a>
@@ -636,12 +639,12 @@ app_3d_camera
 					9 对象网格
 				</h2>
 				<div class="index-brief">
-					 为什么要对象网格？
+					为什么要对象网格？
 为什么不创建对象，然后网格作为成员变量呢？
 因为网格是固定的，静态的。如果每个对象拥有一个网格存储一次网格数据，那么非常消耗内存。
 如果使用“绑定”的方式，将对象绑定到固定的网格上，也就是所有的对象共用一个网格，极大节省内存。
 同时还能分离视图和逻辑，实现解耦。
-如果要对象要播
+如果要
 					...
 				</div>
 			</a>
@@ -659,12 +662,12 @@ app_3d_camera
 					6 着色器定义
 				</h2>
 				<div class="index-brief">
-					 创建简单着色器
+					创建简单着色器
 在 cmake-build-debug 路径下创建 assets 文件夹
 新建着色器文件 simple.frag 和 simple.vert，意思是简单的着色器，没有光照计算，纹理计算等。
- frag 和 vert 文件
+frag 和 vert 文件
 frag 是片元着色器，vert 是顶点着色器
- .vert
+.ve
 					...
 				</div>
 			</a>
@@ -682,7 +685,7 @@ frag 是片元着色器，vert 是顶点着色器
 					5 摄像机定义
 				</h2>
 				<div class="index-brief">
-					 摄像机定义
+					摄像机定义
 摄像机作为组建，添加 Camera 类，当前文件结构如下
 app_3d_camera
 ├── Application.cpp
@@ -690,7 +693,7 @@ app_3d_camera
 ├── main.cpp
 ├── components
 │   ├── Camera.cpp
-│   └── Camera.
+│   └── Camera
 					...
 				</div>
 			</a>
@@ -716,10 +719,8 @@ app_3d_camera
 └── scene
     ├── World.cpp
     └── World.h
- 新建 world 类
+新建 world 类
 主要职责：
-
-
 					...
 				</div>
 			</a>
@@ -737,16 +738,16 @@ app_3d_camera
 					3 应用创建
 				</h2>
 				<div class="index-brief">
-					 应用定义
+					应用定义
 //=============== 项目结构树 ===============//
 app_3d_camera
 ├─ Application.cpp
 ├─ Application.h
 └─ main.cpp
 
- 应用入口主函数
+应用入口主函数
 传入窗口长宽然后执行循环
-//===============
+//============
 					...
 				</div>
 			</a>
@@ -764,14 +765,14 @@ app_3d_camera
 					2 想法构思
 				</h2>
 				<div class="index-brief">
-					 初步构想
+					初步构想
 写一个三维的空间，用户可以自由操控摄像机移动，观察不同的物体。
- 需求分析
- 功能性
+需求分析
+功能性
 
 场景渲染: 系统必须能够在窗口中渲染一个由多个3D物体构成的场景。
 相机系统: 系统需提供一个第一人称相机，用户可以通过键盘（W/A/S/D）和鼠标移动来自由浏览场景。
-数据驱动: 场景的布局（物体的
+数据驱动: 场景的布局
 					...
 				</div>
 			</a>

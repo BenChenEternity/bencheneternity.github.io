@@ -1,3 +1,45 @@
+.katex {
+  /* 字体大小微调：根据上下文调整，1.1em 是一个不错的起点 */
+  font-size: 1.1em;
+
+  /* 字体渲染优化：追求更平滑的字体显示 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+
+  /* 可选：轻微的文本阴影，模拟更“厚重”的质感 */
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+/*=============== 在文件 source/css/main.css 末尾添加 ===============*/
+
+/* 公式引用文本的样式 */
+.formula-ref {
+  color: #21a675; /* 一个醒目的颜色，你可以自己调整 */
+  border-bottom: 1px dashed #21a675; /* 添加虚线底线以示区分 */
+  cursor: help; /* 鼠标悬浮时显示帮助手势 */
+  font-weight: bold;
+}
+
+/* 公式提示框（Tooltip）的样式 */
+.formula-tooltip {
+  position: absolute; /* 关键！用于JS动态定位 */
+  background-color: #333; /* 深色背景 */
+  color: #fff; /* 白色文字 */
+  padding: 10px 15px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  z-index: 100; /* 确保在最上层显示 */
+  max-width: 500px; /* 避免提示框过宽 */
+  pointer-events: none; /* 避免鼠标与提示框自身发生交互 */
+}
+
+/* 确保提示框内的 KaTeX 公式颜色正确 */
+.formula-tooltip .katex {
+  color: #fff;
+  font-size: 1.2em; /* 让提示框里的公式稍大一些，更清晰 */
+}
+/*========================================================*/
 
 * {
 	margin: 0;

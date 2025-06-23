@@ -593,7 +593,7 @@
 └── scene
     ├── World.cpp
     └── World.h</code></pre>
-<h2 id="对象定义"><a class="markdownIt-Anchor" href="#对象定义"></a> 对象定义</h2>
+<h2 id="对象定义">对象定义</h2>
 <p>现在定义的主要是对象的逻辑，然后再绑定对象网格。</p>
 <p>负责空间状态记录，传递模型矩阵，还有绑定着色器和对象网格。</p>
 <pre><code class="hljs cpp"><span class="hljs-comment">//=============== 文件路径: objects/Object.h ===============//</span>
@@ -697,7 +697,7 @@ Object::<span class="hljs-built_in">Object</span>(std::shared_ptr&lt;Mesh&gt; me
 <span class="hljs-function">glm::mat4 <span class="hljs-title">Object::GetModelMatrix</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>&#123;
     <span class="hljs-keyword">return</span> m_ModelMatrix;
 &#125;</code></pre>
-<h2 id="对象工厂"><a class="markdownIt-Anchor" href="#对象工厂"></a> 对象工厂</h2>
+<h2 id="对象工厂">对象工厂</h2>
 <p>创建对象使用工厂模式</p>
 <pre><code class="hljs cpp"><span class="hljs-comment">//=============== 文件路径: objects/ObjectFactory.h ===============//</span>
 <span class="hljs-meta">#<span class="hljs-keyword">pragma</span> once</span>
@@ -782,7 +782,7 @@ Object::<span class="hljs-built_in">Object</span>(std::shared_ptr&lt;Mesh&gt; me
 
     <span class="hljs-keyword">return</span> info.<span class="hljs-built_in">creator</span>(mesh, shader);
 &#125;</code></pre>
-<h2 id="创建具体对象"><a class="markdownIt-Anchor" href="#创建具体对象"></a> 创建具体对象</h2>
+<h2 id="创建具体对象">创建具体对象</h2>
 <p>继承 Object 即可，然后绑定网格</p>
 <pre><code class="hljs cpp"><span class="hljs-comment">//=============== 文件路径: objects/Cuboid.h ===============//</span>
 <span class="hljs-meta">#<span class="hljs-keyword">pragma</span> once</span>

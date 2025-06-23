@@ -571,7 +571,7 @@
 └── scene
     ├── World.cpp
     └── World.h</code></pre>
-<h2 id="新建-world-类"><a class="markdownIt-Anchor" href="#新建-world-类"></a> 新建 world 类</h2>
+<h2 id="新建-world-类">新建 world 类</h2>
 <p>主要职责：</p>
 <ul>
 <li>作为一个世界，管理世界中的对象</li>
@@ -594,7 +594,7 @@
     <span class="hljs-comment">// Key: Shader指针, Value: 使用该Shader的Object裸指针列表</span>
     std::map&lt;Shader*, std::vector&lt;Object*&gt;&gt; m_RenderBatches;
 &#125;;</code></pre>
-<h2 id="世界渲染"><a class="markdownIt-Anchor" href="#世界渲染"></a> 世界渲染</h2>
+<h2 id="世界渲染">世界渲染</h2>
 <p>此处给着色器 shader 传入视图矩阵、投影矩阵。</p>
 <p>模型变换矩阵（从模型局部坐标到世界坐标变换）由对象自身 <code>obj-&gt;Render()</code> 进一步提供，实现渲染。</p>
 <p>提升渲染速度策略：降低渲染管线中着色器切换开销，先渲染完同一种着色器上色对象再切换另一种。</p>

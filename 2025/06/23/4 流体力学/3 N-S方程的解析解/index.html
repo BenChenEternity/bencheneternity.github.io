@@ -655,17 +655,14 @@
   \tag{9}
 \]</span>
 由公式<span class="formula-ref" data-formula="\begin{cases}
-     V_r = 0 \\
-     V_{\theta} = 0
-     \end{cases}"><span class="formula-ref" data-formula="\begin{cases}
      u_y = 0 \\
      u_z = 0
-     \end{cases}">(5)</span></span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial x}+\frac{\partial u_y}{\partial y}+\frac{\partial u_z}{\partial z}=0">(9)</span>得：
+     \end{cases}">(5)</span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial x}+\frac{\partial u_y}{\partial y}+\frac{\partial u_z}{\partial z}=0">(9)</span>得：
 <span class="math display">\[
 \frac{\partial u_x}{\partial x}=0
   \tag{10}
 \]</span>
-结合公式<span class="formula-ref" data-formula="\frac{\partial V_z}{\partial z}=0"><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial z}=0">(6)</span></span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial x}=0">(10)</span>可以得出 <span class="math inline">\(u_x\)</span> 仅与 <span class="math inline">\(y\)</span> 有关，即：
+结合公式<span class="formula-ref" data-formula="\frac{\partial u_x}{\partial z}=0">(6)</span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial x}=0">(10)</span>可以得出 <span class="math inline">\(u_x\)</span> 仅与 <span class="math inline">\(y\)</span> 有关，即：
 <span class="math display">\[
 u_x=u_x(y)
   \tag{11}
@@ -683,29 +680,22 @@ u_x=u_x(y)
   \frac{\partial u_x}{\partial t}=0
   \tag{13}
 \]</span>
-因为<span class="formula-ref" data-formula="\frac{\partial V_z}{\partial z}=0"><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial z}=0">(6)</span></span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial x}=0">(10)</span>一阶偏导为0，那么二阶偏导必为0，所以
+因为<span class="formula-ref" data-formula="\frac{\partial u_x}{\partial z}=0">(6)</span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial x}=0">(10)</span>一阶偏导为0，那么二阶偏导必为0，所以
 <span class="math display">\[
-\begin{cases}
+  \begin{cases}
   \frac{\partial^2 u_x}{\partial x^2}=0\\\\
   \frac{\partial^2 u_x}{\partial z^2}=0
   \end{cases}
   \tag{14}
 \]</span></p>
 <p>由公式<span class="formula-ref" data-formula="\begin{cases}
-     V_r = 0 \\
-     V_{\theta} = 0
-     \end{cases}"><span class="formula-ref" data-formula="\begin{cases}
      u_y = 0 \\
      u_z = 0
-     \end{cases}">(5)</span></span><span class="formula-ref" data-formula="\begin{cases}
-     f_r = -g\sin\theta \\
-     f_\theta=-g\cos\theta \\
-     f_z = 0
-     \end{cases}"><span class="formula-ref" data-formula="\begin{cases}
+     \end{cases}">(5)</span><span class="formula-ref" data-formula="\begin{cases}
      f_x = 0 \\
      f_y = -g \\
      f_z = 0
-     \end{cases}">(8)</span></span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial x}=0">(10)</span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial t}=0">(13)</span><span class="formula-ref" data-formula="\begin{cases}
+     \end{cases}">(8)</span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial x}=0">(10)</span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial t}=0">(13)</span><span class="formula-ref" data-formula="\begin{cases}
   \frac{\partial^2 u_x}{\partial x^2}=0\\\\
   \frac{\partial^2 u_x}{\partial z^2}=0
   \end{cases}">(14)</span>
@@ -716,36 +706,29 @@ u_x=u_x(y)
 <p>公式<span class="formula-ref" data-formula="0=\mu\frac{\partial^2u_x}{\partial y^2}-\frac{\partial p}{\partial x}">(15)</span>表明：沿x方向加速度为0，粘性力和压力平衡。</p>
 <p><strong>对于y方向</strong>
 <span class="math display">\[
-\frac{\partial u_y}{\partial t} + u_x \frac{\partial u_y}{\partial x} + u_y \frac{\partial u_y}{\partial y} + u_z \frac{\partial u_y}{\partial z} =
+  \frac{\partial u_y}{\partial t} + u_x \frac{\partial u_y}{\partial x} + u_y \frac{\partial u_y}{\partial y} + u_z \frac{\partial u_y}{\partial z} =
   f_y - \frac{1}{\rho} \frac{\partial p}{\partial y} + \mu \left( \frac{\partial^2 u_y}{\partial x^2} + \frac{\partial^2 u_y}{\partial y^2} + \frac{\partial^2 u_y}{\partial z^2} \right)
   \tag{16}
 \]</span></p>
 <p>因为公式<span class="formula-ref" data-formula="\begin{cases}
-     V_r = 0 \\
-     V_{\theta} = 0
-     \end{cases}"><span class="formula-ref" data-formula="\begin{cases}
      u_y = 0 \\
      u_z = 0
-     \end{cases}">(5)</span></span><span class="formula-ref" data-formula="\begin{cases}
-     f_r = -g\sin\theta \\
-     f_\theta=-g\cos\theta \\
-     f_z = 0
-     \end{cases}"><span class="formula-ref" data-formula="\begin{cases}
+     \end{cases}">(5)</span><span class="formula-ref" data-formula="\begin{cases}
      f_x = 0 \\
      f_y = -g \\
      f_z = 0
-     \end{cases}">(8)</span></span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial x}=0">(10)</span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial t}=0">(13)</span><span class="formula-ref" data-formula="\begin{cases}
+     \end{cases}">(8)</span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial x}=0">(10)</span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial t}=0">(13)</span><span class="formula-ref" data-formula="\begin{cases}
   \frac{\partial^2 u_x}{\partial x^2}=0\\\\
   \frac{\partial^2 u_x}{\partial z^2}=0
   \end{cases}">(14)</span>，可以简化为：
 <span class="math display">\[
-0=-\rho g-\frac{\partial p}{\partial y}
+  0=-\rho g-\frac{\partial p}{\partial y}
   \tag{17}
 \]</span></p>
 <p>公式<span class="formula-ref" data-formula="0=-\rho g-\frac{\partial p}{\partial y}">(17)</span>表示：沿y方向加速度为0，流体质点无运动，重力和压力平衡。</p>
 <p><strong>对于z方向</strong>
 <span class="math display">\[
-\frac{\partial u_z}{\partial t} + u_x \frac{\partial u_z}{\partial x} + u_y \frac{\partial u_z}{\partial y} + u_z \frac{\partial u_z}{\partial z} =
+  \frac{\partial u_z}{\partial t} + u_x \frac{\partial u_z}{\partial x} + u_y \frac{\partial u_z}{\partial y} + u_z \frac{\partial u_z}{\partial z} =
   f_z - \frac{1}{\rho} \frac{\partial p}{\partial z} + \mu \left( \frac{\partial^2 u_z}{\partial x^2} + \frac{\partial^2 u_z}{\partial y^2} + \frac{\partial^2 u_z}{\partial z^2} \right)
   \tag{18}
 \]</span>
@@ -761,7 +744,7 @@ u_x=u_x(y)
   \frac{\partial^2 u_x}{\partial z^2}=0
   \end{cases}">(14)</span>，可以简化为：
 <span class="math display">\[
-0=\frac{\partial{p}}{\partial z}
+  0=\frac{\partial{p}}{\partial z}
   \tag{19}
 \]</span>
 公式<span class="formula-ref" data-formula="0=\frac{\partial{p}}{\partial z}">(19)</span>表示：沿z压强不变。</p>

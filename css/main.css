@@ -30,7 +30,8 @@
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   z-index: 100; /* 确保在最上层显示 */
-  max-width: 500px; /* 避免提示框过宽 */
+  max-width: 90vw; /* 最大宽度为视口宽度的90%，适应移动端 */
+  overflow-x: auto;  /* 当内容超出时，只在水平方向显示滚动条 */
   pointer-events: none; /* 避免鼠标与提示框自身发生交互 */
 }
 

@@ -185,6 +185,17 @@
 								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/24/2%20hexo/%E5%85%AC%E5%BC%8F%E5%BC%95%E7%94%A8/">
+                     
+										    公式引用
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
 								</li>
 								
 							</ul>
@@ -440,9 +451,9 @@
 			
 							<ul>
 								<li class="file">
-									<a href="/2025/06/23/4%20%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/N-S%E6%96%B9%E7%A8%8B%E7%9A%84%E8%A7%A3%E6%9E%90%E8%A7%A3/">
+									<a href="/2025/06/23/4%20%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/3%20N-S%E6%96%B9%E7%A8%8B%E7%9A%84%E8%A7%A3%E6%9E%90%E8%A7%A3/">
                      
-										    N-S方程的解析解
+										    3 N-S方程的解析解
                      
 									</a>
 								</li>
@@ -580,8 +591,28 @@
 <span class="hljs-comment">#   line_number: true</span>
 <span class="hljs-comment">#   tab_replace: &#x27;&#x27;</span></code></pre>
 <h2 id="输入公式">输入公式</h2>
-<p>参考</p>
-<p>https://github.com/wujun234/hexo-theme-tree/issues/45</p>
+<pre><code class="hljs plaintext">npm uninstall hexo-renderer-marked --save  # 移除默认渲染器
+npm install hexo-renderer-pandoc --save    # 安装 Pandoc 渲染器</code></pre>
+<p>配置文件<code>_config.yml</code></p>
+<pre><code class="hljs plaintext"># 支持公式
+pandoc:
+  args:
+    - &quot;--mathjax&quot;                   # 启用 MathJax 支持
+    - &quot;--wrap=preserve&quot;             # 防止代码换行破坏公式
+  extensions:
+    - &quot;+tex_math_dollars&quot;           # 允许 $...$ 行内公式
+    - &quot;+raw_tex&quot;                    # 保留原始 LaTeX 代码
+mathjax:
+  tags: none # or &#x27;ams&#x27; or &#x27;all&#x27;
+  single_dollars: true # enable single dollar signs as in-line math delimiters
+  cjk_width: 0.9 # relative CJK char width
+  normal_width: 0.6 # relative normal (monospace) width
+  append_css: true # add CSS to pages rendered by MathJax
+  every_page: false # if true, every page will be rendered by MathJax regardless the `mathjax` setting in Front-matter
+  packages: # extra packages to load
+  extension_options: &#123;&#125;
+    # you can put your extension options here
+    # see http://docs.mathjax.org/en/latest/options/input/tex.html#tex-extension-options for more detail</code></pre>
 
 </div>
 

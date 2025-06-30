@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+	<!-- title -->
+	
+		<title>
+			
+				3 N-S方程的解析解 |
+					
+						Note
+		</title>
+
+		<!-- keywords,description -->
+		
+					
+
+								<!-- favicon -->
+								
+									<link rel="shortcut icon" href="/favicon.ico">
+										
+
+
+											<!-- search -->
+											<script>
+												var searchEngine = "";
+												if (typeof searchEngine == "undefined" || searchEngine == null || searchEngine == "")
+												{
+													searchEngine = "https://www.google.com/search?q=";
+												}
+												var homeHost = "BenChenEternity.github.io";
+												if (typeof homeHost == "undefined" || homeHost == null || homeHost == "")
+												{
+													homeHost = window.location.host;
+												}
+											</script>
+
+
+											
+<link rel="stylesheet" href="/css/main.css">
+
+												
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+													
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+														
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+															
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+
+																
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+																	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+																		
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+																			
+<script src="/js/main.js"></script>
+
+
+																				
+																					
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+																						
+<script src="https://cdn.jsdelivr.net/npm/valine@v1.5.1/dist/Valine.min.js"></script>
+
+																							
+																								
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+	crossorigin="anonymous"></script>
+
+<!-- To automatically render math in text elements, include the auto-render extension: -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">Note</a>
+
+	<ul id="menu">
+    
+      <li class="menu-item">
+        <a href="/about" class="menu-item-link">About</a>
+      </li>
+    
+
+    
+
+    
+
+    
+  
+    
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="Press Enter to search">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1 实用小工具
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/15/1%20%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/1%20%E7%BC%96%E5%8F%B7%E5%B0%8F%E5%B7%A5%E5%85%B7/">
+                     
+										    1 编号小工具
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/19/1%20%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/2%20%E4%BB%A3%E7%A0%81%E6%89%81%E5%B9%B3%E5%8C%96%E5%B0%8F%E5%B7%A5%E5%85%B7/">
+                     
+										    2 代码扁平化小工具
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/19/1%20%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/3%20%E5%85%AC%E5%BC%8F%E8%AF%86%E5%88%AB/">
+                     
+										    3 公式识别
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										2 hexo
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/09/2%20hexo/1%20%E9%85%8D%E7%BD%AE/">
+                     
+										    1 配置
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/30/2%20hexo/hexo-%E8%BF%81%E7%A7%BB/">
+                     
+										    hexo 迁移
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/24/2%20hexo/%E5%85%AC%E5%BC%8F%E5%BC%95%E7%94%A8/">
+                     
+										    公式引用
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										3 计算机图形学
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1 理论
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/15/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/1%20%E7%BB%AA%E8%AE%BA/">
+                     
+										    1 绪论
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/15/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/2%20VAO%20%E4%B8%8E%20VBO/">
+                     
+										    2 VAO 与 VBO
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/09/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/3%20%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/">
+                     
+										    3 空间变换
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/16/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/4%20%E6%AC%A7%E6%8B%89%E8%A7%92/">
+                     
+										    4 欧拉角
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/19/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/5%20%E7%BD%91%E6%A0%BC%E6%9B%B2%E9%9D%A2/">
+                     
+										    5 网格曲面
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/16/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/6%20%E5%85%89%E7%85%A7/">
+                     
+										    6 光照
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/19/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/7%20%E7%BD%91%E6%A0%BC%E6%9B%B2%E9%9D%A2/">
+                     
+										    7 网格曲面
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										2 实践
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/09/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/1%20openGL%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/">
+                     
+										    1 openGL环境安装
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/2%20%E6%83%B3%E6%B3%95%E6%9E%84%E6%80%9D/">
+                     
+										    2 想法构思
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/3%20%E5%BA%94%E7%94%A8%E5%88%9B%E5%BB%BA/">
+                     
+										    3 应用创建
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/4%20%E4%B8%96%E7%95%8C%E5%AE%9A%E4%B9%89/">
+                     
+										    4 世界定义
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/5%20%E6%91%84%E5%83%8F%E6%9C%BA%E5%AE%9A%E4%B9%89/">
+                     
+										    5 摄像机定义
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/6%20%E7%9D%80%E8%89%B2%E5%99%A8%E5%AE%9A%E4%B9%89/">
+                     
+										    6 着色器定义
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/21/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/7%20%E5%A4%96%E9%83%A8%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/">
+                     
+										    7 外部资源管理
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/21/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/8%20%E5%AF%B9%E8%B1%A1/">
+                     
+										    8 对象
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/21/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/9%20%E5%AF%B9%E8%B1%A1%E7%BD%91%E6%A0%BC/">
+                     
+										    9 对象网格
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/21/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/">
+                     
+										    对象存储
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										4 流体力学
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/09/4%20%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/1%20%E6%96%B9%E7%A8%8B%E7%BB%AA%E8%AE%BA/">
+                     
+										    1 方程绪论
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/09/4%20%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/2%20%E4%BC%AF%E5%8A%AA%E5%88%A9%E6%96%B9%E7%A8%8B/">
+                     
+										    2 伯努利方程
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/2025/06/23/4%20%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/3%20N-S%E6%96%B9%E7%A8%8B%E7%9A%84%E8%A7%A3%E6%9E%90%E8%A7%A3/">
+                     
+										    3 N-S方程的解析解
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										5 数学
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/15/5%20%E6%95%B0%E5%AD%A6/SVD%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3/">
+                     
+										    奇异值分解
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										6 minecraft
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/13/6%20minecraft/01%20Better%20MC/">
+                     
+										    01 Better MC
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/13/6%20minecraft/02%20%E8%84%86%E9%AA%A8%E7%97%87/">
+                     
+										    02 脆骨症
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/14/6%20minecraft/03%20%E5%B9%B8%E8%BF%90%E4%B8%96%E7%95%8C%E5%85%A5%E4%BE%B5/">
+                     
+										    03 幸运世界入侵
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/14/6%20minecraft/04-Cisco-s-Fantasy-Medieval/">
+                     
+										    04 Cisco's Fantasy Medieval
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										数值分析
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										插值
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/26/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/%E6%8F%92%E5%80%BC/%E7%BB%AA%E8%AE%BA/">
+                     
+										    绪论
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content" class="content">
+		<h1 id="article-title">
+	3 N-S方程的解析解
+</h1>
+
+<!-- meta -->
+<div class="article-meta">
+	
+
+	<span>NicolasDavout</span>
+	<span>2025-06-23 15:59:40</span>
+
+  <div id="article-categories">
+    
+		  <span>Categories：</span>
+      
+    
+
+    
+		    <span>Tags：</span>
+        
+    
+  </div>
+
+</div>
+
+<!-- content -->
+<div id="article-content">
+	<p>N-S方程的展开式
+<span class="math display">\[
+  \begin{cases}
+  \displaystyle \frac{\partial u_x}{\partial t} + u_x \frac{\partial u_x}{\partial x} + u_y \frac{\partial u_x}{\partial y} + u_z \frac{\partial u_x}{\partial z} =
+  f_x - \frac{1}{\rho} \frac{\partial p}{\partial x} + \frac{1}{\rho} \left( \frac{\partial \tau_{xx}}{\partial x} + \frac{\partial \tau_{yx}}{\partial y} + \frac{\partial \tau_{zx}}{\partial z} \right) \\
+  \\
+  \displaystyle \frac{\partial u_y}{\partial t} + u_x \frac{\partial u_y}{\partial x} + u_y \frac{\partial u_y}{\partial y} + u_z \frac{\partial u_y}{\partial z} =
+  f_y - \frac{1}{\rho} \frac{\partial p}{\partial y} + \frac{1}{\rho} \left( \frac{\partial \tau_{xy}}{\partial x} + \frac{\partial \tau_{yy}}{\partial y} + \frac{\partial \tau_{zy}}{\partial z} \right)\\
+  \\
+  \displaystyle \frac{\partial u_z}{\partial t} + u_x \frac{\partial u_z}{\partial x} + u_y \frac{\partial u_z}{\partial y} + u_z \frac{\partial u_z}{\partial z} =
+  f_z - \frac{1}{\rho} \frac{\partial p}{\partial z} + \frac{1}{\rho} \left( \frac{\partial \tau_{xz}}{\partial x} + \frac{\partial \tau_{yz}}{\partial y} + \frac{\partial \tau_{zz}}{\partial z} \right)
+  \end{cases}
+  \tag{1}
+\]</span>
+对于不可压流体的展开式
+<span class="math display">\[
+  \begin{cases}
+  \displaystyle \frac{\partial u_x}{\partial t} + u_x \frac{\partial u_x}{\partial x} + u_y \frac{\partial u_x}{\partial y} + u_z \frac{\partial u_x}{\partial z} =
+  f_x - \frac{1}{\rho} \frac{\partial p}{\partial x} + \mu \left( \frac{\partial^2 u_x}{\partial x^2} + \frac{\partial^2 u_x}{\partial y^2} + \frac{\partial^2 u_x}{\partial z^2} \right) \\
+  \\
+  \displaystyle \frac{\partial u_y}{\partial t} + u_x \frac{\partial u_y}{\partial x} + u_y \frac{\partial u_y}{\partial y} + u_z \frac{\partial u_y}{\partial z} =
+  f_y - \frac{1}{\rho} \frac{\partial p}{\partial y} + \mu \left( \frac{\partial^2 u_y}{\partial x^2} + \frac{\partial^2 u_y}{\partial y^2} + \frac{\partial^2 u_y}{\partial z^2} \right) \\
+  \\
+  \displaystyle \frac{\partial u_z}{\partial t} + u_x \frac{\partial u_z}{\partial x} + u_y \frac{\partial u_z}{\partial y} + u_z \frac{\partial u_z}{\partial z} =
+  f_z - \frac{1}{\rho} \frac{\partial p}{\partial z} + \mu \left( \frac{\partial^2 u_z}{\partial x^2} + \frac{\partial^2 u_z}{\partial y^2} + \frac{\partial^2 u_z}{\partial z^2} \right)
+  \end{cases}
+  \tag{2}
+\]</span></p>
+<h2 id="两无限大平板间层流">两无限大平板间层流</h2>
+<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250623160241048.png" /></p>
+<h3 id="关键假设">关键假设</h3>
+<ol type="1">
+<li><p>定常</p>
+<p>对于任意场中物理量 <span class="math inline">\(B\)</span>，有
+<span class="math display">\[
+  \frac{\partial B}{\partial t}=0
+  \tag{3}
+\]</span></p></li>
+<li><p>不可压缩</p>
+<p>密度为常数
+<span class="math display">\[
+  \rho=Constant
+  \tag{4}
+\]</span></p></li>
+<li><p>层流，仅 x 方向流动，y和z方向的速度无需讨论
+<span class="math display">\[
+  \begin{cases}
+  u_y = 0 \\
+  u_z = 0
+  \end{cases}
+  \tag{5}
+\]</span></p></li>
+<li><p>无限大平板
+<span class="math display">\[
+  \frac{\partial u_x}{\partial z}=0
+  \tag{6}
+\]</span></p></li>
+<li><p>温度变化不大
+<span class="math display">\[
+  \mu=Constant
+  \tag{7}
+\]</span></p></li>
+<li><p>质量力仅有重力</p>
+<p>重力方向向下
+<span class="math display">\[
+  \begin{cases}
+  f_x = 0 \\
+  f_y = -g \\
+  f_z = 0
+  \end{cases}
+  \tag{8}
+\]</span></p></li>
+</ol>
+<h3 id="建立方程组">建立方程组</h3>
+<h4 id="连续方程">1.连续方程</h4>
+<p>不可压流体
+<span class="math display">\[
+  \frac{\partial u_x}{\partial x}+\frac{\partial u_y}{\partial y}+\frac{\partial u_z}{\partial z}=0
+  \tag{9}
+\]</span>
+由公式<span class="formula-ref" data-formula="\begin{cases}
+     u_y = 0 \\
+     u_z = 0
+     \end{cases}">(5)</span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial x}+\frac{\partial u_y}{\partial y}+\frac{\partial u_z}{\partial z}=0">(9)</span>得：
+<span class="math display">\[
+\frac{\partial u_x}{\partial x}=0
+  \tag{10}
+\]</span>
+结合公式<span class="formula-ref" data-formula="\frac{\partial u_x}{\partial z}=0">(6)</span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial x}=0">(10)</span>可以得出 <span class="math inline">\(u_x\)</span> 仅与 <span class="math inline">\(y\)</span> 有关，即：
+<span class="math display">\[
+u_x=u_x(y)
+  \tag{11}
+\]</span></p>
+<h4 id="n-s方程">2.N-S方程</h4>
+<p>不可压缩的N-S方程分量</p>
+<p><strong>对于x方向</strong>
+<span class="math display">\[
+  \frac{\partial u_x}{\partial t} + u_x \frac{\partial u_x}{\partial x} + u_y \frac{\partial u_x}{\partial y} + u_z \frac{\partial u_x}{\partial z} =
+  f_x - \frac{1}{\rho} \frac{\partial p}{\partial x} + \mu \left( \frac{\partial^2 u_x}{\partial x^2} + \frac{\partial^2 u_x}{\partial y^2} + \frac{\partial^2 u_x}{\partial z^2} \right)
+  \tag{12}
+\]</span></p>
+<p>由公式<span class="formula-ref" data-formula="\frac{\partial B}{\partial t}=0">(3)</span>
+<span class="math display">\[
+  \frac{\partial u_x}{\partial t}=0
+  \tag{13}
+\]</span>
+因为<span class="formula-ref" data-formula="\frac{\partial u_x}{\partial z}=0">(6)</span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial x}=0">(10)</span>一阶偏导为0，那么二阶偏导必为0，所以
+<span class="math display">\[
+  \begin{cases}
+  \frac{\partial^2 u_x}{\partial x^2}=0\\\\
+  \frac{\partial^2 u_x}{\partial z^2}=0
+  \end{cases}
+  \tag{14}
+\]</span></p>
+<p>由公式<span class="formula-ref" data-formula="\begin{cases}
+     u_y = 0 \\
+     u_z = 0
+     \end{cases}">(5)</span><span class="formula-ref" data-formula="\begin{cases}
+     f_x = 0 \\
+     f_y = -g \\
+     f_z = 0
+     \end{cases}">(8)</span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial x}=0">(10)</span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial t}=0">(13)</span><span class="formula-ref" data-formula="\begin{cases}
+  \frac{\partial^2 u_x}{\partial x^2}=0\\\\
+  \frac{\partial^2 u_x}{\partial z^2}=0
+  \end{cases}">(14)</span>
+<span class="math display">\[
+0=\mu\frac{\partial^2u_x}{\partial y^2}-\frac{\partial p}{\partial x}
+  \tag{15}
+\]</span></p>
+<p>公式<span class="formula-ref" data-formula="0=\mu\frac{\partial^2u_x}{\partial y^2}-\frac{\partial p}{\partial x}">(15)</span>表明：沿x方向加速度为0，粘性力和压力平衡。</p>
+<p><strong>对于y方向</strong>
+<span class="math display">\[
+  \frac{\partial u_y}{\partial t} + u_x \frac{\partial u_y}{\partial x} + u_y \frac{\partial u_y}{\partial y} + u_z \frac{\partial u_y}{\partial z} =
+  f_y - \frac{1}{\rho} \frac{\partial p}{\partial y} + \mu \left( \frac{\partial^2 u_y}{\partial x^2} + \frac{\partial^2 u_y}{\partial y^2} + \frac{\partial^2 u_y}{\partial z^2} \right)
+  \tag{16}
+\]</span></p>
+<p>因为公式<span class="formula-ref" data-formula="\begin{cases}
+     u_y = 0 \\
+     u_z = 0
+     \end{cases}">(5)</span><span class="formula-ref" data-formula="\begin{cases}
+     f_x = 0 \\
+     f_y = -g \\
+     f_z = 0
+     \end{cases}">(8)</span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial x}=0">(10)</span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial t}=0">(13)</span><span class="formula-ref" data-formula="\begin{cases}
+  \frac{\partial^2 u_x}{\partial x^2}=0\\\\
+  \frac{\partial^2 u_x}{\partial z^2}=0
+  \end{cases}">(14)</span>，可以简化为：
+<span class="math display">\[
+  0=-\rho g-\frac{\partial p}{\partial y}
+  \tag{17}
+\]</span></p>
+<p>公式<span class="formula-ref" data-formula="0=-\rho g-\frac{\partial p}{\partial y}">(17)</span>表示：沿y方向加速度为0，流体质点无运动，重力和压力平衡。</p>
+<p><strong>对于z方向</strong>
+<span class="math display">\[
+  \frac{\partial u_z}{\partial t} + u_x \frac{\partial u_z}{\partial x} + u_y \frac{\partial u_z}{\partial y} + u_z \frac{\partial u_z}{\partial z} =
+  f_z - \frac{1}{\rho} \frac{\partial p}{\partial z} + \mu \left( \frac{\partial^2 u_z}{\partial x^2} + \frac{\partial^2 u_z}{\partial y^2} + \frac{\partial^2 u_z}{\partial z^2} \right)
+  \tag{18}
+\]</span>
+因为公式<span class="formula-ref" data-formula="\begin{cases}
+     u_y = 0 \\
+     u_z = 0
+     \end{cases}">(5)</span><span class="formula-ref" data-formula="\begin{cases}
+     f_x = 0 \\
+     f_y = -g \\
+     f_z = 0
+     \end{cases}">(8)</span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial x}=0">(10)</span><span class="formula-ref" data-formula="\frac{\partial u_x}{\partial t}=0">(13)</span><span class="formula-ref" data-formula="\begin{cases}
+  \frac{\partial^2 u_x}{\partial x^2}=0\\\\
+  \frac{\partial^2 u_x}{\partial z^2}=0
+  \end{cases}">(14)</span>，可以简化为：
+<span class="math display">\[
+  0=\frac{\partial{p}}{\partial z}
+  \tag{19}
+\]</span>
+公式<span class="formula-ref" data-formula="0=\frac{\partial{p}}{\partial z}">(19)</span>表示：沿z压强不变。</p>
+<h3 id="解微分方程">解微分方程</h3>
+<ul>
+<li>沿x方向加速度为0，粘性力和压力平衡。</li>
+<li>沿y方向加速度为0，流体质点无运动，重力和压力平衡。</li>
+<li>沿z压强不变。</li>
+</ul>
+<p>因为在x方向的粘性力，y方向的重力都需要压力去平衡。</p>
+<p>由公式<span class="formula-ref" data-formula="0=\mu\frac{\partial^2u_x}{\partial y^2}-\frac{\partial p}{\partial x}">(15)</span><span class="formula-ref" data-formula="0=-\rho g-\frac{\partial p}{\partial y}">(17)</span>可得：
+<span class="math display">\[
+  \begin{cases}
+  \rho g=-\frac{\partial p}{\partial y}①\\\\
+  \mu\frac{\partial^2u_x}{\partial y^2}=\frac{\partial p}{\partial x}②
+  \end{cases}
+  \tag{20}
+\]</span>
+微分方程组<span class="formula-ref" data-formula="\begin{cases}
+  \rho g=-\frac{\partial p}{\partial y}①\\\\
+  \mu\frac{\partial^2u_x}{\partial y^2}=\frac{\partial p}{\partial x}②
+  \end{cases}">(20)</span>包含 <span class="math inline">\(u_x\)</span> 和 <span class="math inline">\(p\)</span> 两个未知量，方程组封闭可解</p>
+<p>对①积分：
+<span class="math display">\[
+  p=-\rho gy+f(x)
+  \tag{21}
+\]</span>
+代入②：
+<span class="math display">\[
+  \frac{\partial p}{\partial x}=\mu\frac{\partial^2u_x}{\partial y^2}
+  \tag{22}
+\]</span>
+<span class="formula-ref" data-formula="\frac{\partial p}{\partial x}=\mu\frac{\partial^2u_x}{\partial y^2}">(22)</span>等号左边只和x有关，右边只和y有关。想让两边相等，只有均为常数：
+<span class="math display">\[
+  \frac{\partial p}{\partial x}=\mu\frac{\partial^2u_x}{\partial y^2}=C
+  \tag{23}
+\]</span></p>
+<h4 id="速度求解">速度求解</h4>
+<p>解<span class="formula-ref" data-formula="\frac{\partial p}{\partial x}=\mu\frac{\partial^2u_x}{\partial y^2}=C">(23)</span>可得：
+<span class="math display">\[
+  u_x=\frac{1}{2\mu}\frac{\partial p}{\partial x}y^2+c_1y+c_2
+  \tag{24}
+\]</span>
+两个特殊条件：紧邻平板（上 <span class="math inline">\(y=0\)</span> 下 <span class="math inline">\(y=h\)</span>）处速度为0，代入<span class="formula-ref" data-formula="u_x=\frac{1}{2\mu}\frac{\partial p}{\partial x}y^2+c_1y+c_2">(24)</span>有：
+<span class="math display">\[
+u_x=-\frac{h^2}{2\mu}\frac{\partial p}{\partial x}\frac{y}{h}\left(1-\frac{y}{h}\right)
+  \tag{25}
+\]</span></p>
+<h4 id="压强求解">压强求解</h4>
+<p>由<span class="formula-ref" data-formula="p=-\rho gy+f(x)">(21)</span><span class="formula-ref" data-formula="\frac{\partial p}{\partial x}=\mu\frac{\partial^2u_x}{\partial y^2}=C">(23)</span>可得：
+<span class="math display">\[
+  \frac{\partial p}{\partial x}=\frac{\partial f}{\partial x}=C
+  \tag{26}
+\]</span>
+那么
+<span class="math display">\[
+  f(x)=C_1x+C_2=\frac{\partial p}{\partial x}x+C
+  \tag{27}
+\]</span></p>
+<p>结合<span class="formula-ref" data-formula="p=-\rho gy+f(x)">(21)</span><span class="formula-ref" data-formula="f(x)=C_1x+C_2=\frac{\partial p}{\partial x}x+C">(27)</span>：
+<span class="math display">\[
+  p=-\rho gy+\frac{\partial p}{\partial x}x+C
+  \tag{28}
+\]</span>
+初始条件：当 <span class="math inline">\(x=y=0\)</span>时，<span class="math inline">\(p=p_0\)</span></p>
+<p>可以解得：
+<span class="math display">\[
+  p=p_0-\rho gy+\frac{\partial p}{\partial x}x
+  \tag{29}
+\]</span></p>
+<h3 id="流体属性">流体属性</h3>
+<h4 id="速度分布">速度分布</h4>
+<p>观察<span class="formula-ref" data-formula="u_x=-\frac{h^2}{2\mu}\frac{\partial p}{\partial x}\frac{y}{h}\left(1-\frac{y}{h}\right)">(25)</span>：</p>
+<p>沿x方向流速影响因素：</p>
+<ul>
+<li>流体粘度 <span class="math inline">\(\mu\)</span> ：粘度大，流速小</li>
+<li>两板间距离 <span class="math inline">\(h\)</span> ：距离大，流速大</li>
+<li>x方向压强梯度 <span class="math inline">\(\frac{\partial p}{\partial x}\)</span> ：压强梯度大，流速大</li>
+</ul>
+<p>取同一流线上两点，相距 <span class="math inline">\(l\)</span>，压强差 <span class="math inline">\(\Delta p\)</span>，那么 <span class="math inline">\(\frac{\partial p}{\partial x}=\frac{\Delta p}{l}\)</span>，<span class="formula-ref" data-formula="\frac{\partial p}{\partial x}=\mu\frac{\partial^2u_x}{\partial y^2}">(22)</span>可以化为：
+<span class="math display">\[
+  u_x=-\frac{h^2}{2\mu}\frac{\Delta p}{l}\frac{y}{h}\left(1-\frac{y}{h}\right)
+  \tag{30}
+\]</span></p>
+<p><span class="formula-ref" data-formula="u_x=-\frac{h^2}{2\mu}\frac{\Delta p}{l}\frac{y}{h}\left(1-\frac{y}{h}\right)">(30)</span>是抛物线分布，开口向右。当<span class="math inline">\(y=\frac{h}{2}\)</span>时速度最大
+<span class="math display">\[
+  u_{\max}=\frac{h^2}{8\mu}\frac{\Delta p}{l}
+  \tag{31}
+\]</span></p>
+<h4 id="体积流量">体积流量</h4>
+<blockquote>
+<p>单位时间通过过流断面的流量体积</p>
+</blockquote>
+<p>取单位z方向的切面，体积流量：
+<span class="math display">\[
+  Q=\int udA=\int_0^hudy=\frac{h^3}{12\mu}\frac{\Delta p}{l}
+  \tag{32}
+\]</span></p>
+<p>平均流速
+<span class="math display">\[
+  \overline{V}=\frac{Q}{A}=\frac{h^3}{12\mu}\frac{\Delta p}{l}/h=\frac{h^2}{12\mu}\frac{\Delta p}{l}
+  \tag{33}
+\]</span>
+对比<span class="formula-ref" data-formula="u_{\max}=\frac{h^2}{8\mu}\frac{\Delta p}{l}">(31)</span>和<span class="formula-ref" data-formula="\overline{V}=\frac{Q}{A}=\frac{h^3}{12\mu}\frac{\Delta p}{l}/h=\frac{h^2}{12\mu}\frac{\Delta p}{l}">(33)</span>，发现：
+<span class="math display">\[
+  u_{\mathrm{max}}=1.5\overline{V}
+  \tag{34}
+\]</span>
+如果最大速度和平均速度的比值越大，说明流速分布越不均匀。如果流速均匀，那么比值应该为1。</p>
+<h4 id="切应力分布">切应力分布</h4>
+<p>牛顿内摩擦定律
+<span class="math display">\[
+  \tau=\mu\frac{du}{dy}
+  \tag{35}
+\]</span>
+切应力呈线性分布</p>
+<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250625140352952.png" /></p>
+<p>两无限大平行平板间的层流流动</p>
+<ul>
+<li>速度为抛物线分布，中间最大，壁面处最小；</li>
+<li>切应力则呈线性分布，中间最小，壁面处最大。</li>
+</ul>
+<h4 id="压强分布">压强分布</h4>
+<p>根据<span class="formula-ref" data-formula="p=p_0-\rho gy+\frac{\partial p}{\partial x}x">(29)</span>：</p>
+<ul>
+<li>在x方向，做匀速直线运动，说明受力平衡。粘性力和压强差平衡，所以压强表达式有<span class="math inline">\(\frac{\partial p}{\partial x}\)</span>，<strong>粘性力导致压强变化</strong>。</li>
+<li>在y方向，无运动，说明受力平衡。重力和压强差平衡，<strong>重力导致压强变化</strong>。</li>
+</ul>
+<h2 id="圆管内的层流">圆管内的层流</h2>
+<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250625145817458.png" /></p>
+<p>使用柱坐标进行分析</p>
+<h3 id="关键假设-1">关键假设</h3>
+<ol type="1">
+<li><p>定常</p>
+<p>对于任意场中物理量 <span class="math inline">\(B\)</span>，有
+<span class="math display">\[
+  \frac{\partial B}{\partial t}=0
+  \tag{36}
+\]</span></p></li>
+<li><p>不可压缩</p>
+<p>密度为常数
+<span class="math display">\[
+  \rho=Constant
+  \tag{37}
+\]</span></p></li>
+<li><p>层流，仅 x 方向流动，y和z方向的速度无需讨论
+<span class="math display">\[
+  \begin{cases}
+  V_r = 0 \\
+  V_{\theta} = 0
+  \end{cases}
+  \tag{38}
+\]</span></p></li>
+<li><p>无限大圆管</p>
+<p>轴对称流动
+<span class="math display">\[
+  \frac{\partial V_z}{\partial z}=0
+  \tag{39}
+\]</span></p></li>
+<li><p>温度变化不大
+<span class="math display">\[
+  \mu=Constant
+  \tag{40}
+\]</span></p></li>
+<li><p>质量力仅有重力</p>
+<p>重力 <span class="math inline">\(g\)</span> 在水平夹角为 <span class="math inline">\(\theta\)</span> 的方向可以分解为径向压力 <span class="math inline">\(g_r\)</span>，和周向压力 <span class="math inline">\(g_{\theta}\)</span>
+<span class="math display">\[
+  \begin{cases}
+  f_r = -g\sin\theta \\
+  f_\theta=-g\cos\theta \\
+  f_z = 0
+  \end{cases}
+  \tag{41}
+\]</span></p></li>
+</ol>
+<h3 id="建立方程组-1">建立方程组</h3>
+<h4 id="连续方程-1">1.连续方程</h4>
+<p><span class="math display">\[
+  \frac{1}{r}\frac{\partial(rV_r)}{\partial r}+\frac{1}{r}\frac{\partial V_\theta}{\partial\theta}+\frac{\partial V_z}{\partial z}=0
+  \tag{42}
+\]</span></p>
+<p>由<span class="formula-ref" data-formula="\begin{cases}
+     V_r = 0 \\
+     V_{\theta} = 0
+     \end{cases}">(38)</span><span class="formula-ref" data-formula="\frac{1}{r}\frac{\partial(rV_r)}{\partial r}+\frac{1}{r}\frac{\partial V_\theta}{\partial\theta}+\frac{\partial V_z}{\partial z}=0">(42)</span>：
+<span class="math display">\[
+  \frac{\partial V_z}{\partial z}=0
+  \tag{43}
+\]</span>
+由<span class="formula-ref" data-formula="\frac{\partial V_z}{\partial z}=0">(39)</span><span class="formula-ref" data-formula="\frac{\partial V_z}{\partial z}=0">(43)</span>可得流速 <span class="math inline">\(V_z\)</span> 和 <span class="math inline">\(r\)</span> <span class="math inline">\(\theta\)</span> 都没有关系，所以
+<span class="math display">\[
+  V_z=V_z(r)
+  \tag{44}
+\]</span></p>
+<h4 id="n-s方程-1">2.N-S方程</h4>
+<p><strong>在径向</strong>
+<span class="math display">\[
+  \rho\left(\frac{\partial V_r}{\partial t}+V_r\frac{\partial V_r}{\partial r}+\frac{V_\theta}{r}\frac{\partial V_r}{\partial\theta}-\frac{V_\theta^2}{r}+V_z\frac{\partial V_r}{\partial z}\right)=\rho f_r-\frac{\partial p}{\partial r}\\
+  +\mu\left[\frac{\partial}{\partial r}\left(\frac{1}{r}\frac{\partial}{\partial r}\left(rV_r\right)\right)+\frac{1}{r^2}\frac{\partial^2V_r}{\partial\theta^2}-\frac{2}{r^2}\frac{\partial V_\theta}{\partial\theta}+\frac{\partial^2V_r}{\partial z^2}\right]
+  \tag{45}
+\]</span></p>
+<p>由<span class="formula-ref" data-formula="\frac{\partial B}{\partial t}=0">(36)</span><span class="formula-ref" data-formula="\begin{cases}
+     V_r = 0 \\
+     V_{\theta} = 0
+     \end{cases}">(38)</span><span class="formula-ref" data-formula="\begin{cases}
+     f_r = -g\sin\theta \\
+     f_\theta=-g\cos\theta \\
+     f_z = 0
+     \end{cases}">(41)</span>可得：
+<span class="math display">\[
+  \frac{\partial p}{\partial r}=-\rho g\sin\theta
+  \tag{46}
+\]</span>
+此式说明流体微团在径向没有运动，在径向重力和压力平衡</p>
+<p><strong>在周向</strong>
+<span class="math display">\[
+  \begin{gathered}
+  \rho\left(\frac{\partial V_\theta}{\partial t}+V_r\frac{\partial V_\theta}{\partial r}+\frac{V_\theta}{r}\frac{\partial V_\theta}{\partial\theta}+\frac{V_rV_\theta}{r}+V_z\frac{\partial V_\theta}{\partial z}\right)=\rho f_\theta-\frac{1}{r}\frac{\partial p}{\partial\theta} \\
+  +\mu\left[\frac{\partial}{\partial r}\left(\frac{1}{r}\frac{\partial}{\partial r}\left(rV_\theta\right)\right)+\frac{1}{r^2}\frac{\partial^2V_\theta}{\partial\theta^2}+\frac{2}{r^2}\frac{\partial V_r}{\partial\theta}+\frac{\partial^2V_\theta}{\partial z^2}\right]
+  \end{gathered}
+  \tag{47}
+\]</span>
+由<span class="formula-ref" data-formula="\frac{\partial B}{\partial t}=0">(36)</span><span class="formula-ref" data-formula="\begin{cases}
+     V_r = 0 \\
+     V_{\theta} = 0
+     \end{cases}">(38)<span class="formula-ref" data-formula="\begin{cases}
+     f_r = -g\sin\theta \\
+     f_\theta=-g\cos\theta \\
+     f_z = 0
+     \end{cases}">(41)</span></span>可得：
+<span class="math display">\[
+  \frac{1}{r}\frac{\partial p}{\partial\theta}=-\rho g\cos\theta
+  \tag{48}
+\]</span>
+此式说明流体微团在周向没有运动，在周向重力和压力平衡</p>
+<p><strong>在轴向z</strong>
+<span class="math display">\[
+  \begin{gathered}
+  \rho\left(\frac{\partial V_z}{\partial t}+V_r\frac{\partial V_z}{\partial r}+\frac{V_\theta}{r}\frac{\partial V_z}{\partial\theta}+V_z\frac{\partial V_z}{\partial z}\right)=\rho f_z-\frac{\partial p}{\partial z} \\
+  +\mu\left[\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial V_z}{\partial r}\right)+\frac{1}{r^2}\frac{\partial^2V_z}{\partial\theta^2}+\frac{\partial^2V_z}{\partial z^2}\right]
+  \end{gathered}
+  \tag{49}
+\]</span>
+由<span class="formula-ref" data-formula="\frac{\partial B}{\partial t}=0">(36)</span><span class="formula-ref" data-formula="\begin{cases}
+     V_r = 0 \\
+     V_{\theta} = 0
+     \end{cases}">(38)</span><span class="formula-ref" data-formula="\frac{\partial V_z}{\partial z}=0">(39)</span><span class="formula-ref" data-formula="\begin{cases}
+     f_r = -g\sin\theta \\
+     f_\theta=-g\cos\theta \\
+     f_z = 0
+     \end{cases}">(41)</span>可得：
+<span class="math display">\[
+  \frac{\partial p}{\partial z}=\mu\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial V_z}{\partial r}\right)
+  \tag{50}
+\]</span>
+此式说明流体微团在轴向做匀速直线运动，在轴向粘性力和压力平衡</p>
+<h3 id="解微分方程-1">解微分方程</h3>
+<p><span class="math display">\[
+  \begin{cases}
+  &amp; \frac{\partial p}{\partial r}=-\rho g\sin\theta \\
+  &amp; \frac{\partial p}{\partial\theta}=-\rho gr\cos\theta \\
+  &amp; \frac{\partial p}{\partial z}  =\mu\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial V_{z}}{\partial r}\right)
+  \end{cases}
+  \tag{51}
+\]</span></p>
+<p>解此微分方程</p>
+<h4 id="速度求解-1">速度求解</h4>
+<p><span class="math display">\[
+  V_z=\frac{1}{4\mu}\frac{\partial p}{\partial z}r^2+C_1\ln r+C_2
+  \tag{52}
+\]</span></p>
+<p>在管道边缘 <span class="math inline">\(r=R\)</span>， <span class="math inline">\(V_z=0\)</span></p>
+<p>在管道中心 <span class="math inline">\(r=0\)</span>，<span class="math inline">\(\ln r\)</span> 不可能无穷大，所以只可能 <span class="math inline">\(C_1=0\)</span></p>
+<p>所以速度分布为
+<span class="math display">\[
+  V_z=-\frac{1}{4\mu}\frac{\partial p}{\partial z}\left(R^2-r^2\right)
+  \tag{53}
+\]</span>
+#### 压强求解
+<span class="math display">\[
+  p=-\rho gr\sin\theta+\frac{\partial p}{\partial z}z+C
+  \tag{54}
+\]</span></p>
+<p>在 <span class="math inline">\(z=0\)</span>，<span class="math inline">\(r=0\)</span> 处，压强为 <span class="math inline">\(p=p_0\)</span>
+<span class="math display">\[
+  p=p_0-\rho gr\sin\theta+\frac{\partial p}{\partial z}z
+  \tag{55}
+\]</span></p>
+<h3 id="流体属性-1">流体属性</h3>
+<h4 id="速度分布-1">速度分布</h4>
+<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250625160203273.png" /></p>
+<p>最大速度
+<span class="math display">\[
+  V_{z\max}=V_{z}|_{r=0}=\frac{R^{2}}{4\mu}\frac{\Delta p}{l}
+  \tag{56}
+\]</span></p>
+<h4 id="体积流量-1">体积流量</h4>
+<p><span class="math display">\[
+  Q= \int V_{z}dA = \int_0^R V_z 2\pi r \, dr= \frac{\pi R^4}{8\mu} \frac{\Delta p}{l}= \frac{\pi D^4}{128\mu} \frac{\Delta p}{l}
+  \tag{57}
+\]</span></p>
+<p>平均流速
+<span class="math display">\[
+  \overline{V}=\frac{Q}{A}=\frac{\pi R^4}{8\mu}\frac{\Delta p}{l}/\pi R^2=\frac{R^2}{8\mu}\frac{\Delta p}{l}
+  \tag{58}
+\]</span>
+平均速度和最大速度关系
+<span class="math display">\[
+  V_{z\max}=2\overline{V}
+  \tag{59}
+\]</span></p>
+<h4 id="切应力分布-1">切应力分布</h4>
+<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250625160217841.png" /></p>
+<h4 id="压强分布-1">压强分布</h4>
+<p>根据<span class="formula-ref" data-formula="p=p_0-\rho gr\sin\theta+\frac{\partial p}{\partial z}z">(55)</span></p>
+<ul>
+<li>在轴向，匀速直线运动，受力平衡</li>
+<li>在径向和周向，无运动，受力平衡</li>
+</ul>
+<p>粘性力导致压强变化</p>
+
+</div>
+
+<!-- post-guide -->
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2025/06/24/2%20hexo/%E5%85%AC%E5%BC%8F%E5%BC%95%E7%94%A8/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  公式引用
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2025/06/21/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/">
+                对象存储
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+<!-- comment - giscus -->
+
+
+<!-- comment - valine -->
+
+
+<script>
+	
+	
+</script>
+
+	</div>
+	<div id="footer">
+	<p>
+		©<span id="footerYear-start">
+			
+		</span>-<span id="footerYear-end"></span>
+
+		
+				<a href="/">
+					NicolasDavout
+				</a>
+				
+
+					
+							<br>
+							Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+							by <a href="//wujun.me" target="_blank">Wu Jun</a>
+							Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+
+
+	<script type="text/javascript">
+		document.getElementById('footerYear-start').innerHTML = new Date().getFullYear() + '';
+	</script>
+	
+		<script type="text/javascript">
+			document.getElementById('footerYear-end').innerHTML = new Date().getFullYear() + '';
+		</script>
+		
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>

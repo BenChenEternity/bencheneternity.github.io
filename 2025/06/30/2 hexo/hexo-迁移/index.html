@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+	<!-- title -->
+	
+		<title>
+			
+				hexo 迁移 |
+					
+						Note
+		</title>
+
+		<!-- keywords,description -->
+		
+					
+
+								<!-- favicon -->
+								
+									<link rel="shortcut icon" href="/favicon.ico">
+										
+
+
+											<!-- search -->
+											<script>
+												var searchEngine = "";
+												if (typeof searchEngine == "undefined" || searchEngine == null || searchEngine == "")
+												{
+													searchEngine = "https://www.google.com/search?q=";
+												}
+												var homeHost = "BenChenEternity.github.io";
+												if (typeof homeHost == "undefined" || homeHost == null || homeHost == "")
+												{
+													homeHost = window.location.host;
+												}
+											</script>
+
+
+											
+<link rel="stylesheet" href="/css/main.css">
+
+												
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+													
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+														
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+															
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+
+																
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+																	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+																		
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+																			
+<script src="/js/main.js"></script>
+
+
+																				
+																					
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+																						
+<script src="https://cdn.jsdelivr.net/npm/valine@v1.5.1/dist/Valine.min.js"></script>
+
+																							
+																								
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+	crossorigin="anonymous"></script>
+
+<!-- To automatically render math in text elements, include the auto-render extension: -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">Note</a>
+
+	<ul id="menu">
+    
+      <li class="menu-item">
+        <a href="/about" class="menu-item-link">About</a>
+      </li>
+    
+
+    
+
+    
+
+    
+  
+    
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="Press Enter to search">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1 实用小工具
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/15/1%20%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/1%20%E7%BC%96%E5%8F%B7%E5%B0%8F%E5%B7%A5%E5%85%B7/">
+                     
+										    1 编号小工具
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/19/1%20%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/2%20%E4%BB%A3%E7%A0%81%E6%89%81%E5%B9%B3%E5%8C%96%E5%B0%8F%E5%B7%A5%E5%85%B7/">
+                     
+										    2 代码扁平化小工具
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/19/1%20%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/3%20%E5%85%AC%E5%BC%8F%E8%AF%86%E5%88%AB/">
+                     
+										    3 公式识别
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										2 hexo
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/09/2%20hexo/1%20%E9%85%8D%E7%BD%AE/">
+                     
+										    1 配置
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/2025/06/30/2%20hexo/hexo-%E8%BF%81%E7%A7%BB/">
+                     
+										    hexo 迁移
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/24/2%20hexo/%E5%85%AC%E5%BC%8F%E5%BC%95%E7%94%A8/">
+                     
+										    公式引用
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										3 计算机图形学
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1 理论
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/15/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/1%20%E7%BB%AA%E8%AE%BA/">
+                     
+										    1 绪论
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/15/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/2%20VAO%20%E4%B8%8E%20VBO/">
+                     
+										    2 VAO 与 VBO
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/09/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/3%20%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/">
+                     
+										    3 空间变换
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/16/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/4%20%E6%AC%A7%E6%8B%89%E8%A7%92/">
+                     
+										    4 欧拉角
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/19/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/5%20%E7%BD%91%E6%A0%BC%E6%9B%B2%E9%9D%A2/">
+                     
+										    5 网格曲面
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/16/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/6%20%E5%85%89%E7%85%A7/">
+                     
+										    6 光照
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/19/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/7%20%E7%BD%91%E6%A0%BC%E6%9B%B2%E9%9D%A2/">
+                     
+										    7 网格曲面
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										2 实践
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/09/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/1%20openGL%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/">
+                     
+										    1 openGL环境安装
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/2%20%E6%83%B3%E6%B3%95%E6%9E%84%E6%80%9D/">
+                     
+										    2 想法构思
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/3%20%E5%BA%94%E7%94%A8%E5%88%9B%E5%BB%BA/">
+                     
+										    3 应用创建
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/4%20%E4%B8%96%E7%95%8C%E5%AE%9A%E4%B9%89/">
+                     
+										    4 世界定义
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/5%20%E6%91%84%E5%83%8F%E6%9C%BA%E5%AE%9A%E4%B9%89/">
+                     
+										    5 摄像机定义
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/6%20%E7%9D%80%E8%89%B2%E5%99%A8%E5%AE%9A%E4%B9%89/">
+                     
+										    6 着色器定义
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/21/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/7%20%E5%A4%96%E9%83%A8%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/">
+                     
+										    7 外部资源管理
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/21/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/8%20%E5%AF%B9%E8%B1%A1/">
+                     
+										    8 对象
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/21/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/9%20%E5%AF%B9%E8%B1%A1%E7%BD%91%E6%A0%BC/">
+                     
+										    9 对象网格
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/21/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/">
+                     
+										    对象存储
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										4 流体力学
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/09/4%20%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/1%20%E6%96%B9%E7%A8%8B%E7%BB%AA%E8%AE%BA/">
+                     
+										    1 方程绪论
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/09/4%20%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/2%20%E4%BC%AF%E5%8A%AA%E5%88%A9%E6%96%B9%E7%A8%8B/">
+                     
+										    2 伯努利方程
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/23/4%20%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/3%20N-S%E6%96%B9%E7%A8%8B%E7%9A%84%E8%A7%A3%E6%9E%90%E8%A7%A3/">
+                     
+										    3 N-S方程的解析解
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										5 数学
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/15/5%20%E6%95%B0%E5%AD%A6/SVD%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3/">
+                     
+										    奇异值分解
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										6 minecraft
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/13/6%20minecraft/01%20Better%20MC/">
+                     
+										    01 Better MC
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/13/6%20minecraft/02%20%E8%84%86%E9%AA%A8%E7%97%87/">
+                     
+										    02 脆骨症
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/14/6%20minecraft/03%20%E5%B9%B8%E8%BF%90%E4%B8%96%E7%95%8C%E5%85%A5%E4%BE%B5/">
+                     
+										    03 幸运世界入侵
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/14/6%20minecraft/04-Cisco-s-Fantasy-Medieval/">
+                     
+										    04 Cisco's Fantasy Medieval
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										数值分析
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										插值
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/26/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/%E6%8F%92%E5%80%BC/%E7%BB%AA%E8%AE%BA/">
+                     
+										    绪论
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content" class="content">
+		<h1 id="article-title">
+	hexo 迁移
+</h1>
+
+<!-- meta -->
+<div class="article-meta">
+	
+
+	<span>NicolasDavout</span>
+	<span>2025-06-30 20:49:13</span>
+
+  <div id="article-categories">
+    
+		  <span>Categories：</span>
+      
+    
+
+    
+		    <span>Tags：</span>
+        
+    
+  </div>
+
+</div>
+
+<!-- content -->
+<div id="article-content">
+	<h2 id="背景">背景</h2>
+<p>多个电脑上共同编写 hexo 博客</p>
+<h2 id="步骤">步骤</h2>
+<h3 id="安装外部依赖">安装外部依赖</h3>
+<p>在新电脑上根据所需环境安装依赖，目前仅需 pandoc</p>
+<p>把 hexo 什么的都安装好</p>
+<h3 id="通过-git-共享">通过 git 共享</h3>
+<p>把项目上传在 git 系统上，注意 .gitignore 文件应该如下</p>
+<pre><code class="hljs plaintext">.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+_multiconfig.yml</code></pre>
+<p>并且不能有其他的 .gitignore 文件</p>
+<h3 id="安装依赖">安装依赖</h3>
+<p>注意要管理员权限进行安装</p>
+<pre><code class="hljs plaintext">npm install</code></pre>
+
+</div>
+
+<!-- post-guide -->
+
+    <div class="post-guide">
+        <div class="item left">
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2025/06/26/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/%E6%8F%92%E5%80%BC/%E7%BB%AA%E8%AE%BA/">
+                绪论
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+<!-- comment - giscus -->
+
+
+<!-- comment - valine -->
+
+
+<script>
+	
+	
+</script>
+
+	</div>
+	<div id="footer">
+	<p>
+		©<span id="footerYear-start">
+			
+		</span>-<span id="footerYear-end"></span>
+
+		
+				<a href="/">
+					NicolasDavout
+				</a>
+				
+
+					
+							<br>
+							Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+							by <a href="//wujun.me" target="_blank">Wu Jun</a>
+							Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+
+
+	<script type="text/javascript">
+		document.getElementById('footerYear-start').innerHTML = new Date().getFullYear() + '';
+	</script>
+	
+		<script type="text/javascript">
+			document.getElementById('footerYear-end').innerHTML = new Date().getFullYear() + '';
+		</script>
+		
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>

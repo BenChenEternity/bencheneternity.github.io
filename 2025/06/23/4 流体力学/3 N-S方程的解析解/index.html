@@ -1112,7 +1112,8 @@
 <h2 id="圆管内的层流微元受力平衡">圆管内的层流——微元受力平衡</h2>
 <p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250701193628764.png" /></p>
 <p>在圆管内取一柱体微元</p>
-<h3 id="轴向受力平衡">轴向受力平衡</h3>
+<h3 id="切应力分布-2">切应力分布</h3>
+<p>在轴向：</p>
 <p>那么作用在柱体两端的压力差为
 <span class="math display">\[
   [(p+\Delta p)-p]\pi r^2
@@ -1120,9 +1121,41 @@
 \]</span>
 作用于侧表面的粘性力为
 <span class="math display">\[
-2\pi rL\tau
+  2\pi rL\tau
   \tag{61}
+\]</span>
+<span class="formula-ref" data-formula="[(p+\Delta p)-p]\pi r^2">(60)</span><span class="formula-ref" data-formula="2\pi rL\tau">(61)</span>相等，有
+<span class="math display">\[
+  \tau=\frac{\Delta p}{2L}r
+  \tag{62}
+\]</span>
+在管壁 <span class="math inline">\(r=R\)</span>，<span class="math inline">\(\tau_w=\frac{\Delta p}{2l}R\)</span>，有：
+<span class="math display">\[
+  \tau=\frac{r}{R}\tau_w
+  \tag{63}
 \]</span></p>
+<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250701201640885.png" /></p>
+<p>所以切应力呈线性分布</p>
+<p>对于湍流，微元分布也可以用这个方法。</p>
+<h3 id="速度分布-2">速度分布</h3>
+<p>牛顿内摩擦定律：
+<span class="math display">\[
+  \tau=-\mu\frac{dV_z}{dr}
+  \tag{64}
+\]</span>
+注意负号：半径越大，流速越小，梯度为负。所以有负号使得切应力为正。</p>
+<p>把<span class="formula-ref" data-formula="\tau=\frac{r}{R}\tau_w">(63)</span>代入<span class="formula-ref" data-formula="\tau=-\mu\frac{dV_z}{dr}">(64)</span>，并且对 <span class="math inline">\(r\)</span> 积分可得：
+<span class="math display">\[
+  \frac{dV_z}{dr}=-\frac{1}{4\mu}\frac{\Delta p}{l}r^2+C
+  \tag{65}
+\]</span>
+当 <span class="math inline">\(r=R\)</span>，壁面无滑移，<span class="math inline">\(V_z=0\)</span></p>
+<p>可得速度分布
+<span class="math display">\[
+  V_z=\frac{1}{4\mu}\frac{\Delta p}{l}(R^2-r^2)
+  \tag{66}
+\]</span></p>
+<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250701202635581.png" /></p>
 
 </div>
 

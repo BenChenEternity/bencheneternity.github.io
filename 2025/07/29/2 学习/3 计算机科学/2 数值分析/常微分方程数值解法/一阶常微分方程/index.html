@@ -1037,6 +1037,212 @@ y(x_{i+1}) &amp;= y(x_i) + y^{\prime}(x_i) h + \frac{y^{\prime\prime}(x_i)}{2} h
   y(x_{i+1})-y_{i+1}=0(h^3)
   \tag{28}
 \]</span></p>
+<h2 id="代码实现比较不同差分方法比较">代码实现比较不同差分方法比较</h2>
+<p>代码如下，使用策略模式，将不同的差分近似方法封装进具体策略类。</p>
+<p>比较精确的ODE解曲线使用库来画出来，再画出不同近似方法下研究区间内各个点的差分计算结果。</p>
+<p>结果如下</p>
+<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250811022214522.png" /></p>
+<p>代码如下</p>
+<pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt
+<span class="hljs-keyword">from</span> abc <span class="hljs-keyword">import</span> ABC, abstractmethod
+<span class="hljs-keyword">from</span> scipy.optimize <span class="hljs-keyword">import</span> root
+<span class="hljs-keyword">from</span> scipy.integrate <span class="hljs-keyword">import</span> solve_ivp
+
+
+<span class="hljs-comment"># --------------------------------------------------------------------------</span>
+<span class="hljs-comment"># 1. 策略接口和具体策略类 (Strategy Interface and Concrete Strategies)</span>
+<span class="hljs-comment"># --------------------------------------------------------------------------</span>
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">IntegrationStrategy</span>(<span class="hljs-title class_ inherited__">ABC</span>):
+    <span class="hljs-string">&quot;&quot;&quot;</span>
+<span class="hljs-string">    抽象策略基类，定义了数值积分的接口。</span>
+<span class="hljs-string">    &quot;&quot;&quot;</span>
+
+<span class="hljs-meta">    @abstractmethod</span>
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">step</span>(<span class="hljs-params">self, f, xn, yn, h</span>):
+        <span class="hljs-string">&quot;&quot;&quot;</span>
+<span class="hljs-string">        根据特定公式计算 y_&#123;n+1&#125;</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        参数:</span>
+<span class="hljs-string">        f (callable): 微分方程的右端函数 f(x, y)</span>
+<span class="hljs-string">        xn (float): 当前的 x 值</span>
+<span class="hljs-string">        yn (float): 当前的 y 值</span>
+<span class="hljs-string">        h (float): 步长</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        返回:</span>
+<span class="hljs-string">        float: y 的下一个值 y_&#123;n+1&#125;</span>
+<span class="hljs-string">        &quot;&quot;&quot;</span>
+        <span class="hljs-keyword">pass</span>
+
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">LeftRectangleStrategy</span>(<span class="hljs-title class_ inherited__">IntegrationStrategy</span>):
+    <span class="hljs-string">&quot;&quot;&quot;左矩形公式 (即前向欧拉法)显式&quot;&quot;&quot;</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">step</span>(<span class="hljs-params">self, f, xn, yn, h</span>):
+        <span class="hljs-keyword">return</span> yn + h * f(xn, yn)
+
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">RightRectangleStrategy</span>(<span class="hljs-title class_ inherited__">IntegrationStrategy</span>):
+    <span class="hljs-string">&quot;&quot;&quot;右矩形公式 (即后向欧拉法)隐式&quot;&quot;&quot;</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">step</span>(<span class="hljs-params">self, f, xn, yn, h</span>):
+        x_next = xn + h
+        equation_to_solve = <span class="hljs-keyword">lambda</span> y_next: y_next - yn - h * f(x_next, y_next)
+        initial_guess = yn + h * f(xn, yn)
+        solution = root(equation_to_solve, initial_guess)
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> solution.success:
+            <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;解方程失败&quot;</span>)
+        <span class="hljs-keyword">return</span> solution.x[<span class="hljs-number">0</span>]
+
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ImplicitTrapezoidStrategy</span>(<span class="hljs-title class_ inherited__">IntegrationStrategy</span>):
+    <span class="hljs-string">&quot;&quot;&quot;梯形公式 (隐式)&quot;&quot;&quot;</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">step</span>(<span class="hljs-params">self, f, xn, yn, h</span>):
+        x_next = xn + h
+        f_xn_yn = f(xn, yn)
+        equation_to_solve = <span class="hljs-keyword">lambda</span> y_next: y_next - yn - (h / <span class="hljs-number">2.0</span>) * (f_xn_yn + f(x_next, y_next))
+        initial_guess = yn + h * f_xn_yn
+        solution = root(equation_to_solve, initial_guess)
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> solution.success:
+            <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">f&quot;隐式梯形法在 x=<span class="hljs-subst">&#123;xn&#125;</span> 处解方程失败: <span class="hljs-subst">&#123;solution.message&#125;</span>&quot;</span>)
+        <span class="hljs-keyword">return</span> solution.x[<span class="hljs-number">0</span>]
+
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">TrapezoidStrategy</span>(<span class="hljs-title class_ inherited__">IntegrationStrategy</span>):
+    <span class="hljs-string">&quot;&quot;&quot;梯形公式 (即改进欧拉法或Heun法)&quot;&quot;&quot;</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">step</span>(<span class="hljs-params">self, f, xn, yn, h</span>):
+        y_predictor = yn + h * f(xn, yn)
+        <span class="hljs-keyword">return</span> yn + (h / <span class="hljs-number">2.0</span>) * (f(xn, yn) + f(xn + h, y_predictor))
+
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">MidpointStrategy</span>(<span class="hljs-title class_ inherited__">IntegrationStrategy</span>):
+    <span class="hljs-string">&quot;&quot;&quot;中矩形公式 (即显式中点法)&quot;&quot;&quot;</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">step</span>(<span class="hljs-params">self, f, xn, yn, h</span>):
+        k_mid = f(xn + h / <span class="hljs-number">2.0</span>, yn + (h / <span class="hljs-number">2.0</span>) * f(xn, yn))
+        <span class="hljs-keyword">return</span> yn + h * k_mid
+
+
+<span class="hljs-comment"># --------------------------------------------------------------------------</span>
+<span class="hljs-comment"># 2. 上下文类 (Context Class)</span>
+<span class="hljs-comment"># --------------------------------------------------------------------------</span>
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ODESolver</span>:
+    <span class="hljs-string">&quot;&quot;&quot;</span>
+<span class="hljs-string">    一阶微分方程求解器 (上下文)。</span>
+<span class="hljs-string">    它持有一个策略对象，并使用它来求解方程。</span>
+<span class="hljs-string">    &quot;&quot;&quot;</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, strategy: IntegrationStrategy</span>):
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-built_in">isinstance</span>(strategy, IntegrationStrategy):
+            <span class="hljs-keyword">raise</span> TypeError(<span class="hljs-string">&quot;strategy 必须是 IntegrationStrategy 的一个实例&quot;</span>)
+        <span class="hljs-variable language_">self</span>._strategy = strategy
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">set_strategy</span>(<span class="hljs-params">self, strategy: IntegrationStrategy</span>):
+        <span class="hljs-variable language_">self</span>._strategy = strategy
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">solve</span>(<span class="hljs-params">self, f, y0, x_span, num_steps</span>):
+        x_start, x_end = x_span
+        h = (x_end - x_start) / num_steps
+        x_values = np.linspace(x_start, x_end, num_steps + <span class="hljs-number">1</span>)
+        y_values = np.zeros(num_steps + <span class="hljs-number">1</span>)
+        y_values[<span class="hljs-number">0</span>] = y0
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(num_steps):
+            y_values[i + <span class="hljs-number">1</span>] = <span class="hljs-variable language_">self</span>._strategy.step(f, x_values[i], y_values[i], h)
+        <span class="hljs-keyword">return</span> x_values, y_values
+
+
+<span class="hljs-comment"># --------------------------------------------------------------------------</span>
+<span class="hljs-comment"># 3. 主程序 (Main Execution)</span>
+<span class="hljs-comment"># --------------------------------------------------------------------------</span>
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">f</span>(<span class="hljs-params">x, y</span>):
+        <span class="hljs-keyword">return</span> np.sin(x) + np.cos(y)
+
+
+    x0 = <span class="hljs-number">1.0</span>
+    y0 = <span class="hljs-number">3.0</span>
+    x_end = <span class="hljs-number">3.0</span>
+    x_span = (x0, x_end)
+
+    <span class="hljs-comment"># ----------------------------------------------------------------------</span>
+    <span class="hljs-comment"># MODIFICATION 1: 减少步数以放大不同方法间的差异</span>
+    <span class="hljs-comment"># ----------------------------------------------------------------------</span>
+    num_steps = <span class="hljs-number">5</span>
+
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">create_reference_solution</span>(<span class="hljs-params">f, y0, x_span</span>):
+        sol = solve_ivp(f, x_span, [y0], dense_output=<span class="hljs-literal">True</span>, method=<span class="hljs-string">&#x27;RK45&#x27;</span>, atol=<span class="hljs-number">1e-12</span>, rtol=<span class="hljs-number">1e-12</span>)
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> sol.success:
+            <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">&quot;高精度参考解求解失败！&quot;</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span> x: sol.sol(x)[<span class="hljs-number">0</span>]
+
+
+    reference_solution = create_reference_solution(f, y0, x_span)
+
+    strategies = &#123;
+        <span class="hljs-string">&quot;左矩形近似（欧拉法 显式）&quot;</span>: (LeftRectangleStrategy(), <span class="hljs-string">&quot;green&quot;</span>),
+        <span class="hljs-string">&quot;右矩形近似（隐式）&quot;</span>: (RightRectangleStrategy(), <span class="hljs-string">&quot;darkred&quot;</span>),
+        <span class="hljs-string">&quot;梯形近似（隐式）&quot;</span>: (ImplicitTrapezoidStrategy(), <span class="hljs-string">&quot;blue&quot;</span>),
+        <span class="hljs-string">&quot;梯形近似（改进欧拉法 显式）&quot;</span>: (TrapezoidStrategy(), <span class="hljs-string">&quot;red&quot;</span>),
+        <span class="hljs-string">&quot;中矩形近似（显式）&quot;</span>: (MidpointStrategy(), <span class="hljs-string">&quot;hotpink&quot;</span>),
+    &#125;
+
+    <span class="hljs-comment"># ----------------------------------------------------------------------</span>
+    <span class="hljs-comment"># MODIFICATION 2: 创建两个子图，一个用于解，一个用于误差</span>
+    <span class="hljs-comment"># sharex=True 让两个子图共享x轴</span>
+    <span class="hljs-comment"># ----------------------------------------------------------------------</span>
+    fig, (ax1, ax2) = plt.subplots(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>, figsize=(<span class="hljs-number">14</span>, <span class="hljs-number">12</span>), sharex=<span class="hljs-literal">True</span>)
+    plt.style.use(<span class="hljs-string">&#x27;seaborn-v0_8-whitegrid&#x27;</span>)
+
+    plt.rcParams[<span class="hljs-string">&#x27;font.sans-serif&#x27;</span>] = [<span class="hljs-string">&#x27;Microsoft YaHei&#x27;</span>]
+    plt.rcParams[<span class="hljs-string">&#x27;axes.unicode_minus&#x27;</span>] = <span class="hljs-literal">False</span>
+
+    <span class="hljs-comment"># --- 绘制 上方子图: 解函数 ---</span>
+    x_fine = np.linspace(x_span[<span class="hljs-number">0</span>], x_span[<span class="hljs-number">1</span>], <span class="hljs-number">200</span>)
+    ax1.plot(x_fine, reference_solution(x_fine), <span class="hljs-string">&#x27;k--&#x27;</span>, label=<span class="hljs-string">&quot;精确解&quot;</span>, linewidth=<span class="hljs-number">2.5</span>)
+
+    <span class="hljs-comment"># --- 绘制 下方子图: 误差 ---</span>
+    <span class="hljs-comment"># 先画一条 y=0 的基准线，方便对比</span>
+    ax2.axhline(<span class="hljs-number">0</span>, color=<span class="hljs-string">&#x27;black&#x27;</span>, linestyle=<span class="hljs-string">&#x27;--&#x27;</span>, linewidth=<span class="hljs-number">1</span>)
+
+    <span class="hljs-comment"># --- 循环求解、计算误差并绘图 ---</span>
+    <span class="hljs-keyword">for</span> name, (strategy_instance, color) <span class="hljs-keyword">in</span> strategies.items():
+        solver = ODESolver(strategy_instance)
+        x_num, y_num = solver.solve(f, y0, x_span, num_steps)
+
+        <span class="hljs-comment"># 绘制解函数到 ax1</span>
+        ax1.plot(x_num, y_num, <span class="hljs-string">&#x27;o-&#x27;</span>, label=name, color=color, markersize=<span class="hljs-number">5</span>)
+
+        <span class="hljs-comment"># 计算绝对误差</span>
+        y_exact_at_steps = reference_solution(x_num)
+        <span class="hljs-comment"># 加上一个很小的数，避免 log(0) 错误</span>
+        error = np.<span class="hljs-built_in">abs</span>(y_num - y_exact_at_steps) + <span class="hljs-number">1e-16</span>
+
+        <span class="hljs-comment"># 绘制误差到 ax2</span>
+        ax2.plot(x_num, error, <span class="hljs-string">&#x27;o-&#x27;</span>, label=<span class="hljs-string">f&quot;<span class="hljs-subst">&#123;name&#125;</span> 误差&quot;</span>, color=color, markersize=<span class="hljs-number">5</span>)
+
+    <span class="hljs-comment"># --- 配置图表 ---</span>
+    ax1.set_title(<span class="hljs-string">f&quot;不同差分法求解结果 (步数=<span class="hljs-subst">&#123;num_steps&#125;</span>)&quot;</span>, fontsize=<span class="hljs-number">16</span>)
+    ax1.set_ylabel(<span class="hljs-string">&quot;y 的解&quot;</span>, fontsize=<span class="hljs-number">12</span>)
+    ax1.legend(fontsize=<span class="hljs-number">11</span>)
+    ax1.grid(<span class="hljs-literal">True</span>)
+
+    ax2.set_title(<span class="hljs-string">&quot;各种方法的绝对误差（对数坐标）&quot;</span>, fontsize=<span class="hljs-number">16</span>)
+    ax2.set_xlabel(<span class="hljs-string">&quot;x&quot;</span>, fontsize=<span class="hljs-number">12</span>)
+    ax2.set_ylabel(<span class="hljs-string">&quot;绝对误差 |y* - y|&quot;</span>, fontsize=<span class="hljs-number">12</span>)
+    <span class="hljs-comment"># MODIFICATION 3: 将 y 轴设置为对数尺度</span>
+    ax2.set_yscale(<span class="hljs-string">&#x27;log&#x27;</span>)
+    ax2.legend(fontsize=<span class="hljs-number">11</span>)
+    ax2.grid(<span class="hljs-literal">True</span>, which=<span class="hljs-string">&quot;both&quot;</span>)  <span class="hljs-comment"># &#x27;both&#x27; 在主次刻度上都显示网格</span>
+
+    <span class="hljs-comment"># 自动调整布局，防止标签重叠</span>
+    plt.tight_layout()
+    plt.show()</code></pre>
 
 </div>
 

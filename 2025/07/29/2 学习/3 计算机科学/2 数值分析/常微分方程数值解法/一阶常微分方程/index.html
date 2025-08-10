@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+	<!-- title -->
+	
+		<title>
+			
+				一阶常微分方程 |
+					
+						Note
+		</title>
+
+		<!-- keywords,description -->
+		
+					
+
+								<!-- favicon -->
+								
+									<link rel="shortcut icon" href="/favicon.ico">
+										
+
+
+											<!-- search -->
+											<script>
+												var searchEngine = "";
+												if (typeof searchEngine == "undefined" || searchEngine == null || searchEngine == "")
+												{
+													searchEngine = "https://www.google.com/search?q=";
+												}
+												var homeHost = "BenChenEternity.github.io";
+												if (typeof homeHost == "undefined" || homeHost == null || homeHost == "")
+												{
+													homeHost = window.location.host;
+												}
+											</script>
+
+
+											
+<link rel="stylesheet" href="/css/main.css">
+
+												
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+													
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+														
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+															
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+
+																
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+																	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+																		
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+																			
+<script src="/js/main.js"></script>
+
+
+																				
+																					
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+																						
+<script src="https://cdn.jsdelivr.net/npm/valine@v1.5.1/dist/Valine.min.js"></script>
+
+																							
+																								
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+	crossorigin="anonymous"></script>
+
+<!-- To automatically render math in text elements, include the auto-render extension: -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">Note</a>
+
+	<ul id="menu">
+    
+      <li class="menu-item">
+        <a href="/about" class="menu-item-link">About</a>
+      </li>
+    
+
+    
+
+    
+
+    
+  
+    
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="Press Enter to search">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1 hexo
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/09/1%20hexo/1%20%E9%85%8D%E7%BD%AE/">
+                     
+										    1 配置
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/30/1%20hexo/2%20hexo%E8%BF%81%E7%A7%BB/">
+                     
+										    2 hexo迁移
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/15/1%20hexo/3%20%E6%96%87%E7%AB%A0%E7%BC%96%E5%8F%B7%E7%BC%96%E6%8E%92/">
+                     
+										    3 文章编号编排
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/24/1%20hexo/4%20%E5%85%AC%E5%BC%8F%E5%BC%95%E7%94%A8/">
+                     
+										    4 公式引用
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/19/1%20hexo/5%20%E5%85%AC%E5%BC%8F%E8%AF%86%E5%88%AB/">
+                     
+										    5 公式识别
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										2 学习
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1 数学
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/15/2%20%E5%AD%A6%E4%B9%A0/1%20%E6%95%B0%E5%AD%A6/SVD%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3/">
+                     
+										    奇异值分解
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										2 力学
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1 流体力学
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/09/2%20%E5%AD%A6%E4%B9%A0/2%20%E5%8A%9B%E5%AD%A6/1%20%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/1%20%E6%96%B9%E7%A8%8B%E7%BB%AA%E8%AE%BA/">
+                     
+										    1 方程绪论
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/09/2%20%E5%AD%A6%E4%B9%A0/2%20%E5%8A%9B%E5%AD%A6/1%20%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/2%20%E4%BC%AF%E5%8A%AA%E5%88%A9%E6%96%B9%E7%A8%8B/">
+                     
+										    2 伯努利方程
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/23/2%20%E5%AD%A6%E4%B9%A0/2%20%E5%8A%9B%E5%AD%A6/1%20%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/3%20N-S%E6%96%B9%E7%A8%8B%E7%9A%84%E8%A7%A3%E6%9E%90%E8%A7%A3/">
+                     
+										    3 N-S方程的解析解
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/07/01/2%20%E5%AD%A6%E4%B9%A0/2%20%E5%8A%9B%E5%AD%A6/1%20%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/4%20%E6%B9%8D%E6%B5%81/">
+                     
+										    4 湍流
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/07/10/2%20%E5%AD%A6%E4%B9%A0/2%20%E5%8A%9B%E5%AD%A6/1%20%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/5%20%E7%9B%B8%E4%BC%BC%E5%8E%9F%E7%90%86%E5%92%8C%E9%87%8F%E7%BA%B2%E5%88%86%E6%9E%90/">
+                     
+										    5 相似原理和量纲分析
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										2 计算流体力学
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										SPH光滑粒子法
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/07/28/2%20%E5%AD%A6%E4%B9%A0/2%20%E5%8A%9B%E5%AD%A6/2%20%E8%AE%A1%E7%AE%97%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/SPH%E5%85%89%E6%BB%91%E7%B2%92%E5%AD%90%E6%B3%95/SPH%E6%96%B9%E6%B3%95%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/">
+                     
+										    SPH方法基本原理
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/07/28/2%20%E5%AD%A6%E4%B9%A0/2%20%E5%8A%9B%E5%AD%A6/2%20%E8%AE%A1%E7%AE%97%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/SPH%E5%85%89%E6%BB%91%E7%B2%92%E5%AD%90%E6%B3%95/%E7%BB%AA%E8%AE%BA/">
+                     
+										    绪论
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										3 计算机科学
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1 计算机图形学
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1 理论
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/15/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/1%20%E7%BB%AA%E8%AE%BA/">
+                     
+										    1 绪论
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/15/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/2%20VAO%20%E4%B8%8E%20VBO/">
+                     
+										    2 VAO 与 VBO
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/09/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/3%20%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/">
+                     
+										    3 空间变换
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/16/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/4%20%E6%AC%A7%E6%8B%89%E8%A7%92/">
+                     
+										    4 欧拉角
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/19/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/5%20%E7%BD%91%E6%A0%BC%E6%9B%B2%E9%9D%A2/">
+                     
+										    5 网格曲面
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/16/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/6%20%E5%85%89%E7%85%A7/">
+                     
+										    6 光照
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/19/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/7%20%E7%BD%91%E6%A0%BC%E6%9B%B2%E9%9D%A2/">
+                     
+										    7 网格曲面
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										2 实践
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/09/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/1%20openGL%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/">
+                     
+										    1 openGL环境安装
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/2%20%E6%83%B3%E6%B3%95%E6%9E%84%E6%80%9D/">
+                     
+										    2 想法构思
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/3%20%E5%BA%94%E7%94%A8%E5%88%9B%E5%BB%BA/">
+                     
+										    3 应用创建
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/4%20%E4%B8%96%E7%95%8C%E5%AE%9A%E4%B9%89/">
+                     
+										    4 世界定义
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/5%20%E6%91%84%E5%83%8F%E6%9C%BA%E5%AE%9A%E4%B9%89/">
+                     
+										    5 摄像机定义
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/6%20%E7%9D%80%E8%89%B2%E5%99%A8%E5%AE%9A%E4%B9%89/">
+                     
+										    6 着色器定义
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/21/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/7%20%E5%A4%96%E9%83%A8%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/">
+                     
+										    7 外部资源管理
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/21/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/8%20%E5%AF%B9%E8%B1%A1/">
+                     
+										    8 对象
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/21/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/9%20%E5%AF%B9%E8%B1%A1%E7%BD%91%E6%A0%BC/">
+                     
+										    9 对象网格
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/21/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/">
+                     
+										    对象存储
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										2 数值分析
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										常微分方程数值解法
+									</a>
+									
+							<ul>
+								<li class="file active">
+									<a href="/2025/07/29/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/2%20%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95/%E4%B8%80%E9%98%B6%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/">
+                     
+										    一阶常微分方程
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										插值
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/26/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/2%20%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/%E6%8F%92%E5%80%BC/%E7%BB%AA%E8%AE%BA/">
+                     
+										    绪论
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										3 设计模式经验之谈
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/07/17/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/3%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%BB%8F%E9%AA%8C%E4%B9%8B%E8%B0%88/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">
+                     
+										    架构设计
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										3 思考
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/07/02/3%20%E6%80%9D%E8%80%83/%E6%80%BB%E7%BB%93%E5%8F%8D%E6%80%9D%E4%B8%8E%E5%B1%95%E6%9C%9B/">
+                     
+										    硕士三年应该怎样度过
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										4 杂项
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1 实用小工具
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/19/4%20%E6%9D%82%E9%A1%B9/1%20%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/1%20%E4%BB%A3%E7%A0%81%E6%89%81%E5%B9%B3%E5%8C%96%E5%B0%8F%E5%B7%A5%E5%85%B7/">
+                     
+										    1 代码扁平化小工具
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										2 环境配置
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/02/01/4%20%E6%9D%82%E9%A1%B9/2%20%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/windows%20python%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+                     
+										    windows python环境配置
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										5 游戏
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1 minecraft
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/13/5%20%E6%B8%B8%E6%88%8F/1%20minecraft/01%20Better%20MC/">
+                     
+										    01 Better MC
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/13/5%20%E6%B8%B8%E6%88%8F/1%20minecraft/02%20%E8%84%86%E9%AA%A8%E7%97%87/">
+                     
+										    02 脆骨症
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/14/5%20%E6%B8%B8%E6%88%8F/1%20minecraft/03%20%E5%B9%B8%E8%BF%90%E4%B8%96%E7%95%8C%E5%85%A5%E4%BE%B5/">
+                     
+										    03 幸运世界入侵
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/14/5%20%E6%B8%B8%E6%88%8F/1%20minecraft/04-Cisco-s-Fantasy-Medieval/">
+                     
+										    04 Cisco's Fantasy Medieval
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content" class="content">
+		<h1 id="article-title">
+	一阶常微分方程
+</h1>
+
+<!-- meta -->
+<div class="article-meta">
+	
+
+	<span>NicolasDavout</span>
+	<span>2025-07-29 13:15:58</span>
+
+  <div id="article-categories">
+    
+		  <span>Categories：</span>
+      
+    
+
+    
+		    <span>Tags：</span>
+        
+    
+  </div>
+
+</div>
+
+<!-- content -->
+<div id="article-content">
+	<h2 id="一阶常微分方程初值问题">一阶常微分方程初值问题</h2>
+<h3 id="唯一解存在性">唯一解存在性</h3>
+<h4 id="条件">条件</h4>
+<p><span class="math display">\[
+  \begin{cases}\frac{dy}{dx}=f(x,y),&amp;a\leq x\leq b;\\y(a)=\alpha.\end{cases}
+  \tag{1}
+\]</span></p>
+<p>如果函数 <span class="math inline">\(f(x,y)\)</span> 在区域 <span class="math inline">\(\{a{\leqslant}x{\leqslant}b\:,\quad m{&lt;}y{&lt;}M\}\)</span> 上连续，且关于 <span class="math inline">\(y\)</span> 满足 Lipschitz 条件
+<span class="math display">\[
+  \begin{vmatrix}f(x,y_1)-f(x,y_2)\end{vmatrix}\leq L\begin{vmatrix}y_1-y_2\end{vmatrix},\quad\forall y_1,y_2,
+  \tag{2}
+\]</span>
+其中 <span class="math inline">\(L&gt;0\)</span> 为 Lipschitz 常数，那么 <span class="formula-ref" data-formula="\begin{cases}\frac{dy}{dx}=f(x,y),&amp;a\leq x\leq b;\\y(a)=\alpha.\end{cases}">(1)</span> 在 <span class="math inline">\(a\)</span> 的某个邻域上存在唯一解。</p>
+<h4 id="解释">解释</h4>
+<p>对于 <span class="math inline">\(f(x,y)\)</span> 的限制有2个：</p>
+<ul>
+<li>连续</li>
+<li>关于 <span class="math inline">\(y\)</span> 的 Lipschitz 条件</li>
+</ul>
+<p>Lipschitz 条件限制了函数 <span class="math inline">\(f(x,y)\)</span> 随 <span class="math inline">\(y\)</span> 变化率不会太快。</p>
+<p>另外一个充分条件是：如果 <span class="math inline">\(\frac{\partial f}{\partial y}\)</span> 在区域内连续有界，那么 Lipschitz 条件成立。</p>
+<p>在连续条件下：如果 Lipschitz 条件不成立，说明 <span class="math inline">\(f(x,y)\)</span> 随 <span class="math inline">\(y\)</span> 变化率在某点会无限大， <span class="math inline">\(\frac{\partial f}{\partial y}\)</span> 无界。</p>
+<h4 id="不满足-lipschitz-条件例子">不满足 Lipschitz 条件例子</h4>
+<p><span class="math display">\[
+  y&#39;=2\sqrt{|y|}
+  \tag{3}
+\]</span></p>
+<p>可以找到第一个解： <span class="math inline">\(y(x)=0\)</span></p>
+<p>第二个解
+<span class="math display">\[
+  y(x)=\begin{cases}x^2,&amp;x\geq0\\-x^2,&amp;x&lt;0&amp;\end{cases}
+  \tag{4}
+\]</span>
+说明并非唯一解，下面对 Lipschitz 条件进行判断</p>
+<p>取 <span class="math inline">\(y_2=0\)</span> 我们需要找到一个常数 <span class="math inline">\(L\)</span> 使得：
+<span class="math display">\[
+  \begin{aligned}&amp;|f(x,y_1)-f(x,0)|\leq L|y_1-0|\\&amp;|2\sqrt{y_1}-0|\leq L|y_1|\\&amp;2\sqrt{y_1}\leq Ly_1\end{aligned}
+  \tag{5}
+\]</span></p>
+<p>对于 <span class="math inline">\(y_1&gt;0\)</span> 有：
+<span class="math display">\[
+  L\geq\frac2{\sqrt{y_1}}
+  \tag{6}
+\]</span>
+如果 <span class="math inline">\(y_1\rightarrow0\)</span> 无界，这样的 <span class="math inline">\(L\)</span> 不存在</p>
+<p>说明在 0 附近， <span class="math inline">\(f(x,y)\)</span> 随 <span class="math inline">\(y\)</span> 变化率过大，出现了分岔，还有另外一个特殊情况满足条件，而这些情况在保持连续情况下任意组合组成了无穷多解。</p>
+<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250729140609441.png" /></p>
+<h4 id="证明存在性例子">证明存在性例子</h4>
+<p><span class="math display">\[
+  \begin{cases}\frac{dy}{dx}=1+x\sin(xy),&amp;0\leq x\leq2\\y(0)=1.\end{cases}
+  \tag{7}
+\]</span></p>
+<p>是否存在唯一解？</p>
+<p>显然 <span class="math inline">\(f(x,y)=1+x\sin(xy)\)</span></p>
+<p>对于任意 <span class="math inline">\(y_1, y_2\)</span> 对 <span class="math inline">\(y\)</span> 应用微分中值定理，都存在 <span class="math inline">\(\eta\)</span> 使得
+<span class="math display">\[
+  \frac{f(x,y_1)-f(x,y_2)}{y_1-y_2}=\frac\partial{\partial y}f(x,\eta)=x^2\cos(x\eta),
+  \tag{8}
+\]</span></p>
+<p>于是
+<span class="math display">\[
+  \left|f(x,y_1)-f(x,y_2)\right|=\left|x^2\cos(x\eta)\right|\left|y_1-y_2\right|\leq4\left|y_1-y_2\right|,
+  \tag{9}
+\]</span>
+满足条件 <span class="formula-ref" data-formula="\begin{vmatrix}f(x,y_1)-f(x,y_2)\end{vmatrix}\leq L\begin{vmatrix}y_1-y_2\end{vmatrix},\quad\forall y_1,y_2,">(2)</span> ，所以存在 <span class="formula-ref" data-formula="\begin{cases}\frac{dy}{dx}=1+x\sin(xy),&amp;0\leq x\leq2\\y(0)=1.\end{cases}">(7)</span> 唯一解</p>
+<h3 id="差分法">差分法</h3>
+<p><span class="math display">\[
+  \begin{cases}\frac{dy}{dx}=f(x,y),&amp;a\leq x\leq b;\\y(a)=\alpha.\end{cases}
+  \tag{10}
+\]</span></p>
+<p>假设解 <span class="math inline">\(y=y(x)\)</span> 唯一存在并光滑，目标是求解精确解 <span class="math inline">\(y(x)\)</span> 在节点 <span class="math inline">\(x_i\)</span> 上的值 <span class="math inline">\(y(x_i)\)</span> 的近似值 <span class="math inline">\(y_i\)</span> 其中 <span class="math inline">\(i=1,2,\cdots,N\)</span></p>
+<p><strong>区间划分</strong></p>
+<p>对 <span class="math inline">\([a,b]\)</span> 区间等距划分为 <span class="math inline">\(N\)</span> 个区间。其中步长为 <span class="math inline">\(h=\frac{b-a}{N}\)</span></p>
+<p>每个节点 <span class="math inline">\(x_i=a+ih\)</span> 其中 <span class="math inline">\(i=0,1,\cdots,N\)</span></p>
+<p><strong>区间积分</strong></p>
+<p>对 <span class="formula-ref" data-formula="y(x_{i+1})-y(x_i)=\int_{x_i}^{x_{i+1}}f(x,y(x))dx"><span class="formula-ref" data-formula="\begin{cases}\frac{dy}{dx}=f(x,y),&amp;a\leq x\leq b;\\y(a)=\alpha.\end{cases}">(10)</span></span> 第一式在 <span class="math inline">\([x_i,x_{i+1}]\)</span> 区间上两端同时积分，有：
+<span class="math display">\[
+  y(x_{i+1})-y(x_i)=\int_{x_i}^{x_{i+1}}f(x,y(x))dx
+  \tag{11}
+\]</span></p>
+<p>对公式 <span class="formula-ref" data-formula="y(x_{i+1})-y(x_i)=\int_{x_i}^{x_{i+1}}f(x,y(x))dx">(11)</span> 的右侧进行不同的数值积分公式逼近，可得到不同的差分公式</p>
+<p><strong>区间积分近似</strong></p>
+<p>下面描述常见的积分近似办法</p>
+<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250729151022242.png" />
+<span class="math display">\[
+  \begin{aligned}&amp;\text{梯形公式(红色)}&amp;&amp;\int_a^bf(x)dx\approx\frac{b-a}2[f(a)+f(b)]\\&amp;\text{左矩形公式(绿色)}&amp;&amp;\int_a^bf(x)dx\approx(b-a)f(a)\\&amp;\text{右矩形公式(深红色)}&amp;&amp;\int_a^bf(x)dx\approx(b-a)f(b)\\&amp;\text{中矩形公式(粉色)}&amp;&amp;\int_a^bf(x)dx\approx(b-a)f(\frac{a+b}2)\end{aligned}
+  \tag{12}
+\]</span>
+梯形公式和中矩形公式的精度较高</p>
+<h4 id="欧拉公式">欧拉公式</h4>
+<p>对 <span class="formula-ref" data-formula="y(x_{i+1})-y(x_i)=\int_{x_i}^{x_{i+1}}f(x,y(x))dx">(11)</span> 的右边使用左矩形公式，有
+<span class="math display">\[
+  y(x_{i+1})\approx y(x_i)+hf(x_i,y(x_i))
+  \tag{13}
+\]</span>
+所以差分公式的递推式为：
+<span class="math display">\[
+  \begin{cases}y_{i+1}=y_i+hf(x_i,y_i)\\\\y_0=\alpha,&amp;,i=0,1,2,\cdots,N-1\end{cases}
+  \tag{14}
+\]</span></p>
+<h4 id="梯形公式">梯形公式</h4>
+<p>对 <span class="formula-ref" data-formula="y(x_{i+1})-y(x_i)=\int_{x_i}^{x_{i+1}}f(x,y(x))dx">(11)</span> 的右边使用中矩形公式，有
+<span class="math display">\[
+  \begin{cases}y_{i+1}=y_i+\frac{h}{2}[f(x_i,y_i)+f(x_{i+1},y_{i+1})]\\y_0=\alpha,&amp;,i=0,1,2\cdots,N-1\end{cases}
+  \tag{15}
+\]</span>
+因为两边都含有 <span class="math inline">\(y_{i+1}\)</span> 需要解方程计算所以称为隐式公式，但是精度较高</p>
+<h4 id="欧拉中点公式">欧拉中点公式</h4>
+<p>对 <span class="math inline">\([x_{i-1},x_{i+1}]\)</span> 积分
+<span class="math display">\[
+  \begin{cases}y_{i+1}=y_{i-1}+2hf(x_i,y_i)\\\\y_0=\alpha&amp;,i=1,2\cdots,N-1\end{cases}
+  \tag{16}
+\]</span>
+因为要用到前两步的结果，所以称为两步方法</p>
+<p><span class="math inline">\(\begin{aligned}&amp;\text{公式名称}&amp;&amp;\text{主要格式}&amp;&amp;\text{显式/隐式}&amp;&amp;\text{单步/多步}&amp;&amp;\text{精度}\\&amp;\text{Euler公式}&amp;&amp;y(x_{i+1})\approx y(x_i)+hf(x_i,y(x_i))&amp;&amp;\text{单步}&amp;&amp;\text{显式}&amp;&amp;\text{稍差}\\&amp;\text{梯形公式}&amp;&amp;y_{i+1}=y_{i}+\frac{h}{2}[f(x_i,y_{i})+f(x_{i+1},y_{i+1})]&amp;&amp;\text{单步}&amp;&amp;\text{隐式}&amp;&amp;\text{较高}\\&amp;\text{Euler中点公式}&amp;&amp;y_{i+1}=y_{i-1}+2hf(x_i,y_{i})&amp;&amp;\text{多步}&amp;&amp;\text{显式}&amp;&amp;\text{较高}\end{aligned}\)</span></p>
+<h4 id="改进的欧拉公式">改进的欧拉公式</h4>
+<p>针对梯形公式 <span class="formula-ref" data-formula="\begin{cases}y_{i+1}=y_i+\frac{h}{2}[f(x_i,y_i)+f(x_{i+1},y_{i+1})]\\y_0=\alpha,&amp;,i=0,1,2\cdots,N-1\end{cases}">(15)</span> ，每一步运算解非线性方程计算量大。对于右侧的 <span class="math inline">\(f(x_{i+1},y_{i+1})\)</span> 每一步采用欧拉公式来近似计算。</p>
+<p>基本思路是：预测-校正</p>
+<p>对于每一步：</p>
+<ul>
+<li>计算当前斜率 <span class="math inline">\(k_i=f(x_i,y_i)\)</span></li>
+<li>预测下一点 <span class="math inline">\(y_{i+1}^*=y_i+h\times k_i\)</span></li>
+<li>预测下一点斜率 <span class="math inline">\(k_{i+1}=f(x_{i+1},y_{i+1}^*)\)</span></li>
+<li>计算平均斜率（梯形公式） <span class="math inline">\(y_{i+1}=y_i+\frac{h}{2}(k_1+k_2)\)</span></li>
+</ul>
+<p>最终公式为
+<span class="math display">\[
+  y_{i+1}=y_i+\frac h2[f(x_i,y_i)+f(x_{i+1},y_i+hf(x_i,y_i))]
+  \tag{17}
+\]</span>
+初始条件 <span class="math inline">\(y(x_0)=y_0\)</span></p>
+<h3 id="差分法误差分析">差分法误差分析</h3>
+<h4 id="二元泰勒展开">二元泰勒展开</h4>
+<p><span class="math display">\[
+  \begin{aligned}f(x_{n}+h,y_{n}+k)&amp;=f(x_{n},y_{n})+\frac{\partial f(x_{n},y_{n})}{\partial x}h+\frac{\partial f(x_{n},y_{n})}{\partial y}k\\&amp;+\frac{1}{2!}\biggl[\frac{\partial^{2}f(x_{n},y_{n})}{\partial x^{2}}h^{2}+2\frac{\partial^{2}f(x_{n},y_{n})}{\partial x\partial y}hk+\frac{\partial^{2}f(x_{n},y_{n})}{\partial y^{2}}k^{2}\biggr]+\cdots\\&amp;+\frac{1}{k!}\biggl[h\frac{\partial}{\partial x}+k\frac{\partial}{\partial y}\biggr]^{k}f(x_{n},y_{n})+\cdots\cdots\end{aligned}
+  \tag{18}
+\]</span></p>
+<h4 id="y-的导数"><span class="math inline">\(y\)</span> 的导数</h4>
+<p><span class="math inline">\(y&#39;=f(x,y)\)</span> ，记 <span class="math inline">\(y&#39;(x_n)=f_n\)</span>
+<span class="math display">\[
+  y&#39;&#39;(x_n)=\frac{\partial f}{\partial x}(x_n,y_n)+\frac{\partial f}{\partial y}(x_n,y_n)y&#39;(x_n)=\frac{\partial f_n}{\partial x}+\frac{\partial f_n}{\partial y}f_n\\
+  y^{\prime\prime}(x_n)=\frac{\partial^2f_n}{\partial x^2}+2\frac{\partial^2f_n}{\partial x\partial y}f_n+\frac{\partial^2f_n}{\partial y^2}f_n^2+\frac{\partial f_n}{\partial x}\frac{\partial f_n}{\partial y}+(\frac{\partial f_n}{\partial y})^2f_n
+  \tag{19}
+\]</span></p>
+<h4 id="欧拉公式误差分析">欧拉公式误差分析</h4>
+<p>已知欧拉公式，结果为估计结果
+<span class="math display">\[
+  y_{i+1}=y_i+hf(x_i,y_i)
+  \tag{20}
+\]</span>
+<span class="math inline">\(y(x_{n+1})\)</span> 是精确结果，对其进行展开
+<span class="math display">\[
+  y(x_{i+1})=y(x_i+h)=y(x_i)+y^{\prime}(x_i)h+\frac{y^{\prime\prime}(x_i)}{2!}h^2+O(h^3)
+  \tag{21}
+\]</span>
+那么结合 <span class="formula-ref" data-formula="y_{i+1}=y_i+hf(x_i,y_i)">(20)</span><span class="formula-ref" data-formula="y(x_{i+1})=y(x_i+h)=y(x_i)+y^{\prime}(x_i)h+\frac{y^{\prime\prime}(x_i)}{2!}h^2+O(h^3)">(21)</span> 可得局部截断误差
+<span class="math display">\[
+  y(x_{i+1})-y_{i+1}=\frac{y^{\prime\prime}(x_i)}{2!}h^2+O(h^3)=O(h^2)
+  \tag{22}
+\]</span>
+所以欧拉公式是1阶方法，精确到1阶，2阶以后不够精确。</p>
+<h4 id="改进欧拉公式误差分析">改进欧拉公式误差分析</h4>
+<p>我们把式 <span class="formula-ref" data-formula="y_{i+1}=y_i+\frac h2[f(x_i,y_i)+f(x_{i+1},y_i+hf(x_i,y_i))]">(17)</span> 其中的 <span class="math inline">\(f(x_i,y_i)\)</span> 表示为 <span class="math inline">\(f(x_i,y_i)=K=f_i\)</span></p>
+<p>那么 <span class="formula-ref" data-formula="y_{i+1}=y_i+\frac h2[f(x_i,y_i)+f(x_{i+1},y_i+hf(x_i,y_i))]">(17)</span> 表示为
+<span class="math display">\[
+  y_{i+1}=y_i+\frac h2[K+f(x_{i+1},y_i+hK)]
+  \tag{23}
+\]</span>
+其中
+<span class="math display">\[
+  \begin{aligned}
+  f(x_{i+1}, y_{i}+hK) &amp;=\\
+  f(x_{i}+h, y_{i}+hK) &amp;= f_{i} + \frac{\partial f_{i}}{\partial x}h + \frac{\partial f_{i}}{\partial y}hK \\
+  &amp;\quad + \frac{1}{2} \biggl[ \frac{\partial^{2} f_{i}}{\partial x^{2}} h^{2} + 2\frac{\partial^{2} f_{i}}{\partial x \partial y} h^{2} K + \frac{\partial^{2} f_{i}}{\partial y^{2}} h^{2} K^{2} \biggr] + O(h^{3})
+  \end{aligned}
+  \tag{24}
+\]</span>
+<span class="formula-ref" data-formula="\begin{aligned}
+  f(x_{i+1}, y_{i}+hK) &amp;=\\
+  f(x_{i}+h, y_{i}+hK) &amp;= f_{i} + \frac{\partial f_{i}}{\partial x}h + \frac{\partial f_{i}}{\partial y}hK \\
+  &amp;\quad + \frac{1}{2} \biggl[ \frac{\partial^{2} f_{i}}{\partial x^{2}} h^{2} + 2\frac{\partial^{2} f_{i}}{\partial x \partial y} h^{2} K + \frac{\partial^{2} f_{i}}{\partial y^{2}} h^{2} K^{2} \biggr] + O(h^{3})
+  \end{aligned}">(24)</span> 代入 <span class="formula-ref" data-formula="y_{i+1}=y_i+\frac h2[K+f(x_{i+1},y_i+hK)]">(23)</span> ，同时 <span class="math inline">\(f(x_i,y_i)=K=f_i\)</span> 得到：
+<span class="math display">\[
+  y_{i+1} = y_i + f_i h + \frac{h^2}{2} \left[ \frac{\partial f_i}{\partial x} + \frac{\partial f_i}{\partial y} f_i \right] + \frac{h^3}{4} \left[ \frac{\partial^{2} f_i}{\partial x^{2}} + 2\frac{\partial^{2} f_i}{\partial x \partial y} f_i + \frac{\partial^{2} f_i}{\partial y^{2}} f_i^{2} \right] + O(h^{4})
+  \tag{25}
+\]</span>
+<span class="formula-ref" data-formula="y_{i+1} = y_i + f_i h + \frac{h^2}{2} \left[ \frac{\partial f_i}{\partial x} + \frac{\partial f_i}{\partial y} f_i \right] + \frac{h^3}{4} \left[ \frac{\partial^{2} f_i}{\partial x^{2}} + 2\frac{\partial^{2} f_i}{\partial x \partial y} f_i + \frac{\partial^{2} f_i}{\partial y^{2}} f_i^{2} \right] + O(h^{4})">(25)</span> 得到的是估计值，下面计算真实值，对 <span class="math inline">\(y(x_{i+1})\)</span> 泰勒展开
+<span class="math display">\[
+  y(x_{i+1}) = y(x_{i}) + y^{\prime}(x_{i}) h + \frac{y^{\prime\prime}(x_{i})}{2} h^{2} + \frac{y^{\prime\prime\prime}(x_{i})}{3!} h^{3} + O(h^{4})
+  \tag{26}
+\]</span>
+把 <span class="formula-ref" data-formula="y&#39;&#39;(x_n)=\frac{\partial f}{\partial x}(x_n,y_n)+\frac{\partial f}{\partial y}(x_n,y_n)y&#39;(x_n)=\frac{\partial f_n}{\partial x}+\frac{\partial f_n}{\partial y}f_n\\
+  y^{\prime\prime}(x_n)=\frac{\partial^2f_n}{\partial x^2}+2\frac{\partial^2f_n}{\partial x\partial y}f_n+\frac{\partial^2f_n}{\partial y^2}f_n^2+\frac{\partial f_n}{\partial x}\frac{\partial f_n}{\partial y}+(\frac{\partial f_n}{\partial y})^2f_n">(19)</span> 代入 <span class="formula-ref" data-formula="y(x_{i+1}) = y(x_{i}) + y^{\prime}(x_{i}) h + \frac{y^{\prime\prime}(x_{i})}{2} h^{2} + \frac{y^{\prime\prime\prime}(x_{i})}{3!} h^{3} + O(h^{4})">(26)</span> ，得到真实值
+<span class="math display">\[
+  \begin{aligned}
+  y(x_{i+1}) &amp;= y(x_i) + y^{\prime}(x_i) h + \frac{y^{\prime\prime}(x_i)}{2} h^2 + \frac{y^{\prime\prime\prime}(x_i)}{3!} h^3 + O(h^4) \\
+  &amp;= y_i + f_i h + \frac{h^2}{2} \left[ \frac{\partial f_i}{\partial x} + \frac{\partial f_i}{\partial y} f_i \right] \\
+  &amp;\quad + \frac{h^3}{6} \left[ \frac{\partial^{2} f_i}{\partial x^{2}} + 2\frac{\partial^{2} f_i}{\partial x \partial y} f_i + \frac{\partial^{2} f_i}{\partial y^{2}} f_i^{2} + \frac{\partial f_i}{\partial x} \frac{\partial f_i}{\partial y} + \left(\frac{\partial f_i}{\partial y}\right)^{2} f_i \right] + O(h^{4})
+  \end{aligned}
+  \tag{27}
+\]</span>
+结合 <span class="formula-ref" data-formula="y_{i+1} = y_i + f_i h + \frac{h^2}{2} \left[ \frac{\partial f_i}{\partial x} + \frac{\partial f_i}{\partial y} f_i \right] + \frac{h^3}{4} \left[ \frac{\partial^{2} f_i}{\partial x^{2}} + 2\frac{\partial^{2} f_i}{\partial x \partial y} f_i + \frac{\partial^{2} f_i}{\partial y^{2}} f_i^{2} \right] + O(h^{4})">(25)</span><span class="formula-ref" data-formula="\begin{aligned}y(x_{n+1})&amp;=y(x_n)+y^{\prime}(x_n)h+\frac{y^{\prime\prime}(x_n)}2h^2+\frac{y^{\prime\prime\prime}(x_n)}{3!}h^3+O(h^4)\\&amp;=y_n+f_nh+\frac{h^2}2\left[\frac{\partial f_n}{\partial x}+\frac{\partial f_n}{\partial y}f_n\right]\end{aligned}"><span class="formula-ref" data-formula="\begin{aligned}
+y(x_{i+1}) &amp;= y(x_i) + y^{\prime}(x_i) h + \frac{y^{\prime\prime}(x_i)}{2} h^2 + \frac{y^{\prime\prime\prime}(x_i)}{3!} h^3 + O(h^4) \\
+&amp;= y_i + f_i h + \frac{h^2}{2} \left[ \frac{\partial f_i}{\partial x} + \frac{\partial f_i}{\partial y} f_i \right] \\
+&amp;\quad + \frac{h^3}{6} \left[ \frac{\partial^{2} f_i}{\partial x^{2}} + 2\frac{\partial^{2} f_i}{\partial x \partial y} f_i + \frac{\partial^{2} f_i}{\partial y^{2}} f_i^{2} + \frac{\partial f_i}{\partial x} \frac{\partial f_i}{\partial y} + \left(\frac{\partial f_i}{\partial y}\right)^{2} f_i \right] + O(h^{4})
+\end{aligned}">(27)</span></span> 两式得到截断误差
+<span class="math display">\[
+  y(x_{i+1})-y_{i+1}=0(h^3)
+  \tag{28}
+\]</span></p>
+
+</div>
+
+<!-- post-guide -->
+
+    <div class="post-guide">
+        <div class="item left">
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2025/07/28/2%20%E5%AD%A6%E4%B9%A0/2%20%E5%8A%9B%E5%AD%A6/2%20%E8%AE%A1%E7%AE%97%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/SPH%E5%85%89%E6%BB%91%E7%B2%92%E5%AD%90%E6%B3%95/SPH%E6%96%B9%E6%B3%95%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/">
+                SPH方法基本原理
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+<!-- comment - giscus -->
+
+
+<!-- comment - valine -->
+
+
+<script>
+	
+	
+</script>
+
+	</div>
+	<div id="footer">
+	<p>
+		©<span id="footerYear-start">
+			
+		</span>-<span id="footerYear-end"></span>
+
+		
+				<a href="/">
+					NicolasDavout
+				</a>
+				
+
+					
+							<br>
+							Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+							by <a href="//wujun.me" target="_blank">Wu Jun</a>
+							Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+
+
+	<script type="text/javascript">
+		document.getElementById('footerYear-start').innerHTML = new Date().getFullYear() + '';
+	</script>
+	
+		<script type="text/javascript">
+			document.getElementById('footerYear-end').innerHTML = new Date().getFullYear() + '';
+		</script>
+		
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>

@@ -1034,7 +1034,7 @@ y(x_{i+1}) &amp;= y(x_i) + y^{\prime}(x_i) h + \frac{y^{\prime\prime}(x_i)}{2} h
 &amp;\quad + \frac{h^3}{6} \left[ \frac{\partial^{2} f_i}{\partial x^{2}} + 2\frac{\partial^{2} f_i}{\partial x \partial y} f_i + \frac{\partial^{2} f_i}{\partial y^{2}} f_i^{2} + \frac{\partial f_i}{\partial x} \frac{\partial f_i}{\partial y} + \left(\frac{\partial f_i}{\partial y}\right)^{2} f_i \right] + O(h^{4})
 \end{aligned}">(27)</span></span> 两式得到截断误差
 <span class="math display">\[
-  y(x_{i+1})-y_{i+1}=0(h^3)
+y(x_{i+1})-y_{i+1}=O(h^3)
   \tag{28}
 \]</span></p>
 <h2 id="代码实现比较不同差分方法比较">代码实现比较不同差分方法比较</h2>

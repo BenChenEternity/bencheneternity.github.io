@@ -851,7 +851,7 @@
 <p>在连续条件下：如果 Lipschitz 条件不成立，说明 <span class="math inline">\(f(x,y)\)</span> 随 <span class="math inline">\(y\)</span> 变化率在某点会无限大， <span class="math inline">\(\frac{\partial f}{\partial y}\)</span> 无界。</p>
 <h4 id="不满足-lipschitz-条件例子">不满足 Lipschitz 条件例子</h4>
 <p><span class="math display">\[
-  y&#39;=2\sqrt{|y|}
+y&#39;=2\sqrt{|y|}
   \tag{3}
 \]</span></p>
 <p>可以找到第一个解： <span class="math inline">\(y(x)=0\)</span></p>
@@ -1040,8 +1040,9 @@ y(x_{i+1})-y_{i+1}=O(h^3)
 <h2 id="代码实现比较不同差分方法比较">代码实现比较不同差分方法比较</h2>
 <p>代码如下，使用策略模式，将不同的差分近似方法封装进具体策略类。</p>
 <p>比较精确的ODE解曲线使用库来画出来，再画出不同近似方法下研究区间内各个点的差分计算结果。</p>
-<p>结果如下</p>
+<p>我们对 <span class="math inline">\(\frac{dy}{dx}=sin\ x+cos\ y\)</span> 使用不同差分法近似，取步数为5，区间从1到3，结果如下。</p>
 <p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250811022214522.png" /></p>
+<p>从结果分析，中矩形近似和和梯形近似误差较小，而且显式和隐式的梯形近似误差不大。</p>
 <p>代码如下</p>
 <pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 <span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt

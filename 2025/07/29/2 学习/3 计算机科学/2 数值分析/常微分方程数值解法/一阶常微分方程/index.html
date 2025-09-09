@@ -959,6 +959,7 @@
 \]</span>
 满足条件 <span class="formula-ref" data-formula="\begin{vmatrix}f(x,y_1)-f(x,y_2)\end{vmatrix}\leq L\begin{vmatrix}y_1-y_2\end{vmatrix},\quad\forall y_1,y_2,">(2)</span> ，所以存在 <span class="formula-ref" data-formula="\begin{cases}\frac{dy}{dx}=1+x\sin(xy),&amp;0\leq x\leq2\\y(0)=1.\end{cases}">(7)</span> 唯一解</p>
 <h3 id="差分法">差分法</h3>
+<p>首先介绍基础的差分法。</p>
 <h4 id="原理">原理</h4>
 <p><span class="math display">\[
   \begin{cases}\frac{dy}{dx}=f(x,y),&amp;a\leq x\leq b;\\y(a)=\alpha.\end{cases}
@@ -1225,6 +1226,56 @@
   \tag{40}
 \]</span>
 对于五阶以上的 R-K 公式不再有与其级数相匹配的误差阶，所以一般使用三阶或者四阶的 R-K 公式</p>
+<h4 id="隐式-r-k-方法">隐式 R-K 方法</h4>
+<p>下面是 p 级的隐式 R-K 方法表达式
+<span class="math display">\[
+  \begin{cases}y_{i+1}=y_i+h\sum\limits_{r=1}^p\lambda_rK_r\\K_r=f(x_i+\alpha_rh,y_i+h\sum\limits_{j=1}^r\lambda_{rj}K_j)\end{cases},r=1,2,\cdots,p
+  \tag{41}
+\]</span>
+如果 R-K 方法在方程左右两边都有未知数 <span class="math inline">\(K_r\)</span>，需要依赖解方程来求解。</p>
+<p>当 p=2 时，
+<span class="math display">\[
+  \begin{cases}y_{i+1}=y_i+\frac12h(K_1+K_2)\\K_1=f(x_i,y_i)\\K_2=f(x_i+h,y_i+\frac12hK_1+\frac12hK_2)\end{cases}
+  \tag{42}
+\]</span>
+此式就是梯形公式，二阶</p>
+<p>p 级 R-K 方法的阶有时可能大于 p</p>
+<p>考虑一级隐式中点公式
+<span class="math display">\[
+  \begin{cases}y_{i+1}=y_i+hK_1\\K_1=f(x_i+\frac{1}{2}h,y_i+\frac{1}{2}hK_1)\end{cases}
+  \tag{43}
+\]</span>
+也可以写成
+<span class="math display">\[
+  y_{i+1}=y_i+hf(x_i+\frac12h,\frac12(y_i+y_{i+1}))
+  \tag{44}
+\]</span>
+是二阶方法</p>
+<p><strong>特点</strong></p>
+<p>隐式方法的优势在于数值稳定性好，但是计算量大</p>
+<h3 id="变步长的差分法">变步长的差分法</h3>
+<h4 id="背景">背景</h4>
+<p>对于 <span class="math inline">\(f(x,y)\)</span> 的不同区间：</p>
+<ul>
+<li>在陡的部分，步长过大，误差大</li>
+<li>在缓的部分，步长过小，效率低</li>
+</ul>
+<p>为了追求误差和效率的平衡，采用变步长的方法。在陡的部分步长减小，缓的部分步长增大。</p>
+<h4 id="变步长-runge-kutta-方法">变步长 Runge-Kutta 方法</h4>
+<p>假设在 <span class="math inline">\(x_i\)</span> 以步长 <span class="math inline">\(h\)</span> 计算精确值 <span class="math inline">\(y(x_{i+1})\)</span> 的近似值为 <span class="math inline">\(y_{i+1}^{(h)}\)</span> ，截断误差为 <span class="math inline">\(y(x_{i+1})-y_{i+1}^{(h)}=Ch^{p+1}\)</span></p>
+<p>其中 <span class="math inline">\(C\)</span> 是常数，将步长减半 <span class="math inline">\(y(x_{i+1})-y_{i+1}^{(\frac{h}{2})}\approx2C(\frac{h}{2})^{p+1}=\frac{1}{2^p}Ch^{p+1}\)</span>
+<span class="math display">\[
+  \frac{y(x_{i+1})-y_{i+1}^{(\frac h2)}}{y(x_{i+1})-y_{i+1}^{(h)}}\approx\frac1{2^p}
+  \tag{45}
+\]</span>
+也就是说在步长减半之后，局部阶段误差变成原来的 <span class="math inline">\(\frac{1}{2^p}\)</span></p>
+<p>整理 <span class="formula-ref" data-formula="\frac{y(x_{i+1})-y_{i+1}^{(\frac h2)}}{y(x_{i+1})-y_{i+1}^{(h)}}\approx\frac1{2^p}">(45)</span> 可得：
+<span class="math display">\[
+y(x_{i+1})-y_{i+1}^{(\frac h2)}\approx\frac1{2^p-1}(y_{i+1}^{(\frac h2)}-y_{i+1}^{(h)})
+  \tag{46}
+\]</span></p>
+<p>当 $y_{i+1}<sup>{(h2)}-y_{i+1}</sup>{(h)}$ 成立，取 <span class="math inline">\(y(x_{i+1})\approx y_{i+1}^{(\frac h2)}\)</span> ，即在误差允许范围内，使用近似值估计精确值。</p>
+<p>否则，将步长减半，再次计算直到在精度范围内。</p>
 <h2 id="代码实现比较不同差分方法比较">代码实现比较不同差分方法比较</h2>
 <p>代码如下，使用策略模式，将不同的差分近似方法封装进具体策略类。</p>
 <p>比较精确的ODE解曲线使用库来画出来，再画出不同近似方法下研究区间内各个点的差分计算结果。</p>

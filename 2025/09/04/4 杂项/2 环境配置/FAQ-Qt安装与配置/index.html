@@ -895,9 +895,7 @@
 <div id="article-content">
 	<h3 id="online-installer-获取信息和下载特别慢">online-installer 获取信息和下载特别慢？</h3>
 <p>使用国内镜像源下载，具体方式：在终端中启动并且加入启动参数，例如</p>
-<blockquote>
-<p>C:-online-installer-windows-x64-4.10.0.exe –mirror https://mirrors.ustc.edu.cn/qtproject</p>
-</blockquote>
+<pre><code class="hljs plaintext">C:\path\to\qt\qt-online-installer-windows-x64-4.10.0.exe --mirror https://mirrors.ustc.edu.cn/qtproject</code></pre>
 <h3 id="安装-qt-各种组件的时候应该如何选择">安装 Qt 各种组件的时候，应该如何选择？</h3>
 <p>基本的配置是这样</p>
 <ul>
@@ -1047,13 +1045,9 @@
 <h3 id="如何在-clion-中配置-qt-开发环境">如何在 Clion 中配置 Qt 开发环境？</h3>
 <p>设置 - 工具链</p>
 <p>配置工具链为 qt 下载的 MinGW</p>
-<blockquote>
-<p>C:_64</p>
-</blockquote>
+<pre><code class="hljs plaintext">C:\path\to\qt\Tools\mingw1310_64\bin</code></pre>
 <p>然后在 Qt CMake 前缀路径设置为</p>
-<blockquote>
-<p>C:\6.7.3_64</p>
-</blockquote>
+<pre><code class="hljs plaintext">C:\path\to\qt\6.7.3\mingw_64</code></pre>
 <h3 id="什么是-ninja">什么是 Ninja？</h3>
 <p>Ninja 是一个专注于极致速度的小型、现代化的构建系统。它本身不负责规划项目如何编译的复杂逻辑，而是像一个高效的“施工队”，专门负责执行由 CMake 这样的“项目经理”所生成的简单、明确的编译指令。其核心优势在于极低的开销和出色的并行处理能力，能够充分利用多核CPU，从而显著缩短大型项目的编译等待时间，尤其是在只修改了少量文件的增量构建中表现卓越。因此，Ninja 通常与 CMake 搭档使用，作为其后端，共同构成了一套高效、快速的现代C++开发构建方案。</p>
 

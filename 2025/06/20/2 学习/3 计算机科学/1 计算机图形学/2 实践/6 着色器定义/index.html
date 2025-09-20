@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+	<!-- title -->
+	
+		<title>
+			
+				6 着色器定义 |
+					
+						Note
+		</title>
+
+		<!-- keywords,description -->
+		
+					
+
+								<!-- favicon -->
+								
+									<link rel="shortcut icon" href="/favicon.ico">
+										
+
+
+											<!-- search -->
+											<script>
+												var searchEngine = "";
+												if (typeof searchEngine == "undefined" || searchEngine == null || searchEngine == "")
+												{
+													searchEngine = "https://www.google.com/search?q=";
+												}
+												var homeHost = "BenChenEternity.github.io";
+												if (typeof homeHost == "undefined" || homeHost == null || homeHost == "")
+												{
+													homeHost = window.location.host;
+												}
+											</script>
+
+
+											
+<link rel="stylesheet" href="/css/main.css">
+
+												
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+
+													
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
+
+														
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+
+															
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+
+																
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+																	
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
+
+																		
+<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
+
+																			
+<script src="/js/main.js"></script>
+
+
+																				
+																					
+<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+
+																						
+<script src="https://cdn.jsdelivr.net/npm/valine@v1.5.1/dist/Valine.min.js"></script>
+
+																							
+																								
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+	integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+	integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz"
+	crossorigin="anonymous"></script>
+
+<!-- To automatically render math in text elements, include the auto-render extension: -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+	integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+	onload="renderMathInElement(document.body);"></script>
+
+<body>
+	<header id="header">
+    <a id="title" href="/" class="logo">Note</a>
+
+	<ul id="menu">
+    
+      <li class="menu-item">
+        <a href="/about" class="menu-item-link">About</a>
+      </li>
+    
+
+    
+
+    
+
+    
+  
+    
+	</ul>
+</header>
+
+	
+<div id="sidebar">
+	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
+	
+	<div id="site-toc">
+		<input id="search-input" class="search-input" type="search" placeholder="Press Enter to search">
+		<div id="tree">
+			
+
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1 hexo
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/09/1%20hexo/1%20%E9%85%8D%E7%BD%AE/">
+                     
+										    1 配置
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/30/1%20hexo/2%20hexo%E8%BF%81%E7%A7%BB/">
+                     
+										    2 hexo迁移
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/15/1%20hexo/3%20%E6%96%87%E7%AB%A0%E7%BC%96%E5%8F%B7%E7%BC%96%E6%8E%92/">
+                     
+										    3 文章编号编排
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/24/1%20hexo/4%20%E5%85%AC%E5%BC%8F%E5%BC%95%E7%94%A8/">
+                     
+										    4 公式引用
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/19/1%20hexo/5%20%E5%85%AC%E5%BC%8F%E8%AF%86%E5%88%AB/">
+                     
+										    5 公式识别
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										2 学习
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1 数学
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/15/2%20%E5%AD%A6%E4%B9%A0/1%20%E6%95%B0%E5%AD%A6/SVD%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3/">
+                     
+										    奇异值分解
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										2 力学
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1 流体力学
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/09/2%20%E5%AD%A6%E4%B9%A0/2%20%E5%8A%9B%E5%AD%A6/1%20%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/1%20%E6%96%B9%E7%A8%8B%E7%BB%AA%E8%AE%BA/">
+                     
+										    1 方程绪论
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/09/2%20%E5%AD%A6%E4%B9%A0/2%20%E5%8A%9B%E5%AD%A6/1%20%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/2%20%E4%BC%AF%E5%8A%AA%E5%88%A9%E6%96%B9%E7%A8%8B/">
+                     
+										    2 伯努利方程
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/23/2%20%E5%AD%A6%E4%B9%A0/2%20%E5%8A%9B%E5%AD%A6/1%20%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/3%20N-S%E6%96%B9%E7%A8%8B%E7%9A%84%E8%A7%A3%E6%9E%90%E8%A7%A3/">
+                     
+										    3 N-S方程的解析解
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/07/01/2%20%E5%AD%A6%E4%B9%A0/2%20%E5%8A%9B%E5%AD%A6/1%20%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/4%20%E6%B9%8D%E6%B5%81/">
+                     
+										    4 湍流
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/07/10/2%20%E5%AD%A6%E4%B9%A0/2%20%E5%8A%9B%E5%AD%A6/1%20%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/5%20%E7%9B%B8%E4%BC%BC%E5%8E%9F%E7%90%86%E5%92%8C%E9%87%8F%E7%BA%B2%E5%88%86%E6%9E%90/">
+                     
+										    5 相似原理和量纲分析
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										2 计算流体力学
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										SPH光滑粒子法
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/07/28/2%20%E5%AD%A6%E4%B9%A0/2%20%E5%8A%9B%E5%AD%A6/2%20%E8%AE%A1%E7%AE%97%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/SPH%E5%85%89%E6%BB%91%E7%B2%92%E5%AD%90%E6%B3%95/SPH%E6%96%B9%E6%B3%95%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/">
+                     
+										    SPH方法基本原理
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/07/28/2%20%E5%AD%A6%E4%B9%A0/2%20%E5%8A%9B%E5%AD%A6/2%20%E8%AE%A1%E7%AE%97%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/SPH%E5%85%89%E6%BB%91%E7%B2%92%E5%AD%90%E6%B3%95/%E7%BB%AA%E8%AE%BA/">
+                     
+										    绪论
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										3 计算机科学
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1 计算机图形学
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1 理论
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/15/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/1%20%E7%BB%AA%E8%AE%BA/">
+                     
+										    1 绪论
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/15/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/2%20VAO%20%E4%B8%8E%20VBO/">
+                     
+										    2 VAO 与 VBO
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/09/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/3%20%E7%A9%BA%E9%97%B4%E5%8F%98%E6%8D%A2/">
+                     
+										    3 空间变换
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/16/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/4%20%E6%AC%A7%E6%8B%89%E8%A7%92/">
+                     
+										    4 欧拉角
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/19/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/5%20%E7%BD%91%E6%A0%BC%E6%9B%B2%E9%9D%A2/">
+                     
+										    5 网格曲面
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/16/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/6%20%E5%85%89%E7%85%A7/">
+                     
+										    6 光照
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/19/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/7%20%E7%BD%91%E6%A0%BC%E6%9B%B2%E9%9D%A2/">
+                     
+										    7 网格曲面
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										2 实践
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/09/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/1%20openGL%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/">
+                     
+										    1 openGL环境安装
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/2%20%E6%83%B3%E6%B3%95%E6%9E%84%E6%80%9D/">
+                     
+										    2 想法构思
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/3%20%E5%BA%94%E7%94%A8%E5%88%9B%E5%BB%BA/">
+                     
+										    3 应用创建
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/4%20%E4%B8%96%E7%95%8C%E5%AE%9A%E4%B9%89/">
+                     
+										    4 世界定义
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/20/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/5%20%E6%91%84%E5%83%8F%E6%9C%BA%E5%AE%9A%E4%B9%89/">
+                     
+										    5 摄像机定义
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file active">
+									<a href="/2025/06/20/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/6%20%E7%9D%80%E8%89%B2%E5%99%A8%E5%AE%9A%E4%B9%89/">
+                     
+										    6 着色器定义
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/21/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/7%20%E5%A4%96%E9%83%A8%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/">
+                     
+										    7 外部资源管理
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/21/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/8%20%E5%AF%B9%E8%B1%A1/">
+                     
+										    8 对象
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/21/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/9%20%E5%AF%B9%E8%B1%A1%E7%BD%91%E6%A0%BC/">
+                     
+										    9 对象网格
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/21/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA/">
+                     
+										    对象存储
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										2 数值分析
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										常微分方程数值解法
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/07/29/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/2%20%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%E6%95%B0%E5%80%BC%E8%A7%A3%E6%B3%95/%E4%B8%80%E9%98%B6%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/">
+                     
+										    一阶常微分方程
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										插值
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/26/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/2%20%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/%E6%8F%92%E5%80%BC/%E7%BB%AA%E8%AE%BA/">
+                     
+										    绪论
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										3 设计模式经验之谈
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/07/17/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/3%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%BB%8F%E9%AA%8C%E4%B9%8B%E8%B0%88/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">
+                     
+										    架构设计
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										FAQ
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/09/04/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/FAQ/Cpp/">
+                     
+										    Cpp
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										3 思考
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/07/02/3%20%E6%80%9D%E8%80%83/%E6%80%BB%E7%BB%93%E5%8F%8D%E6%80%9D%E4%B8%8E%E5%B1%95%E6%9C%9B/">
+                     
+										    硕士三年应该怎样度过
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										4 杂项
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1 实用小工具
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/19/4%20%E6%9D%82%E9%A1%B9/1%20%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/1%20%E4%BB%A3%E7%A0%81%E6%89%81%E5%B9%B3%E5%8C%96%E5%B0%8F%E5%B7%A5%E5%85%B7/">
+                     
+										    1 代码扁平化小工具
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/08/18/4%20%E6%9D%82%E9%A1%B9/1%20%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/2%20%E5%90%84%E7%A7%8D%E5%8A%A0%E9%80%9F%E8%AE%BF%E9%97%AE/">
+                     
+										    2 各种加速访问
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/08/18/4%20%E6%9D%82%E9%A1%B9/1%20%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/3%20%E6%90%9C%E7%B4%A2%E7%A5%9E%E5%99%A8/">
+                     
+										    3 搜索神器
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										2 环境配置
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/09/04/4%20%E6%9D%82%E9%A1%B9/2%20%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/FAQ-Qt%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">
+                     
+										    FAQ-Qt安装与配置
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/09/16/4%20%E6%9D%82%E9%A1%B9/2%20%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/windows%20python%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+                     
+										    windows python环境配置
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/08/18/4%20%E6%9D%82%E9%A1%B9/2%20%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/%E7%94%B5%E8%84%91%E5%85%B1%E4%BA%AB%E7%A1%AC%E7%9B%98/">
+                     
+										    电脑共享硬盘
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										5 实践
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										软件开发
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/09/11/5%20%E5%AE%9E%E8%B7%B5/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/Qt%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%A0%87%E5%87%86%E5%8C%96%E6%B5%81%E7%A8%8B/">
+                     
+										    Qt项目开发标准化流程
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										6 游戏
+									</a>
+									
+							<ul>
+								<li class="directory">
+									<a href="#" class="directory">
+										<i class="fa fa-plus-square-o"></i>
+										1 minecraft
+									</a>
+									
+							<ul>
+								<li class="file">
+									<a href="/2025/06/13/6%20%E6%B8%B8%E6%88%8F/1%20minecraft/01%20Better%20MC/">
+                     
+										    01 Better MC
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/13/6%20%E6%B8%B8%E6%88%8F/1%20minecraft/02%20%E8%84%86%E9%AA%A8%E7%97%87/">
+                     
+										    02 脆骨症
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/14/6%20%E6%B8%B8%E6%88%8F/1%20minecraft/03%20%E5%B9%B8%E8%BF%90%E4%B8%96%E7%95%8C%E5%85%A5%E4%BE%B5/">
+                     
+										    03 幸运世界入侵
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/06/14/6%20%E6%B8%B8%E6%88%8F/1%20minecraft/04-Cisco-s-Fantasy-Medieval/">
+                     
+										    04 Cisco's Fantasy Medieval
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+								</li>
+								
+							</ul>
+			
+		</div>
+	</div>
+</div>
+
+	<!-- 引入正文 -->
+	<div id="content" class="content">
+		<h1 id="article-title">
+	6 着色器定义
+</h1>
+
+<!-- meta -->
+<div class="article-meta">
+	
+
+	<span>NicolasDavout</span>
+	<span>2025-06-20 23:42:10</span>
+
+  <div id="article-categories">
+    
+		  <span>Categories：</span>
+      
+    
+
+    
+		    <span>Tags：</span>
+        
+    
+  </div>
+
+</div>
+
+<!-- content -->
+<div id="article-content">
+	<h2 id="创建简单着色器">创建简单着色器</h2>
+<p>在 <code>cmake-build-debug</code> 路径下创建 assets 文件夹</p>
+<p>新建着色器文件 <code>simple.frag</code> 和 <code>simple.vert</code>，意思是简单的着色器，没有光照计算，纹理计算等。</p>
+<h3 id="frag-和-vert-文件">frag 和 vert 文件</h3>
+<p>frag 是片元着色器，vert 是顶点着色器</p>
+<h4 id="vert-文件">.vert 文件</h4>
+<p>设置：</p>
+<ul>
+<li>模型矩阵 model（来自 world）</li>
+<li>视图矩阵 view（来自 camera）</li>
+<li>投影矩阵 projection（来自 camera）</li>
+</ul>
+<p>输入：</p>
+<ul>
+<li>点坐标、颜色</li>
+</ul>
+<p>输出：</p>
+<ul>
+<li>点的剪裁空间位置</li>
+<li>点颜色</li>
+</ul>
+<pre><code class="hljs glsl"><span class="hljs-comment">// 指定 GLSL 版本为 3.30，并使用核心模式(Core-profile)</span>
+<span class="hljs-meta">#version 330 core</span>
+
+<span class="hljs-comment">// --- 输入变量 (Vertex Attributes) ---</span>
+<span class="hljs-comment">// 从 VBO 接收顶点数据。layout(location = N) 将变量绑定到第 N 个顶点属性。</span>
+
+<span class="hljs-comment">// layout(location = 0): 绑定到第0个属性，通常是位置数据</span>
+<span class="hljs-comment">// in vec3: 输入一个三维向量</span>
+<span class="hljs-comment">// aPos: 变量名，代表顶点位置 (Position)</span>
+<span class="hljs-keyword">layout</span> (<span class="hljs-keyword">location</span> = <span class="hljs-number">0</span>) <span class="hljs-keyword">in</span> <span class="hljs-type">vec3</span> aPos;
+
+<span class="hljs-comment">// layout(location = 1): 绑定到第1个属性，通常是颜色数据</span>
+<span class="hljs-comment">// aColor: 变量名，代表顶点颜色 (Color)</span>
+<span class="hljs-keyword">layout</span> (<span class="hljs-keyword">location</span> = <span class="hljs-number">1</span>) <span class="hljs-keyword">in</span> <span class="hljs-type">vec3</span> aColor;
+
+
+<span class="hljs-comment">// --- 输出变量 ---</span>
+<span class="hljs-comment">// 将数据传递给下一个着色器阶段（片元着色器）</span>
+
+<span class="hljs-comment">// out vec3: 输出一个三维向量</span>
+<span class="hljs-comment">// ourColor: 变量名，用于将颜色传递出去</span>
+<span class="hljs-keyword">out</span> <span class="hljs-type">vec3</span> ourColor;
+
+
+<span class="hljs-comment">// --- 全局变量 (Uniforms) ---</span>
+<span class="hljs-comment">// 从 CPU 程序传入的、对所有顶点都相同的全局变量</span>
+
+<span class="hljs-comment">// mat4: 4x4 矩阵类型</span>
+<span class="hljs-comment">// model: 模型矩阵 (将模型局部坐标 -&gt; 世界坐标)</span>
+<span class="hljs-comment">// view: 视图矩阵 (将世界坐标 -&gt; 观察空间坐标)</span>
+<span class="hljs-comment">// projection: 投影矩阵 (将观察空间坐标 -&gt; 裁剪空间坐标)</span>
+<span class="hljs-keyword">uniform</span> <span class="hljs-type">mat4</span> model;
+<span class="hljs-keyword">uniform</span> <span class="hljs-type">mat4</span> view;
+<span class="hljs-keyword">uniform</span> <span class="hljs-type">mat4</span> projection;
+
+
+<span class="hljs-comment">// --- 主函数 ---</span>
+<span class="hljs-comment">// 每个顶点都会执行一次 main 函数</span>
+<span class="hljs-type">void</span> main()
+&#123;
+    <span class="hljs-comment">// gl_Position 是一个内置的、必须被赋值的 vec4 输出变量</span>
+    <span class="hljs-comment">// 它决定了顶点在屏幕上的最终位置</span>
+    <span class="hljs-comment">// 计算过程：通过 MVP 矩阵链式相乘，将顶点从局部空间变换到裁剪空间</span>
+    <span class="hljs-comment">// 注意：矩阵乘法顺序为 投影 * 视图 * 模型</span>
+    <span class="hljs-comment">// vec4(aPos, 1.0) 是将三维位置坐标转换为四维齐次坐标，w分量为1.0</span>
+    <span class="hljs-built_in">gl_Position</span> = projection * view * model * <span class="hljs-type">vec4</span>(aPos, <span class="hljs-number">1.0</span>);
+
+    <span class="hljs-comment">// 将输入的顶点颜色直接赋值给输出变量</span>
+    <span class="hljs-comment">// 这个颜色值会经过插值后，传递给片元着色器</span>
+    ourColor = aColor;
+&#125;
+
+<span class="hljs-comment">// 总结：</span>
+<span class="hljs-comment">// 1. 主要任务：计算每个顶点的最终裁剪空间位置 (gl_Position)。</span>
+<span class="hljs-comment">// 2. 附加任务：将顶点颜色 (aColor) 原封不动地传递给片元着色器 (ourColor)。</span></code></pre>
+<h4 id="frag-文件">.frag 文件</h4>
+<p>片元上色</p>
+<p>参数：</p>
+<ul>
+<li>RGB 值</li>
+</ul>
+<p>输出：</p>
+<ul>
+<li>片元颜色 RGBA</li>
+</ul>
+<pre><code class="hljs glsl"><span class="hljs-meta">#version 330 core</span>
+<span class="hljs-keyword">out</span> <span class="hljs-type">vec4</span> FragColor;
+
+<span class="hljs-keyword">in</span> <span class="hljs-type">vec3</span> ourColor;
+
+<span class="hljs-type">void</span> main()
+&#123;
+    <span class="hljs-comment">// 将输入的RGB颜色和1.0的Alpha值组合成一个vec4，作为最终颜色输出</span>
+    FragColor = <span class="hljs-type">vec4</span>(ourColor, <span class="hljs-number">1.0</span>f);
+&#125;</code></pre>
+<h2 id="着色器定义">着色器定义</h2>
+<p>着色器类用于确定一种着色方法。比如在上面使用最简单的着色方法，包含了<strong>片元着色器</strong>和<strong>顶点着色器</strong>。</p>
+<p>所以对于一个着色方法，是多个着色器的组合。创建一个类将他们整合起来。</p>
+<p>创建 shader 文件夹</p>
+<pre><code class="hljs plaintext">app_3d_camera
+├── Application.cpp
+├── Application.h
+├── main.cpp
+├── components
+│   ├── Camera.cpp
+│   ├── Camera.h
+│   └── shader
+│       ├── Shader.cpp
+│       ├── Shader.h
+│       ├── ShaderManager.cpp
+│       └── ShaderManager.h
+└── scene
+    ├── World.cpp
+    └── World.h</code></pre>
+<p>着色器定义如下</p>
+<pre><code class="hljs cpp"><span class="hljs-comment">//=============== 文件路径: components/shader/Shader.h ===============//</span>
+<span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> SHADER_H</span>
+<span class="hljs-meta">#<span class="hljs-keyword">define</span> SHADER_H</span>
+
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;GL/glew.h&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;glm/glm.hpp&quot;</span></span>
+
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;fstream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sstream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span>
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Shader</span>
+&#123;
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-comment">// 着色器程序ID</span>
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> ID;
+
+    <span class="hljs-comment">// 构造函数：从文件读取并构建着色器</span>
+    <span class="hljs-built_in">Shader</span>(<span class="hljs-type">const</span> <span class="hljs-type">char</span>* vertexPath, <span class="hljs-type">const</span> <span class="hljs-type">char</span>* fragmentPath);
+
+    <span class="hljs-comment">// 激活着色器程序</span>
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">use</span><span class="hljs-params">()</span></span>;
+
+    <span class="hljs-comment">// uniform工具函数</span>
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setBool</span><span class="hljs-params">(<span class="hljs-type">const</span> std::string &amp;name, <span class="hljs-type">bool</span> value)</span> <span class="hljs-type">const</span></span>;
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setInt</span><span class="hljs-params">(<span class="hljs-type">const</span> std::string &amp;name, <span class="hljs-type">int</span> value)</span> <span class="hljs-type">const</span></span>;
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setFloat</span><span class="hljs-params">(<span class="hljs-type">const</span> std::string &amp;name, <span class="hljs-type">float</span> value)</span> <span class="hljs-type">const</span></span>;
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setMat4</span><span class="hljs-params">(<span class="hljs-type">const</span> std::string &amp;name, <span class="hljs-type">const</span> glm::mat4 &amp;mat)</span> <span class="hljs-type">const</span></span>;
+
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-comment">// 检查编译/链接错误的工具函数</span>
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">checkCompileErrors</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> shader, std::string type)</span></span>;
+&#125;;
+
+<span class="hljs-meta">#<span class="hljs-keyword">endif</span></span></code></pre>
+<p>实现如下</p>
+<pre><code class="hljs cpp"><span class="hljs-comment">//=============== 文件路径: components/shader/Shader.cpp ===============//</span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;Shader.h&quot;</span></span>
+
+Shader::<span class="hljs-built_in">Shader</span>(<span class="hljs-type">const</span> <span class="hljs-type">char</span>* vertexPath, <span class="hljs-type">const</span> <span class="hljs-type">char</span>* fragmentPath)
+&#123;
+    <span class="hljs-comment">// 1. 从文件路径中获取顶点/片元着色器源代码</span>
+    std::string vertexCode;
+    std::string fragmentCode;
+    std::ifstream vShaderFile;
+    std::ifstream fShaderFile;
+
+    <span class="hljs-comment">// 保证ifstream对象可以抛出异常</span>
+    vShaderFile.<span class="hljs-built_in">exceptions</span>(std::ifstream::failbit | std::ifstream::badbit);
+    fShaderFile.<span class="hljs-built_in">exceptions</span>(std::ifstream::failbit | std::ifstream::badbit);
+    <span class="hljs-keyword">try</span>
+    &#123;
+        <span class="hljs-comment">// 打开文件</span>
+        vShaderFile.<span class="hljs-built_in">open</span>(vertexPath);
+        fShaderFile.<span class="hljs-built_in">open</span>(fragmentPath);
+        std::stringstream vShaderStream, fShaderStream;
+        <span class="hljs-comment">// 读取文件缓冲内容到数据流中</span>
+        vShaderStream &lt;&lt; vShaderFile.<span class="hljs-built_in">rdbuf</span>();
+        fShaderStream &lt;&lt; fShaderFile.<span class="hljs-built_in">rdbuf</span>();
+        <span class="hljs-comment">// 关闭文件处理器</span>
+        vShaderFile.<span class="hljs-built_in">close</span>();
+        fShaderFile.<span class="hljs-built_in">close</span>();
+        <span class="hljs-comment">// 转换数据流到string</span>
+        vertexCode = vShaderStream.<span class="hljs-built_in">str</span>();
+        fragmentCode = fShaderStream.<span class="hljs-built_in">str</span>();
+    &#125;
+    <span class="hljs-built_in">catch</span> (std::ifstream::failure&amp; e)
+    &#123;
+        std::cerr &lt;&lt; <span class="hljs-string">&quot;ERROR::SHADER::FILE_NOT_SUCCESSFULLY_READ: &quot;</span> &lt;&lt; e.<span class="hljs-built_in">what</span>() &lt;&lt; std::endl;
+    &#125;
+    <span class="hljs-type">const</span> <span class="hljs-type">char</span>* vShaderCode = vertexCode.<span class="hljs-built_in">c_str</span>();
+    <span class="hljs-type">const</span> <span class="hljs-type">char</span>* fShaderCode = fragmentCode.<span class="hljs-built_in">c_str</span>();
+
+    <span class="hljs-comment">// 2. 编译着色器</span>
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> vertex, fragment;
+    <span class="hljs-comment">// 顶点着色器</span>
+    vertex = <span class="hljs-built_in">glCreateShader</span>(GL_VERTEX_SHADER);
+    <span class="hljs-built_in">glShaderSource</span>(vertex, <span class="hljs-number">1</span>, &amp;vShaderCode, <span class="hljs-literal">NULL</span>);
+    <span class="hljs-built_in">glCompileShader</span>(vertex);
+    <span class="hljs-built_in">checkCompileErrors</span>(vertex, <span class="hljs-string">&quot;VERTEX&quot;</span>);
+    <span class="hljs-comment">// 片元着色器</span>
+    fragment = <span class="hljs-built_in">glCreateShader</span>(GL_FRAGMENT_SHADER);
+    <span class="hljs-built_in">glShaderSource</span>(fragment, <span class="hljs-number">1</span>, &amp;fShaderCode, <span class="hljs-literal">NULL</span>);
+    <span class="hljs-built_in">glCompileShader</span>(fragment);
+    <span class="hljs-built_in">checkCompileErrors</span>(fragment, <span class="hljs-string">&quot;FRAGMENT&quot;</span>);
+
+    <span class="hljs-comment">// 着色器程序</span>
+    ID = <span class="hljs-built_in">glCreateProgram</span>();
+    <span class="hljs-built_in">glAttachShader</span>(ID, vertex);
+    <span class="hljs-built_in">glAttachShader</span>(ID, fragment);
+    <span class="hljs-built_in">glLinkProgram</span>(ID);
+    <span class="hljs-built_in">checkCompileErrors</span>(ID, <span class="hljs-string">&quot;PROGRAM&quot;</span>);
+
+    <span class="hljs-comment">// 删除着色器，它们已经链接到我们的程序中了，不再需要</span>
+    <span class="hljs-built_in">glDeleteShader</span>(vertex);
+    <span class="hljs-built_in">glDeleteShader</span>(fragment);
+&#125;
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Shader::use</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-built_in">glUseProgram</span>(ID);
+&#125;
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Shader::setBool</span><span class="hljs-params">(<span class="hljs-type">const</span> std::string &amp;name, <span class="hljs-type">bool</span> value)</span> <span class="hljs-type">const</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-built_in">glUniform1i</span>(<span class="hljs-built_in">glGetUniformLocation</span>(ID, name.<span class="hljs-built_in">c_str</span>()), (<span class="hljs-type">int</span>)value);
+&#125;
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Shader::setInt</span><span class="hljs-params">(<span class="hljs-type">const</span> std::string &amp;name, <span class="hljs-type">int</span> value)</span> <span class="hljs-type">const</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-built_in">glUniform1i</span>(<span class="hljs-built_in">glGetUniformLocation</span>(ID, name.<span class="hljs-built_in">c_str</span>()), value);
+&#125;
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Shader::setFloat</span><span class="hljs-params">(<span class="hljs-type">const</span> std::string &amp;name, <span class="hljs-type">float</span> value)</span> <span class="hljs-type">const</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-built_in">glUniform1f</span>(<span class="hljs-built_in">glGetUniformLocation</span>(ID, name.<span class="hljs-built_in">c_str</span>()), value);
+&#125;
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Shader::setMat4</span><span class="hljs-params">(<span class="hljs-type">const</span> std::string &amp;name, <span class="hljs-type">const</span> glm::mat4 &amp;mat)</span> <span class="hljs-type">const</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-built_in">glUniformMatrix4fv</span>(<span class="hljs-built_in">glGetUniformLocation</span>(ID, name.<span class="hljs-built_in">c_str</span>()), <span class="hljs-number">1</span>, GL_FALSE, &amp;mat[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]);
+&#125;
+
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">Shader::checkCompileErrors</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> shader, std::string type)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-type">int</span> success;
+    <span class="hljs-type">char</span> infoLog[<span class="hljs-number">1024</span>];
+    <span class="hljs-keyword">if</span> (type != <span class="hljs-string">&quot;PROGRAM&quot;</span>)
+    &#123;
+        <span class="hljs-built_in">glGetShaderiv</span>(shader, GL_COMPILE_STATUS, &amp;success);
+        <span class="hljs-keyword">if</span> (!success)
+        &#123;
+            <span class="hljs-built_in">glGetShaderInfoLog</span>(shader, <span class="hljs-number">1024</span>, <span class="hljs-literal">NULL</span>, infoLog);
+            std::cerr &lt;&lt; <span class="hljs-string">&quot;ERROR::SHADER_COMPILATION_ERROR of type: &quot;</span> &lt;&lt; type &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span> &lt;&lt; infoLog &lt;&lt; <span class="hljs-string">&quot;\n -- --------------------------------------------------- -- &quot;</span> &lt;&lt; std::endl;
+        &#125;
+    &#125;
+    <span class="hljs-keyword">else</span>
+    &#123;
+        <span class="hljs-built_in">glGetProgramiv</span>(shader, GL_LINK_STATUS, &amp;success);
+        <span class="hljs-keyword">if</span> (!success)
+        &#123;
+            <span class="hljs-built_in">glGetProgramInfoLog</span>(shader, <span class="hljs-number">1024</span>, <span class="hljs-literal">NULL</span>, infoLog);
+            std::cerr &lt;&lt; <span class="hljs-string">&quot;ERROR::PROGRAM_LINKING_ERROR of type: &quot;</span> &lt;&lt; type &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span> &lt;&lt; infoLog &lt;&lt; <span class="hljs-string">&quot;\n -- --------------------------------------------------- -- &quot;</span> &lt;&lt; std::endl;
+        &#125;
+    &#125;
+&#125;</code></pre>
+<h2 id="着色器管理">着色器管理</h2>
+<p>创建一个映射，将一种着色方法对应到 Shader 上即可</p>
+<pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">pragma</span> once</span>
+
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;map&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;memory&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;Shader.h&quot;</span></span>
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ShaderManager</span> &#123;
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-comment">// 按需获取或加载着色器</span>
+    <span class="hljs-function">Shader* <span class="hljs-title">getOrLoadShader</span><span class="hljs-params">(<span class="hljs-type">const</span> std::string&amp; name)</span></span>;
+
+<span class="hljs-keyword">private</span>:
+    std::map&lt;std::string, std::unique_ptr&lt;Shader&gt;&gt; m_Shaders;
+&#125;;</code></pre>
+<p>实时创建加载着色器。在需要用到时再加载着色器。</p>
+<pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;ShaderManager.h&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;Shader.h&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;../AssetsPath.h&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span>
+
+<span class="hljs-comment">// 实现 getOrLoadShader</span>
+<span class="hljs-function">Shader* <span class="hljs-title">ShaderManager::getOrLoadShader</span><span class="hljs-params">(<span class="hljs-type">const</span> std::string&amp; name)</span> </span>&#123;
+    <span class="hljs-comment">// 1. 检查缓存中是否已存在</span>
+    <span class="hljs-keyword">if</span> (m_Shaders.<span class="hljs-built_in">find</span>(name) != m_Shaders.<span class="hljs-built_in">end</span>()) &#123;
+        <span class="hljs-keyword">return</span> m_Shaders[name].<span class="hljs-built_in">get</span>();
+    &#125;
+
+    <span class="hljs-comment">// 2. 如果不存在，则根据约定构建文件路径</span>
+    std::cout &lt;&lt; <span class="hljs-string">&quot;Info: [ShaderManager] Cache miss for &#x27;&quot;</span> &lt;&lt; name &lt;&lt; <span class="hljs-string">&quot;&#x27;. Loading from conventional path.&quot;</span> &lt;&lt; std::endl;
+    std::string vertexPath = AssetPaths::SHADER_DIR + name + <span class="hljs-string">&quot;.vert&quot;</span>;
+    std::string fragmentPath = AssetPaths::SHADER_DIR + name + <span class="hljs-string">&quot;.frag&quot;</span>;
+
+    <span class="hljs-comment">// 3. 尝试加载和创建Shader</span>
+    <span class="hljs-comment">//    这里我们把创建逻辑包在 try-catch 块中，因为Shader构造函数可能会因文件不存在而抛出异常</span>
+    <span class="hljs-keyword">try</span> &#123;
+        <span class="hljs-keyword">auto</span> newShader = std::<span class="hljs-built_in">make_unique</span>&lt;Shader&gt;(vertexPath.<span class="hljs-built_in">c_str</span>(), fragmentPath.<span class="hljs-built_in">c_str</span>());
+        <span class="hljs-comment">// 如果 newShader 的 ID 是0，可能表示链接失败但未抛出异常（取决于Shader类的实现）</span>
+        <span class="hljs-comment">// 最好在Shader构造函数中如果失败就抛异常或返回nullptr</span>
+        <span class="hljs-keyword">if</span> (newShader &amp;&amp; newShader-&gt;ID != <span class="hljs-number">0</span>) &#123;
+            m_Shaders[name] = std::<span class="hljs-built_in">move</span>(newShader);
+            std::cout &lt;&lt; <span class="hljs-string">&quot;Info: [ShaderManager] Shader loaded and cached: &quot;</span> &lt;&lt; name &lt;&lt; std::endl;
+            <span class="hljs-keyword">return</span> m_Shaders[name].<span class="hljs-built_in">get</span>();
+        &#125;
+    &#125; <span class="hljs-built_in">catch</span> (<span class="hljs-type">const</span> std::ifstream::failure&amp; e) &#123;
+        <span class="hljs-comment">// Shader构造函数中的文件读取异常会被这里捕获</span>
+        std::cerr &lt;&lt; <span class="hljs-string">&quot;Error: [ShaderManager] Failed to load shader files for &#x27;&quot;</span> &lt;&lt; name &lt;&lt; <span class="hljs-string">&quot;&#x27;. Exception: &quot;</span> &lt;&lt; e.<span class="hljs-built_in">what</span>() &lt;&lt; std::endl;
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;
+    &#125;
+
+    <span class="hljs-comment">// 如果因其他原因（如编译或链接失败）创建失败</span>
+    std::cerr &lt;&lt; <span class="hljs-string">&quot;Error: [ShaderManager] Failed to create shader program for &#x27;&quot;</span> &lt;&lt; name &lt;&lt; <span class="hljs-string">&quot;&#x27;.&quot;</span> &lt;&lt; std::endl;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;
+&#125;</code></pre>
+
+</div>
+
+<!-- post-guide -->
+
+    <div class="post-guide">
+        <div class="item left">
+            
+              <a href="/2025/06/21/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/9%20%E5%AF%B9%E8%B1%A1%E7%BD%91%E6%A0%BC/">
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                  9 对象网格
+              </a>
+            
+        </div>
+        <div class="item right">
+            
+              <a href="/2025/06/20/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/2%20%E5%AE%9E%E8%B7%B5/5%20%E6%91%84%E5%83%8F%E6%9C%BA%E5%AE%9A%E4%B9%89/">
+                5 摄像机定义
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </a>
+            
+        </div>
+    </div>
+
+
+<!-- comment - giscus -->
+
+
+<!-- comment - valine -->
+
+
+<script>
+	
+	
+</script>
+
+	</div>
+	<div id="footer">
+	<p>
+		©<span id="footerYear-start">
+			
+		</span>-<span id="footerYear-end"></span>
+
+		
+				<a href="/">
+					NicolasDavout
+				</a>
+				
+
+					
+							<br>
+							Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
+							by <a href="//wujun.me" target="_blank">Wu Jun</a>
+							Powered by <a href="//hexo.io" target="_blank">Hexo</a>
+	</p>
+</div>
+
+
+	<script type="text/javascript">
+		document.getElementById('footerYear-start').innerHTML = new Date().getFullYear() + '';
+	</script>
+	
+		<script type="text/javascript">
+			document.getElementById('footerYear-end').innerHTML = new Date().getFullYear() + '';
+		</script>
+		
+	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+</body>
+</html>

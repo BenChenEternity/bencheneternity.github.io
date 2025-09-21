@@ -1216,57 +1216,6 @@
 │   ├── res                # 外部资源
 │   └── src                # 客户端源代码
 └── scripts              # 脚本</code></pre>
-<h2 id="在-c-中调用-python-代码">在 C++ 中调用 python 代码</h2>
-<p>最佳实践是使用 pybind，在此之前先配置定制的 python 环境</p>
-<h3 id="嵌入-python">嵌入 python</h3>
-<p>如果不嵌入 python 解释器，就需要用户手动配置自己的 python</p>
-<h4 id="下载-python-embeddable-package">下载 python-embeddable-package</h4>
-<p><a target="_blank" rel="noopener" href="https://www.python.org/downloads/windows/">Python 官网下载</a></p>
-<p>去官网下载 installer，然后安装路径到上面所示的 python 文件夹中</p>
-<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250911231732004.png" /></p>
-<p>如果将要执行的 Python 不用 tkinter，那么第三个也可以不勾选，一般像下面这样</p>
-<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250911232054499.png" /></p>
-<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250911232728128.png" /></p>
-<p>注意安装的路径要在项目中，后续如果在其他项目中要使用可以直接文件夹复制过去</p>
-<h4 id="配置-cmakelists.txt">配置 CMakeLists.txt</h4>
-<p>首先是找到 python 环境</p>
-<pre><code class="hljs cmake"><span class="hljs-comment"># --- python interpreter ---</span>
-<span class="hljs-keyword">set</span>(PYTHON_ENV_SOURCE_DIR <span class="hljs-variable">$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;</span>/../backend/env/python)
-<span class="hljs-keyword">if</span>(<span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> <span class="hljs-variable">$&#123;PYTHON_ENV_SOURCE_DIR&#125;</span>)
-    <span class="hljs-keyword">message</span>(FATAL_ERROR <span class="hljs-string">&quot;Python environment directory not found at $&#123;PYTHON_ENV_SOURCE_DIR&#125;&quot;</span>)
-<span class="hljs-keyword">endif</span>()
-
-<span class="hljs-keyword">install</span>(
-        DIRECTORY <span class="hljs-variable">$&#123;PYTHON_ENV_SOURCE_DIR&#125;</span>/
-        DESTINATION .          <span class="hljs-comment"># install on root</span>
-        COMPONENT Runtime
-        <span class="hljs-comment"># exclude cache</span>
-        PATTERN <span class="hljs-string">&quot;*.pyc&quot;</span> EXCLUDE
-        PATTERN <span class="hljs-string">&quot;__pycache__&quot;</span> EXCLUDE
-)
-<span class="hljs-comment"># -----------------</span></code></pre>
-<p>此时 <code>CMAKE_CURRENT_SOURCE_DIR</code> 就是嵌入的 python 环境路径</p>
-<p>此时再设置 python 解释器的路径即可让 pybind 找到解释器</p>
-<pre><code class="hljs cmake"><span class="hljs-comment"># C++ invoke python</span>
-<span class="hljs-keyword">set</span>(Python_EXECUTABLE <span class="hljs-variable">$&#123;PYTHON_ENV_SOURCE_DIR&#125;</span>/python.exe)</code></pre>
-<p>然后配置自动拉取，构建时自动检查 pybind，如果没有则下载。</p>
-<pre><code class="hljs cmake"><span class="hljs-keyword">include</span>(FetchContent)
-FetchContent_Declare(
-        pybind11
-        GIT_REPOSITORY https://github.com/pybind/pybind11.git
-        GIT_TAG        v3.<span class="hljs-number">0.1</span>
-)
-FetchContent_MakeAvailable(pybind11)
-
-<span class="hljs-keyword">target_link_libraries</span>(cpp_py_test PRIVATE pybind11::embed)</code></pre>
-<p>然后添加链接库 pybind</p>
-<p>前面的 Qt 是默认的，只需配置最后一个</p>
-<pre><code class="hljs cmake"><span class="hljs-keyword">target_link_libraries</span>(pce_ui
-        Qt::Core
-        Qt::Gui
-        Qt::Widgets
-        pybind11::embed
-)</code></pre>
 <h2 id="添加外部库">添加外部库</h2>
 <p>对于发布在 github 上的库，最佳实践如下：</p>
 <p>在 CMake 高于 3.11 的版本中，拥有自动从 github 拉取并且配置到本地的能力。使用为在 CMakeList 文件中添加下面这样的代码：</p>
@@ -1287,6 +1236,100 @@ FetchContent_Declare(
         GIT_TAG        v3.<span class="hljs-number">0.1</span>
 )
 FetchContent_MakeAvailable(pybind11)</code></pre>
+<h2 id="项目打包">项目打包</h2>
+<h3 id="概述-1">概述</h3>
+<p>Qt 有专用的打包工具 <code>windeployqt.exe</code>，工具的作用是把 Qt 相关的库拷贝到打包好的 exe 文件目录下。</p>
+<p>基本的流程：</p>
+<pre><code class="hljs plaintext">Release 编译 -&gt; 复制 EXE 到新文件夹 -&gt; 打开 Qt 终端 -&gt; cd 到目录 -&gt; windeployqt打包</code></pre>
+<p><strong>Release 编译</strong></p>
+<ul>
+<li>最终会产生一个 exe 文件，假设为 <code>app_release.exe</code></li>
+</ul>
+<p><strong>复制 EXE 到新文件夹</strong></p>
+<ul>
+<li>只要复制这个 exe，其他的无需复制</li>
+</ul>
+<p><strong>打开 Qt 终端</strong></p>
+<ul>
+<li><p>在 “开始” 菜单中搜索 。</p>
+<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250921150126041.png" /></p></li>
+<li><p>如果不行，手动打开 cmd 窗口，然后执行 bat 环境设置脚本 <code>path/to/qt/6.7.3/mingw_64/bin/qtenv2.bat</code>，等效于打开 qt 终端</p></li>
+<li><p>注意终端的版本应该对应</p></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250921145426025.png" /></p>
+<p><strong>cd 到目录</strong></p>
+<ul>
+<li>注意，此终端要先输入盘符，例如当前在 D:/… ，如果想要 cd 到 C 盘下，需要先输入 <code>C:</code> 再 cd 路径</li>
+</ul>
+<pre><code class="hljs cmd"><span class="hljs-function">C:</span>
+<span class="hljs-function"><span class="hljs-title">C</span>:/<span class="hljs-title">path</span>/<span class="hljs-title">to</span>/<span class="hljs-title">app_release.exe</span></span></code></pre>
+<p><strong>windeployqt 打包</strong></p>
+<p>输入下面的命令，其中 <code>app_release.exe</code> 替换为自己的程序名</p>
+<pre><code class="hljs cmd">windeployqt app_release.exe</code></pre>
+<p>这个流程完成之后会吧 Qt 相关的库都复制过来，但是其他外部的库需要自己复制。</p>
+<h3 id="faq-1">FAQ</h3>
+<p><strong>为什么要有 debug 和 release 两套构建模式？</strong></p>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 43%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr>
+<th>对比项 / 特性</th>
+<th>Debug (调试) 模式</th>
+<th>Release (发布) 模式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>核心用途</strong></td>
+<td><strong>开发和调试</strong>：供程序员查找和修复程序错误 (Bug)。</td>
+<td><strong>最终发布</strong>：交付给最终用户使用。</td>
+</tr>
+<tr>
+<td><strong>调试信息</strong></td>
+<td><strong>包含</strong>。生成完整的符号表，可将机器码映射回源代码行。</td>
+<td><strong>不包含</strong>。所有调试信息都被移除，无法进行源码级调试。</td>
+</tr>
+<tr>
+<td><strong>代码优化</strong></td>
+<td><strong>几乎不优化</strong>。确保编译后的代码执行流程与源代码高度一致。</td>
+<td><strong>完全优化</strong>。编译器会尽力提升代码的运行效率和速度。</td>
+</tr>
+<tr>
+<td><strong>运行速度</strong></td>
+<td><strong>慢</strong>。因为包含额外的调试代码和检查，且未经优化。</td>
+<td><strong>快</strong>。性能最佳，为用户提供流畅体验。</td>
+</tr>
+<tr>
+<td><strong>文件体积</strong></td>
+<td><strong>大</strong>。因为包含了庞大的调试信息。</td>
+<td><strong>小</strong>。代码紧凑，没有附加信息，便于分发。</td>
+</tr>
+<tr>
+<td><strong>断言 (<code>assert</code>)</strong></td>
+<td><strong>启用</strong>。<code>Q_ASSERT</code> 或 <code>assert</code> 等宏会生效，用于捕捉开发中的逻辑错误。</td>
+<td><strong>禁用</strong>。所有断言宏在编译时都会被忽略，不产生任何代码。</td>
+</tr>
+<tr>
+<td><strong>适用人群</strong></td>
+<td><strong>开发者</strong> / <strong>程序员</strong></td>
+<td><strong>最终用户</strong> / <strong>客户</strong></td>
+</tr>
+<tr>
+<td><strong>链接的库 (以Qt为例)</strong></td>
+<td>链接库的<strong>调试版本</strong> (例如 <code>Qt6Cored.dll</code>)。</td>
+<td>链接库的<strong>发行版本</strong> (例如 <code>Qt6Core.dll</code>)。</td>
+</tr>
+<tr>
+<td><strong>一句话总结</strong></td>
+<td><strong>为开发者服务，牺牲性能换取强大的调试能力。</strong></td>
+<td><strong>为用户服务，牺牲调试能力换取极致的性能和最小的体积。</strong></td>
+</tr>
+</tbody>
+</table>
 
 </div>
 

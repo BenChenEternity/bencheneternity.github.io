@@ -642,6 +642,17 @@
 							</ul>
 			
 							<ul>
+								<li class="file">
+									<a href="/2025/09/18/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/C++%20Pro/">
+                     
+										    C++ Pro
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
 								<li class="directory">
 									<a href="#" class="directory">
 										<i class="fa fa-plus-square-o"></i>
@@ -661,6 +672,17 @@
 			
 								</li>
 								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/09/16/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/Qt-Pro/">
+                     
+										    Qt Pro
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
 								</li>
@@ -751,17 +773,6 @@
 										2 环境配置
 									</a>
 									
-							<ul>
-								<li class="file">
-									<a href="/2025/09/04/4%20%E6%9D%82%E9%A1%B9/2%20%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/FAQ-Qt%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">
-                     
-										    FAQ-Qt安装与配置
-                     
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
 							<ul>
 								<li class="file">
 									<a href="/2025/09/16/4%20%E6%9D%82%E9%A1%B9/2%20%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/windows%20python%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
@@ -900,6 +911,50 @@
 		<div id="index">
 	
 		<div class="index-li">
+			<a href="/2025/09/18/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/C++%20Pro/">
+				<h2 class="index-title">
+					C++ Pro
+				</h2>
+				<div class="index-brief">
+					标注
+[[nodiscard]]
+C++17 标准中引入，任何调用了这个被标注的函数或方法的代码，都不应该“丢弃”或“忽略”其返回值。如果调用者忽略了返回值，编译器就会发出一个警告。这是一种非常有用的静态检查工具，可以帮助开发者在编译阶段就发现潜在的逻辑错误。
+// 在没有 [[nodisca
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2025-09-18</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
+			<a href="/2025/09/16/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/Qt-Pro/">
+				<h2 class="index-title">
+					Qt Pro
+				</h2>
+				<div class="index-brief">
+					MOC 元对象编译器
+1. MOC 是什么，为什么需要它？
+Meta-Object Compiler，元对象编译器
+核心目的：为了在标准 C++ 的基础上，实现一些其本身不直接支持的高级动态特性。
+标准 C++ 是一种静态类型语言，很多信息在编译后就丢失了。而 Qt 需要实现以下目标：
+
+					...
+				</div>
+			</a>
+                <div class="article-meta">
+				    <span>2025-09-16</span>
+                    
+                            
+                    
+                </div>
+		</div>	
+	
+		<div class="index-li">
 			<a href="/2025/09/16/4%20%E6%9D%82%E9%A1%B9/2%20%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/windows%20python%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
 				<h2 class="index-title">
 					windows python环境配置
@@ -928,22 +983,21 @@ Invoke-WebRequest -UseBasicParsing -Uri &quot;https://raw.githubuser
 				<div class="index-brief">
 					概述
 提供一个标准化、产业化的配置流程
+操作系统：windows
+IDE 和 编译器 最好按照下面的组合来配置
+
+MinGW
 
 IDE - CLion
-编译器 - CMake (Qt)
-操作系统 - Windows
+编译器 - MinGW
 
-构建工具配置
-开始之前进行一次性的配置
-工具链配置
+MSVC
 
-CMake 配置
-选择对应的工具链即可
-
-项目创建
+IDE - Visual Studio
+编译器 - MSVC
 
 
-注意选择对应大版本的 Q
+Qt 下载
 					...
 				</div>
 			</a>
@@ -967,26 +1021,6 @@ GNU 的核心目标是创建一个完全由自由软件组成的类 Unix (Unix-l
 它强调用户有权运行、复制、分发、学习、修改和改进软件。
 什么是 GCC?
 GCC (GNU Com
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2025-09-04</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2025/09/04/4%20%E6%9D%82%E9%A1%B9/2%20%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/FAQ-Qt%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">
-				<h2 class="index-title">
-					FAQ-Qt安装与配置
-				</h2>
-				<div class="index-brief">
-					online-installer 获取信息和下载特别慢？
-使用国内镜像源下载，具体方式：在终端中启动并且加入启动参数，例如
-C:\path\to\qt\qt-online-installer-windows-x64-4.10.0.exe --mirror https://mirrors.ustc
 					...
 				</div>
 			</a>
@@ -1106,35 +1140,6 @@ windows 把网络分为两类：公用网络和专用网络，应该把以
 而且
 \[
  
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2025-07-28</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2025/07/28/2%20%E5%AD%A6%E4%B9%A0/2%20%E5%8A%9B%E5%AD%A6/2%20%E8%AE%A1%E7%AE%97%E6%B5%81%E4%BD%93%E5%8A%9B%E5%AD%A6/SPH%E5%85%89%E6%BB%91%E7%B2%92%E5%AD%90%E6%B3%95/%E7%BB%AA%E8%AE%BA/">
-				<h2 class="index-title">
-					绪论
-				</h2>
-				<div class="index-brief">
-					参考书目
-G.R. Liu, M.B. Liu Smoothed Particle Hydrodynamics
-前导课程
-
-高等数学
-流体力学
-计算方法
-C/C#/C++
-
-介绍
-Smoothed Particle Hydrodynamics （SPH）光滑质点流体动力学
-流体
 					...
 				</div>
 			</a>

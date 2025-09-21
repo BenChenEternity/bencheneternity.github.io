@@ -644,6 +644,17 @@
 							</ul>
 			
 							<ul>
+								<li class="file">
+									<a href="/2025/09/18/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/C++%20Pro/">
+                     
+										    C++ Pro
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
+							</ul>
+			
+							<ul>
 								<li class="directory">
 									<a href="#" class="directory">
 										<i class="fa fa-plus-square-o"></i>
@@ -663,6 +674,17 @@
 			
 								</li>
 								
+							</ul>
+			
+							<ul>
+								<li class="file">
+									<a href="/2025/09/16/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/Qt-Pro/">
+                     
+										    Qt Pro
+                     
+									</a>
+								</li>
+								<div class="article-toc" style="display: none;"></div>
 							</ul>
 			
 								</li>
@@ -753,17 +775,6 @@
 										2 环境配置
 									</a>
 									
-							<ul>
-								<li class="file">
-									<a href="/2025/09/04/4%20%E6%9D%82%E9%A1%B9/2%20%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/FAQ-Qt%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">
-                     
-										    FAQ-Qt安装与配置
-                     
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
 							<ul>
 								<li class="file">
 									<a href="/2025/09/16/4%20%E6%9D%82%E9%A1%B9/2%20%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/windows%20python%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
@@ -928,17 +939,261 @@
 <div id="article-content">
 	<h2 id="概述">概述</h2>
 <p>提供一个标准化、产业化的配置流程</p>
+<p>操作系统：windows</p>
+<p>IDE 和 编译器 最好按照下面的组合来配置</p>
+<ul>
+<li><p>MinGW</p>
 <ul>
 <li><p>IDE - CLion</p></li>
-<li><p>编译器 - CMake (Qt)</p></li>
-<li><p>操作系统 - Windows</p></li>
+<li><p>编译器 - MinGW</p></li>
+</ul></li>
+<li><p>MSVC</p>
+<ul>
+<li>IDE - Visual Studio</li>
+<li>编译器 - MSVC</li>
+</ul></li>
 </ul>
-<h2 id="构建工具配置">构建工具配置</h2>
-<p>开始之前进行一次性的配置</p>
-<h3 id="工具链配置">工具链配置</h3>
-<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250911163357068.png" /></p>
-<h3 id="cmake-配置">CMake 配置</h3>
+<h2 id="qt-下载">Qt 下载</h2>
+<h3 id="下载-installer">下载 installer</h3>
+<p>去 <a target="_blank" rel="noopener" href="https://www.qt.io/">Qt官网</a> 下载安装器</p>
+<h3 id="国内镜像加速打开-installer">国内镜像加速打开 installer</h3>
+<p>然后用国内镜像启动加速，否则会特别慢</p>
+<pre><code class="hljs plaintext">C:\path\to\qt\qt-online-installer-windows-x64-4.10.0.exe --mirror https://mirrors.ustc.edu.cn/qtproject</code></pre>
+<h3 id="选择安装内容">选择安装内容</h3>
+<h4 id="mingw">MinGW</h4>
+<p>以 6.7.3 版本为例，所有的组件都可以替换为用户自己的版本。具体的架构根据自己电脑选择。</p>
+<p>推荐最小可用配置：</p>
+<ul>
+<li>Qt 6.7.3
+<ul>
+<li>MinGW 11.2.0 64-bit 【使用该版本编译器工具链编译出来的预编译库】</li>
+<li>Qt Shader Tools 【 图形渲染，处理转换着色器语言】</li>
+<li>Additional Libraries
+<ul>
+<li>Qt Insight Tracker 【帮助开发者收集用户的应用使用情况和崩溃数据】</li>
+</ul></li>
+<li>Qt Quick Timeline 【创建时间线动画和关键帧】</li>
+</ul></li>
+<li>Build Tools
+<ul>
+<li>Qt Installer Framework 4.10 【程序安装工具】</li>
+<li>MinGW 11.2.0 64-bit 【编译器】</li>
+<li>CMake 3.30.5 【构建、测试、打包工具】</li>
+<li>Ninja 1.12.1 【一个专注于速度的小型、快速的构建系统，通常由CMake等高级工具调用来执行实际的编译命令】</li>
+</ul></li>
+<li>Qt Creator
+<ul>
+<li>Qt Creator 17.0.1 【Qt 官方IDE】</li>
+<li>CBD Debugger Support 【使Qt Creator能够使用微软CDB调试器来调试】</li>
+<li>Debugging Tools for Windows 【微软提供的用于在Windows系统上进行底层调试、分析和排错的一系列工具集。】</li>
+</ul></li>
+</ul>
+<h4 id="msvc">MSVC</h4>
+<ul>
+<li>Qt 6.7.3
+<ul>
+<li>MSVC 2022 64-bit 【使用该版本编译器工具链编译出来的预编译库】</li>
+<li>Qt Shader Tools 【 图形渲染，处理转换着色器语言】</li>
+<li>Additional Libraries
+<ul>
+<li>Qt Insight Tracker 【帮助开发者收集用户的应用使用情况和崩溃数据】</li>
+</ul></li>
+<li>Qt Quick Timeline 【创建时间线动画和关键帧】</li>
+</ul></li>
+<li>Build Tools
+<ul>
+<li>Qt Installer Framework 4.10 【程序安装工具】</li>
+<li>CMake 3.30.5 【构建、测试、打包工具】</li>
+<li>Ninja 1.12.1 【一个专注于速度的小型、快速的构建系统，通常由CMake等高级工具调用来执行实际的编译命令】</li>
+</ul></li>
+<li>Qt Creator
+<ul>
+<li>Qt Creator 17.0.1 【Qt 官方IDE】</li>
+<li>CBD Debugger Support 【使Qt Creator能够使用微软CDB调试器来调试】</li>
+<li>Debugging Tools for Windows 【微软提供的用于在Windows系统上进行底层调试、分析和排错的一系列工具集。】</li>
+</ul></li>
+</ul>
+<p>MSVC 相比上面的 MinGW 编译器，Qt 预编译库版本工具选择不同，同时 Build Tools 无需安装 MinGW，使用自带 MSVC 即可。</p>
+<h3 id="faq">FAQ</h3>
+<p><strong>在 Qt 的 MinGW、Build Tools 里的、独立安装的 MinGW 的区别是什么？</strong></p>
+<p>Build Tools 中的 MinGW 是一个“特供版”，它经过 Qt 官方的测试和配置，保证与该版本的 Qt 无缝协作；而自己独立安装的 MinGW 是一个“通用版”，版本可能更新，但需要手动配置才能与 Qt 正常工作。</p>
+<p><strong>Additional Libraries 主要用途</strong></p>
+<table>
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">模块 (Module)</th>
+<th style="text-align: left;">一句话用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>Qt Charts</code></td>
+<td style="text-align: left;">用于绘制折线图、柱状图、饼图等各种二维数据图表。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Qt Data Visualization</code></td>
+<td style="text-align: left;">用于将数据显示为可交互的3D柱状图、散点图或曲面图。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Qt Quick 3D</code></td>
+<td style="text-align: left;">用于在QML界面中轻松集成和渲染3D模型与场景。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Qt 5 Core Compatibility Module</code></td>
+<td style="text-align: left;">为老旧的Qt 5项目迁移到Qt 6提供API兼容性支持。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Qt WebEngine</code></td>
+<td style="text-align: left;">在你的应用程序中嵌入一个功能完整的Chromium浏览器内核。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Qt WebChannel</code></td>
+<td style="text-align: left;">实现C++/QML后端代码与嵌入网页中的JavaScript进行双向通信。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Qt Network Authorization</code></td>
+<td style="text-align: left;">提供对Google、Facebook等网络服务的OAuth 1/2登录认证功能。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Qt Multimedia</code></td>
+<td style="text-align: left;">提供音视频播放、录制以及调用摄像头等核心多媒体功能。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Qt Serial Port</code></td>
+<td style="text-align: left;">用于通过串口（COM口）与Arduino、单片机等硬件设备进行通信。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Qt Bluetooth</code></td>
+<td style="text-align: left;">用于发现蓝牙设备并与其进行数据通信。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Qt NFC</code></td>
+<td style="text-align: left;">提供近场通信（NFC）功能，用于读取NFC标签或设备间数据交换。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Qt PDF</code></td>
+<td style="text-align: left;">让你的应用程序能够渲染显示或生成PDF格式的文档。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>Qt SVG</code></td>
+<td style="text-align: left;">使你的应用程序能够加载和渲染SVG格式的矢量图形。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Qt Design Studio 和 Qt Creator 的区别</strong></p>
+<table>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 44%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">特性</th>
+<th style="text-align: left;"><strong>Qt Design Studio</strong></th>
+<th style="text-align: left;"><strong>Qt Creator 内的 UI 设计器</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>目标用户</strong></td>
+<td style="text-align: left;"><strong>UI/UX 设计师</strong></td>
+<td style="text-align: left;"><strong>程序员</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>核心焦点</strong></td>
+<td style="text-align: left;">视觉表现、动画、交互、原型制作</td>
+<td style="text-align: left;">功能实现、快速布局、信号与槽连接</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>动画能力</strong></td>
+<td style="text-align: left;"><strong>非常强大</strong> (时间轴、关键帧)</td>
+<td style="text-align: left;"><strong>非常有限</strong> (主要通过属性绑定)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>3D 支持</strong></td>
+<td style="text-align: left;"><strong>原生集成</strong>，可进行 3D 场景编辑</td>
+<td style="text-align: left;">基本不支持，需要手写 QML 代码</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>设计导入</strong></td>
+<td style="text-align: left;"><strong>支持</strong> (Figma, Photoshop 等)</td>
+<td style="text-align: left;">不支持</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>最终产出</strong></td>
+<td style="text-align: left;"><strong>高质量的 QML 代码</strong> (定义了界面的外观和感觉)</td>
+<td style="text-align: left;">QML 或 <code>.ui</code> 文件 (定义了界面的结构和基本属性)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>CDB Debugger Support 和 Debugging Tools for Windows 是做什么的？</strong></p>
+<p>CDB Debugger Support 是一个让 Qt Creator 能够在 Windows 系统上、在使用微软 MSVC 编译器时，具备代码调试功能的核心组件。</p>
+<p>没有它，在 Windows 上用 MSVC 编译代码时，Qt Creator 里的“调试”按钮就等于废了。</p>
+<ul>
+<li><p><strong>CDB (MSVC)</strong>：CDB 是 Windows 操作系统的一部分，由微软通过 “Debugging Tools for Windows” 这个独立的包来分发。Qt 本身不包含它，所以 Qt 安装器需要一个<strong>额外的选项</strong>来提醒你，并帮你从微软那里下载安装。</p></li>
+<li><p><strong>GDB (GCC)</strong>：GDB 和 GCC 编译器本身就是一家人，它们通常被<strong>打包在一起</strong>。当你下载 MinGW 工具链时，里面不仅包含了编译器 <code>g++.exe</code>，<strong>通常也已经包含了调试器 <code>gdb.exe</code></strong>。</p></li>
+</ul>
+<p><strong>什么是 Ninja？</strong></p>
+<p>Ninja 是一个专注于极致速度的小型、现代化的构建系统。它本身不负责规划项目如何编译的复杂逻辑，而是像一个高效的“施工队”，专门负责执行由 CMake 这样的“项目经理”所生成的简单、明确的编译指令。其核心优势在于极低的开销和出色的并行处理能力，能够充分利用多核CPU，从而显著缩短大型项目的编译等待时间，尤其是在只修改了少量文件的增量构建中表现卓越。因此，Ninja 通常与 CMake 搭档使用，作为其后端，共同构成了一套高效、快速的现代C++开发构建方案。</p>
+<p><strong>为什么MinGW需要单独安装，但是MSVC不用？</strong></p>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 32%" />
+<col style="width: 48%" />
+</colgroup>
+<thead>
+<tr>
+<th>特性</th>
+<th>MinGW</th>
+<th>MSVC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>提供方</strong></td>
+<td>开源社区 (GNU)</td>
+<td>微软公司</td>
+</tr>
+<tr>
+<td><strong>获取方式</strong></td>
+<td><strong>可由 Qt 安装程序捆绑安装</strong></td>
+<td><strong>必须由 Visual Studio 安装程序独立安装</strong></td>
+</tr>
+<tr>
+<td><strong>与 Qt 的关系</strong></td>
+<td>作为<strong>便利选项</strong>被集成</td>
+<td>作为一个<strong>系统前提</strong>被检测和支持</td>
+</tr>
+<tr>
+<td><strong>本质</strong></td>
+<td>一个独立的、可自由分发的工具</td>
+<td>一个与操作系统和 IDE 深度绑定的平台工具</td>
+</tr>
+</tbody>
+</table>
+<p>Qt 公司无权把微软的 MSVC 集成，但是可以集成开源的 MinGW</p>
+<h2 id="ide-配置">IDE 配置</h2>
+<h3 id="msvc-1">MSVC</h3>
+<p>Visual Studio 安装插件</p>
+<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250920150254805.png" /></p>
+<p>如果很慢，手动去 <a target="_blank" rel="noopener" href="https://download.qt.io/development_releases/vsaddin/">官网</a> 下载插件</p>
+<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250920162229525.png" /></p>
+<p>双击安装，安装时需要关闭 VS</p>
+<p>然后需要在插件中配置 qt 的路径</p>
+<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250920162628261.png" /></p>
+<p>在窗口中配置 qmake 路径</p>
+<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250920163045133.png" /></p>
+<h3 id="mingw-1">MinGW</h3>
 <p>选择对应的工具链即可</p>
+<p>参考路径</p>
+<pre><code class="hljs plaintext">C:\path\to\qt\Tools\mingw1310_64\bin</code></pre>
+<p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250911163357068.png" /></p>
 <p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250911165400663.png" /></p>
 <h2 id="项目创建">项目创建</h2>
 <p><img src="https://raw.githubusercontent.com/BenChenEternity/Images/main/20250911162725604.png" /></p>

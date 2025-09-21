@@ -9,7 +9,7 @@
 	
 		<title>
 			
-				3 文章编号编排 |
+				C++ Pro |
 					
 						Note
 		</title>
@@ -153,7 +153,7 @@
 							</ul>
 			
 							<ul>
-								<li class="file active">
+								<li class="file">
 									<a href="/2025/06/15/1%20hexo/3%20%E6%96%87%E7%AB%A0%E7%BC%96%E5%8F%B7%E7%BC%96%E6%8E%92/">
                      
 										    3 文章编号编排
@@ -644,7 +644,7 @@
 							</ul>
 			
 							<ul>
-								<li class="file">
+								<li class="file active">
 									<a href="/2025/09/18/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/C++%20Pro/">
                      
 										    C++ Pro
@@ -911,7 +911,7 @@
 	<!-- 引入正文 -->
 	<div id="content" class="content">
 		<h1 id="article-title">
-	3 文章编号编排
+	C++ Pro
 </h1>
 
 <!-- meta -->
@@ -919,7 +919,7 @@
 	
 
 	<span>NicolasDavout</span>
-	<span>2025-06-15 00:48:15</span>
+	<span>2025-09-18 10:04:22</span>
 
   <div id="article-categories">
     
@@ -937,10 +937,227 @@
 
 <!-- content -->
 <div id="article-content">
-	<h2 id="背景">背景</h2>
-<p>文章需要编号，如果想要重新给文章编号，需要手动改动多个文件名，并且还要修改 title 属性。所以自己使用谷歌Gemini写了一个小编排器。</p>
-<h2 id="下载">下载</h2>
-<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/BenChenEternity/Images/main/hexo%E9%A1%BA%E5%BA%8F%E7%BC%96%E6%8E%92%E5%99%A8.exe">hexo顺序编排器</a></p>
+	<h2 id="标注">标注</h2>
+<h3 id="nodiscard">[[nodiscard]]</h3>
+<p>C++17 标准中引入，任何调用了这个被标注的函数或方法的代码，都不应该“丢弃”或“忽略”其返回值。如果调用者忽略了返回值，编译器就会发出一个警告。这是一种非常有用的静态检查工具，可以帮助开发者在编译阶段就发现潜在的逻辑错误。</p>
+<pre><code class="hljs cpp"><span class="hljs-comment">// 在没有 [[nodiscard]] 的情况下</span>
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">check_status</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-comment">// 假设 -1 代表错误</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+&#125;
+
+<span class="hljs-comment">// 使用 [[nodiscard]]</span>
+[[nodiscard]] <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">check_status_better</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+&#125;
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    <span class="hljs-built_in">check_status</span>(); <span class="hljs-comment">// 编译器通常不会警告，但这是一个潜在的bug，因为我们没有处理可能的错误。</span>
+
+    <span class="hljs-built_in">check_status_better</span>(); <span class="hljs-comment">// 编译器会在这里发出警告！</span>
+                           <span class="hljs-comment">// warning: ignoring return value of function declared with &#x27;nodiscard&#x27; attribute</span>
+    
+    <span class="hljs-comment">// 正确的用法</span>
+    <span class="hljs-type">int</span> status = <span class="hljs-built_in">check_status_better</span>();
+    <span class="hljs-keyword">if</span> (status == <span class="hljs-number">-1</span>) &#123;
+        <span class="hljs-comment">// 处理错误...</span>
+        std::cerr &lt;&lt; <span class="hljs-string">&quot;An error occurred!\n&quot;</span>;
+    &#125;
+&#125;</code></pre>
+<h2 id="rtti">RTTI</h2>
+<p><strong>RTTI (Run-Time Type Information)</strong>，即<strong>运行时类型信息</strong>，是C++的一套机制，它允许程序在运行时查询和识别对象的类型。</p>
+<p>当你的代码通过基类的指针或引用来操作派生类对象时，有时需要知道这个指针指向的“真正”类型是什么，RTTI就提供了这种能力。</p>
+<p>RTTI主要通过两个核心操作符来实现：</p>
+<ol type="1">
+<li><code>dynamic_cast</code>：用于在继承体系中进行安全的向下转型（从基类指针/引用转为派生类指针/引用）。</li>
+<li><code>typeid</code>：返回一个对象的实际类型信息。</li>
+</ol>
+<p><strong>注意</strong>：RTTI只对<strong>多态类型</strong>（即包含至少一个虚函数的类）有效。如果你的类没有虚函数，<code>dynamic_cast</code>将无法用于向下转型。</p>
+<h3 id="核心组件与代码示例">核心组件与代码示例</h3>
+<p>我们通过一个例子来理解<code>dynamic_cast</code>和<code>typeid</code>的用法。</p>
+<h4 id="场景设定">场景设定</h4>
+<p>假设我们有一个基类 <code>Animal</code> 和两个派生类 <code>Dog</code> 和 <code>Cat</code>。<code>Dog</code>有一个特有方法 <code>bark()</code>，<code>Cat</code>有一个特有方法 <code>meow()</code>。现在有一个函数，接收一个 <code>Animal</code> 指针，需要根据它的真实类型调用其特有方法。</p>
+<h4 id="代码示例">代码示例</h4>
+<pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;typeinfo&gt;</span> <span class="hljs-comment">// 包含 typeid 所需的头文件</span></span>
+
+<span class="hljs-comment">// 基类 Animal (必须有虚函数才能启用 RTTI)</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Animal</span> &#123;
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">virtual</span> ~<span class="hljs-built_in">Animal</span>() &#123;&#125; <span class="hljs-comment">// 虚析构函数，确保派生类对象能被正确销毁</span>
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-type">void</span> <span class="hljs-title">speak</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>&#123;
+        std::cout &lt;&lt; <span class="hljs-string">&quot;An animal speaks.&quot;</span> &lt;&lt; std::endl;
+    &#125;
+&#125;;
+
+<span class="hljs-comment">// 派生类 Dog</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Dog</span> : <span class="hljs-keyword">public</span> Animal &#123;
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">speak</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> <span class="hljs-keyword">override</span> </span>&#123;
+        std::cout &lt;&lt; <span class="hljs-string">&quot;Woof!&quot;</span> &lt;&lt; std::endl;
+    &#125;
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">bark</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>&#123;
+        std::cout &lt;&lt; <span class="hljs-string">&quot;Dog is barking!&quot;</span> &lt;&lt; std::endl;
+    &#125;
+&#125;;
+
+<span class="hljs-comment">// 派生类 Cat</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Cat</span> : <span class="hljs-keyword">public</span> Animal &#123;
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">speak</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> <span class="hljs-keyword">override</span> </span>&#123;
+        std::cout &lt;&lt; <span class="hljs-string">&quot;Meow!&quot;</span> &lt;&lt; std::endl;
+    &#125;
+    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">meow</span><span class="hljs-params">()</span> <span class="hljs-type">const</span> </span>&#123;
+        std::cout &lt;&lt; <span class="hljs-string">&quot;Cat is meowing!&quot;</span> &lt;&lt; std::endl;
+    &#125;
+&#125;;
+
+<span class="hljs-comment">// 这个函数接收一个基类指针，并尝试调用派生类的特有方法</span>
+<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">performAction</span><span class="hljs-params">(Animal* animal)</span> </span>&#123;
+    <span class="hljs-keyword">if</span> (!animal) <span class="hljs-keyword">return</span>;
+
+    <span class="hljs-comment">// 1. 使用 typeid 获取对象的实际类型名</span>
+    <span class="hljs-comment">// .name() 返回的名称格式可能因编译器而异</span>
+    std::cout &lt;&lt; <span class="hljs-string">&quot;Object&#x27;s actual type: &quot;</span> &lt;&lt; <span class="hljs-built_in">typeid</span>(*animal).<span class="hljs-built_in">name</span>() &lt;&lt; std::endl;
+
+    <span class="hljs-comment">// 2. 使用 dynamic_cast 进行安全的向下转型</span>
+    <span class="hljs-comment">// 尝试将 animal 指针转型为 Dog 指针</span>
+    Dog* dog = <span class="hljs-built_in">dynamic_cast</span>&lt;Dog*&gt;(animal);
+    <span class="hljs-keyword">if</span> (dog != <span class="hljs-literal">nullptr</span>) &#123; <span class="hljs-comment">// 如果转型成功</span>
+        std::cout &lt;&lt; <span class="hljs-string">&quot;Cast to Dog successful.&quot;</span> &lt;&lt; std::endl;
+        dog-&gt;<span class="hljs-built_in">bark</span>(); <span class="hljs-comment">// 调用 Dog 的特有方法</span>
+        <span class="hljs-keyword">return</span>;
+    &#125;
+
+    <span class="hljs-comment">// 尝试将 animal 指针转型为 Cat 指针</span>
+    Cat* cat = <span class="hljs-built_in">dynamic_cast</span>&lt;Cat*&gt;(animal);
+    <span class="hljs-keyword">if</span> (cat != <span class="hljs-literal">nullptr</span>) &#123; <span class="hljs-comment">// 如果转型成功</span>
+        std::cout &lt;&lt; <span class="hljs-string">&quot;Cast to Cat successful.&quot;</span> &lt;&lt; std::endl;
+        cat-&gt;<span class="hljs-built_in">meow</span>(); <span class="hljs-comment">// 调用 Cat 的特有方法</span>
+        <span class="hljs-keyword">return</span>;
+    &#125;
+    
+    std::cout &lt;&lt; <span class="hljs-string">&quot;Could not cast to a specific derived type.&quot;</span> &lt;&lt; std::endl;
+&#125;
+
+<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
+    Animal* myAnimal1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Dog</span>();
+    Animal* myAnimal2 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Cat</span>();
+    Animal* myAnimal3 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Animal</span>();
+
+    std::cout &lt;&lt; <span class="hljs-string">&quot;--- Testing with a Dog object ---&quot;</span> &lt;&lt; std::endl;
+    <span class="hljs-built_in">performAction</span>(myAnimal1);
+
+    std::cout &lt;&lt; <span class="hljs-string">&quot;\n--- Testing with a Cat object ---&quot;</span> &lt;&lt; std::endl;
+    <span class="hljs-built_in">performAction</span>(myAnimal2);
+    
+    std::cout &lt;&lt; <span class="hljs-string">&quot;\n--- Testing with an Animal object ---&quot;</span> &lt;&lt; std::endl;
+    <span class="hljs-built_in">performAction</span>(myAnimal3);
+
+    <span class="hljs-keyword">delete</span> myAnimal1;
+    <span class="hljs-keyword">delete</span> myAnimal2;
+    <span class="hljs-keyword">delete</span> myAnimal3;
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;</code></pre>
+<h4 id="编译与输出">编译与输出</h4>
+<p>编译并运行上述代码，你可能会得到类似以下的输出（<code>typeid().name()</code> 的输出格式取决于编译器）：</p>
+<pre><code class="hljs cpp">--- Testing with a Dog object ---
+Object<span class="hljs-string">&#x27;s actual type: 3Dog</span>
+<span class="hljs-string">Cast to Dog successful.</span>
+<span class="hljs-string">Dog is barking!</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">--- Testing with a Cat object ---</span>
+<span class="hljs-string">Object&#x27;</span>s actual type: <span class="hljs-number">3</span>Cat
+Cast to Cat successful.
+Cat is meowing!
+
+--- Testing with an Animal object ---
+Object<span class="hljs-string">&#x27;s actual type: 6Animal</span>
+<span class="hljs-string">Could not cast to a specific derived type.</span></code></pre>
+<h3 id="例子分析">例子分析</h3>
+<ol type="1">
+<li><strong><code>typeid(*animal).name()</code></strong>
+<ul>
+<li>当 <code>animal</code> 指向 <code>Dog</code> 对象时，<code>typeid</code> 正确地识别出其类型为 <code>Dog</code>。</li>
+<li>它返回一个 <code>const std::type_info&amp;</code> 对象，通过 <code>.name()</code> 方法可以获取一个表示类型的字符串（具体格式不保证统一）。</li>
+</ul></li>
+<li><strong><code>dynamic_cast&lt;Dog*&gt;(animal)</code></strong>
+<ul>
+<li>在第一个调用 <code>performAction(myAnimal1)</code> 中，<code>animal</code> 指针实际指向一个 <code>Dog</code> 对象。<code>dynamic_cast</code> 检查这个运行时类型，发现 <code>animal</code> 指向的对象确实是 <code>Dog</code>（或者是 <code>Dog</code> 的派生类），所以转型<strong>成功</strong>，返回一个有效的 <code>Dog*</code> 指针。<code>if (dog != nullptr)</code> 条件成立。</li>
+<li>在第二个调用 <code>performAction(myAnimal2)</code> 中，<code>animal</code> 指向 <code>Cat</code> 对象。尝试将其转为 <code>Dog*</code> 会<strong>失败</strong>，因为 <code>Cat</code> 和 <code>Dog</code> 是兄弟关系，不是父子关系。因此，<code>dynamic_cast</code> 返回 <code>nullptr</code>。</li>
+</ul></li>
+<li><strong>安全性</strong>
+<ul>
+<li><code>dynamic_cast</code> 的核心价值在于<strong>安全</strong>。如果转型不合法，它返回空指针（对于指针转型）或抛出 <code>std::bad_cast</code> 异常（对于引用转型），而不是像 <code>static_cast</code> 那样产生一个无效的指针导致未定义行为。</li>
+<li>在示例中，正是通过检查返回值是否为 <code>nullptr</code>，我们才安全地调用了派生类的特有方法。</li>
+</ul></li>
+</ol>
+<h3 id="对比虚函数">对比虚函数</h3>
+<ul>
+<li><strong>Virtual (虚函数)</strong>：<strong>“你去做” (Tell, Don’t Ask)</strong>。关注对象的<strong>行为</strong>。你调用一个通用接口，对象自己知道该如何执行。这是标准的多态实现。</li>
+<li><strong>RTTI</strong>：<strong>“你是什么？” (Ask, Then Tell)</strong>。关注对象的<strong>类型</strong>。你先查询对象的具体类型，然后根据类型决定下一步做什么。</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 45%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr>
+<th>特性</th>
+<th>Virtual Functions (虚函数)</th>
+<th>RTTI (<code>dynamic_cast</code>/<code>typeid</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>设计思想</strong></td>
+<td><strong>面向行为</strong> (Behavior-Oriented)</td>
+<td><strong>面向类型</strong> (Type-Oriented)</td>
+</tr>
+<tr>
+<td><strong>耦合度</strong></td>
+<td><strong>低耦合</strong>。调用方只依赖基类接口，无需知道任何派生类的细节。</td>
+<td><strong>高耦合</strong>。调用方必须知道它要检查的所有派生类的具体名称。</td>
+</tr>
+<tr>
+<td><strong>扩展性</strong></td>
+<td><strong>好 (符合开闭原则)</strong>。新增派生类时，只需实现虚函数，原有调用代码<strong>无需修改</strong>。</td>
+<td><strong>差 (违反开閉原则)</strong>。新增派生类时，必须找到所有<code>if-else</code>的类型判断逻辑，并<strong>添加新的分支</strong>。</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>处理<strong>共同行为</strong>的不同实现。例如：<code>Animal</code>都有<code>speak()</code>，但方式不同。这是<strong>首选</strong>方案。</td>
+<td>处理派生类<strong>特有且无法抽象到基类</strong>的行为。例如，只有<code>Dog</code>类有<code>watchHome()</code>方法。通常是<strong>备选或最后手段</strong>。</td>
+</tr>
+<tr>
+<td><strong>性能</strong></td>
+<td>开销小且稳定（一次虚函数表查找）。</td>
+<td><code>dynamic_cast</code>开销可能更大，需要在运行时遍历继承体系。</td>
+</tr>
+<tr>
+<td><strong>语法</strong></td>
+<td><code>base_ptr-&gt;method();</code></td>
+<td><code>if (Derived* p = dynamic_cast&lt;Derived*&gt;(base_ptr)) &#123; ... &#125;</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>优先使用虚函数</strong>：当你能把操作抽象成一个通用接口时（例如，所有形状都能<code>draw()</code>），总是应该使用虚函数。这是更健壮、更易于维护的面向对象设计。</li>
+<li><strong>谨慎使用 RTTI</strong>：当且仅当无法使用虚函数，且必须根据对象的具体类型执行其<strong>独有</strong>的操作时，才考虑 RTTI。频繁使用 RTTI 通常是设计不良的信号。</li>
+</ul>
+<h3 id="总结">总结</h3>
+<ul>
+<li>RTTI 提供了在运行时识别对象真实类型的能力。</li>
+<li><code>dynamic_cast</code> 是实现安全向下转型的关键，转型失败返回<code>nullptr</code>（对指针）或抛出异常（对引用）。</li>
+<li><code>typeid</code> 用于获取对象的<code>type_info</code>信息，常用于类型比较或获取类型名称。</li>
+<li><strong>使用前提</strong>：类必须是多态的（至少有一个虚函数），否则编译器无法在对象中存储 RTTI 所需的信息。</li>
+<li><strong>性能考量</strong>：RTTI 会带来轻微的运行时开销。在设计上，应优先使用虚函数和多态来解决问题，仅在无法用虚函数解决时才考虑使用 RTTI。</li>
+</ul>
+<h2 id="section"></h2>
 
 </div>
 
@@ -949,16 +1166,11 @@
     <div class="post-guide">
         <div class="item left">
             
-              <a href="/2025/06/15/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/1%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/1%20%E7%90%86%E8%AE%BA/2%20VAO%20%E4%B8%8E%20VBO/">
-                  <i class="fa fa-angle-left" aria-hidden="true"></i>
-                  2 VAO 与 VBO
-              </a>
-            
         </div>
         <div class="item right">
             
-              <a href="/2025/06/14/6%20%E6%B8%B8%E6%88%8F/1%20minecraft/04-Cisco-s-Fantasy-Medieval/">
-                04 Cisco's Fantasy Medieval
+              <a href="/2025/09/16/2%20%E5%AD%A6%E4%B9%A0/3%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/Qt-Pro/">
+                Qt Pro
                 <i class="fa fa-angle-right" aria-hidden="true"></i>
               </a>
             
